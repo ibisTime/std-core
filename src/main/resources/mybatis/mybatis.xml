@@ -2,21 +2,12 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>		
-		<typeAlias alias="activity" type="com.std.gym.domain.Activity" />
-	    <typeAlias alias="activityOrder" type="com.std.gym.domain.ActivityOrder" />
-	    <typeAlias alias="coach" type="com.std.gym.domain.Coach" />
-		<typeAlias alias="comment" type="com.std.gym.domain.Comment" />
-		<typeAlias alias="keyword" type="com.std.gym.domain.Keyword" />
+		<typeAlias alias="activity" type="com.std.activity.domain.Activity" />
+	    <typeAlias alias="activityOrder" type="com.std.activity.domain.ActivityOrder" />
+		<typeAlias alias="comment" type="com.std.activity.domain.Comment" />
+		<typeAlias alias="keyword" type="com.std.activity.domain.Keyword" />
 	
-		<typeAlias alias="orgCourse" type="com.std.gym.domain.OrgCourse" />
-		<typeAlias alias="orgCourseOrder" type="com.std.gym.domain.OrgCourseOrder" />
-		<typeAlias alias="perCourse" type="com.std.gym.domain.PerCourse" />
-		<typeAlias alias="perCourseOrder" type="com.std.gym.domain.PerCourseOrder" />
-		<typeAlias alias="itemScore" type="com.std.gym.domain.ItemScore" />
-	    
-		<typeAlias alias="sysDict" type="com.std.gym.domain.SYSDict" />
-		<typeAlias alias="sysConfig" type="com.std.gym.domain.SYSConfig" />
-		
-	    
+		<typeAlias alias="sysDict" type="com.std.activity.domain.SYSDict" />
+		<typeAlias alias="sysConfig" type="com.std.activity.domain.SYSConfig" />
 	</typeAliases>
 </configuration>	

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.std.gym.dao.ICommentDAO">
+<mapper namespace="com.std.activity.dao.ICommentDAO">
 	<resultMap id="comment_DB_Result" type="comment">
 		<result column="code" property="code" />
 		<result column="score" property="score" />
