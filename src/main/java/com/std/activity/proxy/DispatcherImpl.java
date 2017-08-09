@@ -20,7 +20,7 @@ public class DispatcherImpl implements IDispatcher {
         ReturnMessage rm = new ReturnMessage();
         try {
             // 加载配置文件,proxy实例化
-            String classname = "com.std.gym.api.impl.XNOther";
+            String classname = "com.std.activity.api.impl.XNOther";
             // ConfigDescribe configDescribe = ConfigLoader.loadConfig();
             // if (StringUtils.isNotBlank(transcode) && configDescribe != null)
             // {
@@ -29,7 +29,7 @@ public class DispatcherImpl implements IDispatcher {
             // classname = "com.std.forum.api.impl.XN" + transcode;
             // }
             // }
-            classname = "com.std.gym.api.impl.XN" + transcode;
+            classname = "com.std.activity.api.impl.XN" + transcode;
             IProcessor processor = (IProcessor) ReflectUtil
                 .getInstance(classname);
             // 接口调用

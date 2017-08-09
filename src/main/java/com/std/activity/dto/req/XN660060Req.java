@@ -8,7 +8,7 @@ import java.util.List;
  * @since: 2017年7月19日 下午3:38:09 
  * @history:
  */
-public class XN660055Req extends APageReq {
+public class XN660060Req extends APageReq {
 
     /** 
      * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 

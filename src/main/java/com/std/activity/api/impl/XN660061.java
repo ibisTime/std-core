@@ -4,7 +4,7 @@ import com.std.activity.ao.ICommentAO;
 import com.std.activity.api.AProcessor;
 import com.std.activity.common.JsonUtil;
 import com.std.activity.core.StringValidater;
-import com.std.activity.dto.req.XN660056Req;
+import com.std.activity.dto.req.XN660061Req;
 import com.std.activity.exception.BizException;
 import com.std.activity.exception.ParaException;
 import com.std.activity.spring.SpringContextHolder;
@@ -15,11 +15,11 @@ import com.std.activity.spring.SpringContextHolder;
  * @since: 2017年7月19日 下午3:48:36 
  * @history:
  */
-public class XN660056 extends AProcessor {
+public class XN660061 extends AProcessor {
     private ICommentAO commentAO = SpringContextHolder
         .getBean(ICommentAO.class);
 
-    private XN660056Req req = null;
+    private XN660061Req req = null;
 
     @Override
     public Object doBusiness() throws BizException {
@@ -28,7 +28,7 @@ public class XN660056 extends AProcessor {
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660056Req.class);
+        req = JsonUtil.json2Bean(inputparams, XN660061Req.class);
         StringValidater.validateBlank(req.getCode());
     }
 
