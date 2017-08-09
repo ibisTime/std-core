@@ -1,93 +1,64 @@
 package com.std.activity.dto.req;
 
 /**
- * 分页查询活动
+ * 活动报名
  * @author: asus 
- * @since: 2017年7月17日 上午11:02:59 
+ * @since: 2017年7月17日 下午1:14:54 
  * @history:
  */
-public class XN622020Req extends APageReq {
+public class XN622020Req {
+    // 活动编号
+    private String activityCode;
 
-    /** 
-     * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 
-     */
-    private static final long serialVersionUID = -436697341747998231L;
+    // 数量
+    private String quantity;
 
-    // UI位置
-    private String location;
+    // 申请人
+    private String applyUser;
 
-    // 活动标题
-    private String title;
+    // 手机号
+    private String mobile;
 
-    // 举办地
-    private String holdPlace;
+    // 申请备注
+    private String applyNote;
 
-    // 活动开始时间
-    private String startDatetime;
-
-    // 活动结束时间
-    private String endDatetime;
-
-    // 状态
-    private String status;
-
-    // 更新人
-    private String updater;
-
-    public String getHoldPlace() {
-        return holdPlace;
+    public String getActivityCode() {
+        return activityCode;
     }
 
-    public void setHoldPlace(String holdPlace) {
-        this.holdPlace = holdPlace;
+    public void setActivityCode(String activityCode) {
+        this.activityCode = activityCode;
     }
 
-    public String getStartDatetime() {
-        return startDatetime;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public void setStartDatetime(String startDatetime) {
-        this.startDatetime = startDatetime;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-    public String getEndDatetime() {
-        return endDatetime;
+    public String getApplyUser() {
+        return applyUser;
     }
 
-    public void setEndDatetime(String endDatetime) {
-        this.endDatetime = endDatetime;
+    public void setApplyUser(String applyUser) {
+        this.applyUser = applyUser;
     }
 
-    public String getStatus() {
-        return status;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getUpdater() {
-        return updater;
+    public String getApplyNote() {
+        return applyNote;
     }
 
-    public void setUpdater(String updater) {
-        this.updater = updater;
+    public void setApplyNote(String applyNote) {
+        this.applyNote = applyNote;
     }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
 }

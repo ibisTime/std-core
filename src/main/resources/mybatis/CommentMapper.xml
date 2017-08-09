@@ -12,16 +12,16 @@
 		<result column="approver" property="approver" />
 		<result column="approve_datetime" property="approveDatetime" />
 		<result column="remark" property="remark" />
+		<result column="parent_code" property="parentCode" />
 		<result column="product_code" property="productCode" />
-		<result column="coach_code" property="coachCode" />
 	</resultMap>
 	<sql id="where_condition">
 		<trim prefix="WHERE" prefixOverrides="AND | OR">
 			<if test="code != null and code != '' ">
 				AND t.code = #{code}
 			</if>
-			<if test="coachCode != null and coachCode != '' ">
-				AND t.coach_code = #{coachCode}
+			<if test="parentCode != null and parentCode != '' ">
+				AND t.parent_code = #{parentCode}
 			</if>
 			<if test="productCode != null and productCode != '' ">
 				AND t.product_code = #{productCode}
@@ -59,9 +59,9 @@
 		,t.approve_datetime
 		,t.remark
 		,t.product_code
-		,t.coach_code
+		,t.parent_code
 		FROM
-		tgym_comment t
+		tstd_comment t
 		<include refid="where_condition" />
 		<trim prefix="ORDER BY ">
 			<if test="order != null and order != '' ">
@@ -72,13 +72,13 @@
 
 	<select id="select_comment_count" parameterType="comment"
 		resultType="java.lang.Long">
-		SELECT count(1) FROM tgym_comment t
+		SELECT count(1) FROM tstd_comment t
 		<include refid="where_condition" />
 	</select>
 
 	<insert id="insert_comment" parameterType="comment">
 		INSERT INTO
-		tgym_comment(
+		tstd_comment(
 		code
 		,score
 		,content
@@ -89,7 +89,7 @@
 		,approve_datetime
 		,remark
 		,product_code
-		,coach_code
+		,parent_code
 		)
 		VALUES(
 		#{code}
@@ -102,12 +102,12 @@
 		,#{approveDatetime}
 		,#{remark}
 		,#{productCode}
-		,#{coachCode}
+		,#{parentCode}
 		)
 	</insert>
 
 	<update id="update_comment" parameterType="comment">
-		UPDATE tgym_comment
+		UPDATE tstd_comment
 		SET
 		content = #{content}
 		,score = #{score}
@@ -118,12 +118,12 @@
 		,approve_datetime = #{approveDatetime}
 		,remark = #{remark}
 		,product_code = #{productCode}
-		,coach_code = #{coachCode}
+		,parent_code = #{parentCode}
 		WHERE code = #{code}
 	</update>
 
 	<update id="update_approve" parameterType="comment">
-		UPDATE tgym_comment
+		UPDATE tstd_comment
 		SET
 		status = #{status}
 		,approver = #{approver}

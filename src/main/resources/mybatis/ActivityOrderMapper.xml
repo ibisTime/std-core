@@ -96,7 +96,7 @@
 		,t.update_datetime
         ,t.remark
 		FROM
-		tgym_activity_order t 
+		tstd_activity_order t 
 		<include refid="where_condition" />
 		<trim prefix="ORDER BY ">
 			<if test="order != null and order != '' ">
@@ -106,12 +106,12 @@
 	</select>
 
 	<select id="select_activityOrder_count" parameterType="activityOrder" resultType="java.lang.Long">
-		SELECT count(1) FROM tgym_activity_order t 
+		SELECT count(1) FROM tstd_activity_order t 
 		<include refid="where_condition" />
 	</select>
 	
 	<insert id="insert_activityOrder" parameterType="activityOrder">
-		INSERT INTO tgym_activity_order(
+		INSERT INTO tstd_activity_order(
 		code
 		,activity_code
 		,activity_title
@@ -144,20 +144,20 @@
 	</insert>
 	
 	<update id="update_payGroup" parameterType="activityOrder">
-		UPDATE tgym_activity_order SET
+		UPDATE tstd_activity_order SET
 		pay_group=#{payGroup}
 		WHERE code = #{code}
 	</update>
 	
 	<update id="update_sign" parameterType="activityOrder">
-		UPDATE tgym_activity_order SET
+		UPDATE tstd_activity_order SET
 		status=#{status}
 		,remain_num=#{remainNum}
 		WHERE code = #{code}
 	</update>
 	
 	<update id="update_orderPay" parameterType="activityOrder">
-		UPDATE tgym_activity_order SET
+		UPDATE tstd_activity_order SET
 		status=#{status}
 		,pay_type=#{payType}
 		,pay_code=#{payCode}
@@ -167,12 +167,12 @@
 	</update>
 
 	<delete id="delete_activityOrder" parameterType="activityOrder">
-		DELETE FROM tgym_activity_order
+		DELETE FROM tstd_activity_order
 		WHERE code = #{code}
 	</delete>
 	
 	<update id="update_cancel" parameterType="activityOrder">
-		UPDATE tgym_activity_order SET
+		UPDATE tstd_activity_order SET
 		status=#{status}
 		,penalty = #{penalty}
 		,updater=#{updater}
@@ -182,13 +182,13 @@
 	</update>
 	
 	<update id="update_auto" parameterType="activityOrder">
-		UPDATE tgym_activity_order SET
+		UPDATE tstd_activity_order SET
 		status=#{status}
 		WHERE code = #{code}
 	</update>
 	
 	<update id="update_apply_refund" parameterType="activityOrder">
-		UPDATE tgym_activity_order SET
+		UPDATE tstd_activity_order SET
 		status=#{status}
 		,penalty = #{penalty}
 		,apply_user=#{applyUser}

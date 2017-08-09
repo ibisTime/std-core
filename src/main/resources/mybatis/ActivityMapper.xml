@@ -79,7 +79,7 @@
 		,t.update_datetime
 		,t.remark
 		FROM
-		tgym_activity t 
+		tstd_activity t 
 		<include refid="where_condition" />
 		<trim prefix="ORDER BY ">
 			<if test="order != null and order != '' ">
@@ -89,12 +89,12 @@
 	</select>
 
 	<select id="select_activity_count" parameterType="activity" resultType="java.lang.Long">
-		SELECT count(1) FROM tgym_activity t 
+		SELECT count(1) FROM tstd_activity t 
 		<include refid="where_condition" />
 	</select>
 	
 	<insert id="insert_activity" parameterType="activity">
-		INSERT INTO tgym_activity(
+		INSERT INTO tstd_activity(
 		code
 		,title
 		,pic
@@ -141,12 +141,12 @@
 	</insert>
 
 	<delete id="delete_activity" parameterType="activity">
-		DELETE FROM tgym_activity
+		DELETE FROM tstd_activity
 		WHERE code = #{code}
 	</delete>
 	
 	<update id="update_activity" parameterType="activity">
-		UPDATE tgym_activity SET
+		UPDATE tstd_activity SET
 		title = #{title}
 		,pic = #{pic}
 		,adv_pic = #{advPic}
@@ -169,7 +169,7 @@
 	</update>
 	
 	<update id="update_putOn" parameterType="activity">
-		UPDATE tgym_activity SET
+		UPDATE tstd_activity SET
 		status=#{status}
 		,location =#{location}
 		,order_no=#{orderNo}
@@ -180,7 +180,7 @@
 	</update>
 	
 	<update id="update_down" parameterType="activity">
-		UPDATE tgym_activity SET
+		UPDATE tstd_activity SET
 		status=#{status}
 		,updater=#{updater}
 		,update_datetime=#{updateDatetime}
@@ -190,14 +190,14 @@
 
 	
 	<update id="update_sign" parameterType="activity">
-		UPDATE tgym_activity SET
+		UPDATE tstd_activity SET
 		status=#{status}
 		,remain_num = #{remainNum}
 		WHERE code = #{code}
 	</update>
 	
 	<update id="update_auto" parameterType="activity">
-		UPDATE tgym_activity SET
+		UPDATE tstd_activity SET
 		status=#{status}
 		WHERE code = #{code}
 	</update>

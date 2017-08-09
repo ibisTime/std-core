@@ -1,8 +1,8 @@
 package com.std.activity.ao.impl;
 
+import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,8 +14,8 @@ import com.std.activity.bo.IKeywordBO;
 import com.std.activity.bo.ISYSConfigBO;
 import com.std.activity.bo.IUserBO;
 import com.std.activity.bo.base.Paginable;
+import com.std.activity.core.OrderNoGenerater;
 import com.std.activity.domain.Comment;
-import com.std.activity.dto.req.XN622200Req;
 import com.std.activity.enums.EBoolean;
 import com.std.activity.enums.ECommentStatus;
 import com.std.activity.enums.EPrefixCode;
@@ -42,8 +42,7 @@ public class CommentAOImpl implements ICommentAO {
 
     @Override
     @Transactional
-    public String comment(String content, List<XN622200Req> itemScoreList,
-            String commer, String orderCode) {
+    public String comment(String content, String commer, String orderCode) {
         userBO.getRemoteUser(commer);
         // 判断是否含有关键字
         String status = ECommentStatus.PUBLISHED.getCode();
@@ -51,11 +50,16 @@ public class CommentAOImpl implements ICommentAO {
         if (EReaction.REFUSE.getCode().equals(result.getCode())) {
             status = ECommentStatus.FILTERED.getCode();
         }
-        String code = null;
-        if (orderCode.startsWith(EPrefixCode.PERCOURSEORDER.getCode())) {
-
-        } else if (orderCode.startsWith(EPrefixCode.ORGCOURSEORDER.getCode())) {
-
+        Comment data = new Comment();
+        String code = OrderNoGenerater.generate(EPrefixCode.COMMENT.getCode());
+        data.setCode(code);
+        data.setContent(content);
+        data.setStatus(status);
+        data.setCommer(commer);
+        data.setCommentDatetime(new Date());
+        commentBO.saveComment(data);
+        if (ECommentStatus.FILTERED.getCode().equals(status)) {
+            code = code + "; filter";
         }
         return code;
     }
@@ -65,7 +69,7 @@ public class CommentAOImpl implements ICommentAO {
             String remark) {
         Comment data = commentBO.getComment(code);
         if (!ECommentStatus.FILTERED.getCode().equals(data.getStatus())) {
-            throw new BizException("xn0000", "评论已在可审核范围内,不能审核");
+            throw new BizException("xn0000", "评论不在可审核范围内,不能审核");
         }
         String status = ECommentStatus.APPROVE_YES.getCode();
         if (EBoolean.NO.getCode().equals(result)) {
@@ -104,17 +108,4 @@ public class CommentAOImpl implements ICommentAO {
         return comment;
     }
 
-    @Override
-    public int avgCommentScore(String coachCode, String productCode) {
-        List<Comment> list = commentBO.queryCommentList(coachCode, productCode);
-        int avgNum = 0;
-        int totalScore = 0;
-        if (CollectionUtils.isNotEmpty(list)) {
-            for (Comment comment : list) {
-                totalScore = totalScore + comment.getScore();
-            }
-            avgNum = totalScore / list.size();
-        }
-        return avgNum;
-    }
 }

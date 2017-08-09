@@ -16,8 +16,8 @@ import com.std.activity.common.DateUtil;
 import com.std.activity.core.OrderNoGenerater;
 import com.std.activity.core.StringValidater;
 import com.std.activity.domain.Activity;
-import com.std.activity.dto.req.XN622010Req;
-import com.std.activity.dto.req.XN622012Req;
+import com.std.activity.dto.req.XN660000Req;
+import com.std.activity.dto.req.XN660002Req;
 import com.std.activity.enums.EActivityStatus;
 import com.std.activity.enums.EPrefixCode;
 import com.std.activity.exception.BizException;
@@ -39,7 +39,7 @@ public class ActivityAOImpl implements IActivityAO {
     IActivityOrderBO activityOrderBO;
 
     @Override
-    public String addNewActivity(XN622010Req req) {
+    public String addNewActivity(XN660000Req req) {
         Activity data = new Activity();
         String code = OrderNoGenerater.generate(EPrefixCode.ACTIVITY.getCode());
         data.setCode(code);
@@ -76,7 +76,7 @@ public class ActivityAOImpl implements IActivityAO {
     }
 
     @Override
-    public void modifyActivity(XN622012Req req) {
+    public void modifyActivity(XN660002Req req) {
         Activity data = activityBO.getActivity(req.getCode());
         if (EActivityStatus.STOP.getCode().equals(data.getStatus())
                 || EActivityStatus.ONLINE.getCode().equals(data.getStatus())) {

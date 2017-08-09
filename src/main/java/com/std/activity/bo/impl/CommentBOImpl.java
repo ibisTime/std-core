@@ -11,7 +11,6 @@ import com.std.activity.bo.ICommentBO;
 import com.std.activity.bo.base.PaginableBOImpl;
 import com.std.activity.dao.ICommentDAO;
 import com.std.activity.domain.Comment;
-import com.std.activity.enums.ECommentStatus;
 import com.std.activity.exception.BizException;
 
 @Component
@@ -69,15 +68,6 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
             }
         }
         return data;
-    }
-
-    @Override
-    public List<Comment> queryCommentList(String coachCode, String productCode) {
-        Comment condition = new Comment();
-        condition.setCoachCode(coachCode);
-        condition.setProductCode(productCode);
-        condition.setStatus(ECommentStatus.PUBLISHALL.getCode());
-        return commentDAO.selectList(condition);
     }
 
     @Override

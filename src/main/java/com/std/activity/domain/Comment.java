@@ -42,21 +42,15 @@ public class Comment extends ABaseDO {
     // 备注
     private String remark;
 
+    // 父类编号
+    private String parentCode;
+
     // 产品编号
     private String productCode;
-
-    // 教练编号
-    private String coachCode;
 
     // **********db************
     // 评论人名称
     private String commerRealName;
-
-    // 课程名称
-    private String courseName;
-
-    // 教练名称
-    private String coachRealName;
 
     // 状态List
     private List<String> statusList;
@@ -144,36 +138,12 @@ public class Comment extends ABaseDO {
         this.score = score;
     }
 
-    public String getCoachCode() {
-        return coachCode;
-    }
-
-    public void setCoachCode(String coachCode) {
-        this.coachCode = coachCode;
-    }
-
     public String getCommerRealName() {
         return commerRealName;
     }
 
     public void setCommerRealName(String commerRealName) {
         this.commerRealName = commerRealName;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public String getCoachRealName() {
-        return coachRealName;
-    }
-
-    public void setCoachRealName(String coachRealName) {
-        this.coachRealName = coachRealName;
     }
 
     public List<String> getStatusList() {
@@ -190,6 +160,14 @@ public class Comment extends ABaseDO {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getParentCode() {
+        return parentCode;
+    }
+
+    public void setParentCode(String parentCode) {
+        this.parentCode = parentCode;
     }
 
 }
