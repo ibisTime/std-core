@@ -5,7 +5,7 @@ import java.util.List;
 import com.std.activity.bo.base.Paginable;
 import com.std.activity.domain.Keyword;
 import com.std.activity.dto.req.XN660040Req;
-import com.std.activity.dto.req.XN626042Req;
+import com.std.activity.dto.req.XN660042Req;
 
 public interface IKeywordAO {
     static final String DEFAULT_ORDER_COLUMN = "code";
@@ -14,7 +14,7 @@ public interface IKeywordAO {
 
     public void dropKeyword(String code);
 
-    public void editKeyword(XN626042Req req);
+    public void editKeyword(XN660042Req req);
 
     public Paginable<Keyword> queryKeywordPage(int start, int limit,
             Keyword condition);

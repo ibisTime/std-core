@@ -5,7 +5,7 @@ package com.std.activity.dto.req;
  * @since: 2016年9月17日 下午4:09:23 
  * @history:
  */
-public class XN6609007Req {
+public class XN660907Req {
     // 编号（必填）
     private String id;
 

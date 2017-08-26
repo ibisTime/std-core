@@ -6,7 +6,7 @@ package com.std.activity.dto.req;
  * @since: 2017年7月12日 下午2:45:25 
  * @history:
  */
-public class XN626042Req {
+public class XN660042Req {
 
     // 关键词编号 （必填）
     private String code;

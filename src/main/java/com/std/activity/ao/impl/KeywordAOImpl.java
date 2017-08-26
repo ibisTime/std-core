@@ -13,7 +13,7 @@ import com.std.activity.core.OrderNoGenerater;
 import com.std.activity.core.StringValidater;
 import com.std.activity.domain.Keyword;
 import com.std.activity.dto.req.XN660040Req;
-import com.std.activity.dto.req.XN626042Req;
+import com.std.activity.dto.req.XN660042Req;
 import com.std.activity.enums.EPrefixCode;
 
 @Service
@@ -45,7 +45,7 @@ public class KeywordAOImpl implements IKeywordAO {
     }
 
     @Override
-    public void editKeyword(XN626042Req req) {
+    public void editKeyword(XN660042Req req) {
 
         Keyword result = new Keyword();
         result.setCode(req.getCode());
