@@ -51,6 +51,7 @@ CREATE TABLE `tstd_comment` (
   `remark` text COMMENT '备注',
   `parent_code` varchar(32) DEFAULT NULL COMMENT '父类编号',
   `entity_code` varchar(32) DEFAULT NULL COMMENT '实体编号',
+  `entity_name` varchar(32) DEFAULT NULL COMMENT '实体名称',
   `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
   `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
   PRIMARY KEY (`code`)
