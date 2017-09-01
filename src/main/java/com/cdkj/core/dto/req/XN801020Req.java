@@ -23,6 +23,9 @@ public class XN801020Req {
     // 父级编号（必填）
     private String parentCode;
 
+    // 订单编号（选填）
+    private String orderCode;
+
     // 实体编号（必填）
     private String entityCode;
 
@@ -105,5 +108,13 @@ public class XN801020Req {
 
     public void setParentCode(String parentCode) {
         this.parentCode = parentCode;
+    }
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
     }
 }

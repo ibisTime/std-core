@@ -8,7 +8,8 @@
 	    <typeAlias alias="activityOrder" type="com.cdkj.core.domain.ActivityOrder" />
 		<typeAlias alias="comment" type="com.cdkj.core.domain.Comment" />
 		<typeAlias alias="keyword" type="com.cdkj.core.domain.Keyword" />
-	
+		
+		<typeAlias alias="interact" type="com.cdkj.core.domain.Interact" />
 		<typeAlias alias="sysDict" type="com.cdkj.core.domain.SYSDict" />
 		<typeAlias alias="sysConfig" type="com.cdkj.core.domain.SYSConfig" />
 	</typeAliases>

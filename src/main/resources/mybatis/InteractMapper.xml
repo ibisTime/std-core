@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdkj.core.dao.IInteractDAO">
+	<resultMap id="interact_DB_Result" type="interact">
+		<result column="code" property="code" />
+		<result column="type" property="type" />
+		<result column="entity_code" property="entityCode" />
+		<result column="interacter" property="interacter" />
+		<result column="interact_datetime" property="interactDatetime" />
+		<result column="company_code" property="companyCode" />
+		<result column="system_code" property="systemCode" />
+	</resultMap>
+	<sql id="where_condition">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="code != null and code != '' ">
+				AND t.code = #{code}
+			</if>
+			<if test="entityCode != null and entityCode != '' ">
+				AND t.entity_code = #{entityCode}
+			</if>
+			<if test="interacter != null and interacter != '' ">
+				AND t.interacter = #{interacter}
+			</if>
+			<if test="companyCode != null and companyCode != '' ">
+				AND t.company_code = #{companyCode}
+			</if>
+			<if test="systemCode != null and systemCode != '' ">
+				AND t.system_code = #{systemCode}
+			</if>
+		</trim>
+	</sql>
+	<select id="select_interact" parameterType="interact" resultMap="interact_DB_Result">
+		SELECT
+		t.code
+		,t.type
+		,t.entity_code
+		,t.interacter
+		,t.interact_datetime
+		,t.company_code
+		,t.system_code
+		FROM
+		tstd_interact t
+		<include refid="where_condition" />
+		<trim prefix="ORDER BY ">
+			<if test="order != null and order != '' ">
+				t.${order}
+			</if>
+		</trim>
+	</select>
+
+	<select id="select_interact_count" parameterType="interact"
+		resultType="java.lang.Long">
+		SELECT count(1) FROM tstd_interact t
+		<include refid="where_condition" />
+	</select>
+
+	<insert id="insert_interact" parameterType="interact">
+		INSERT INTO
+		tstd_interact(
+		code
+		,type
+		,entity_code
+		,interacter
+		,interact_datetime
+		,company_code
+		,system_code
+		)
+		VALUES(
+		#{code}
+		,#{type}
+		,#{entityCode}
+		,#{interacter}
+		,#{interactDatetime}
+		,#{companyCode}
+		,#{systemCode}
+		)
+	</insert>
+
+	<update id="update_interact" parameterType="interact">
+		UPDATE tstd_interact
+		SET
+		type = #{type}
+		,entity_code = #{entityCode}
+		,interacter = #{interacter}
+		,interact_datetime = #{interactDatetime}
+		,company_code = #{companyCode}
+		,system_code = #{systemCode}
+		WHERE code = #{code}
+	</update>
+
+	<delete id="delete_interact" parameterType="interact">
+		DELETE FROM tstd_interact
+		WHERE code = #{code}
+	</delete>
+</mapper>

@@ -33,7 +33,6 @@ CREATE TABLE `tstd_interact` (
   `entity_code` varchar(32) DEFAULT NULL COMMENT '实体编号',
   `interacter` varchar(32) DEFAULT NULL COMMENT '交互人',
   `interact_datetime` datetime DEFAULT NULL COMMENT '交互时间',
-  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
   `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
   PRIMARY KEY (`code`) COMMENT '新闻'

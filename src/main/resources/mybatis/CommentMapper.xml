@@ -16,6 +16,7 @@
 		<result column="remark" property="remark" />
 		
 		<result column="parent_code" property="parentCode" />
+		<result column="order_code" property="orderCode" />
 		<result column="entity_code" property="entityCode" />
 		<result column="entity_name" property="entityName" />
 		<result column="company_code" property="companyCode" />
@@ -51,6 +52,9 @@
 			<if test="parentCode != null and parentCode != '' ">
 				AND t.parent_code = #{parentCode}
 			</if>
+			<if test="orderCode != null and orderCode != '' ">
+				AND t.order_code = #{orderCode}
+			</if>
 			<if test="entityCode != null and entityCode != '' ">
 				AND t.entity_code = #{entityCode}
 			</if>
@@ -78,6 +82,7 @@
 		,t.approve_datetime
 		,t.remark
 		,t.parent_code
+		,t.order_code
 		,t.entity_code
 		,t.entity_name
 		,t.company_code
@@ -112,6 +117,7 @@
 		,approve_datetime
 		,remark
 		,parent_code
+		,order_code
 		,entity_code
 		,entity_name
 		,company_code
@@ -129,6 +135,7 @@
 		,#{approveDatetime}
 		,#{remark}
 		,#{parentCode}
+		,#{orderCode}
 		,#{entityCode}
 		,#{entityName}		
 		,#{companyCode}

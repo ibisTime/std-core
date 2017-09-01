@@ -51,6 +51,9 @@ public class Comment extends ABaseDO {
     // 父类编号
     private String parentCode;
 
+    // 订单编号
+    private String orderCode;
+
     // 针对实体编号
     private String entityCode;
 
@@ -202,5 +205,13 @@ public class Comment extends ABaseDO {
 
     public void setStatusList(List<String> statusList) {
         this.statusList = statusList;
+    }
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
     }
 }

@@ -46,6 +46,8 @@ public class CommentAOImpl implements ICommentAO {
         data.setCommenter(req.getCommenter());
         data.setCommenterName(req.getCommenterName());
         data.setCommentDatetime(new Date());
+        data.setParentCode(req.getParentCode());
+        data.setOrderCode(req.getOrderCode());
         data.setEntityCode(req.getEntityCode());
         data.setEntityName(req.getEntityName());
         data.setCompanyCode(req.getCompanyCode());
