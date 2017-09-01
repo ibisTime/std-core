@@ -6,17 +6,20 @@ import java.util.List;
 import com.cdkj.core.dao.base.ABaseDO;
 
 /**
-* 评论
-* @author: xieyj 
-* @since: 2017-07-13 16:45:10
-* @history:
-*/
+ * 评论
+ * @author: xieyj 
+ * @since: 2017年8月31日 下午8:26:03 
+ * @history:
+ */
 public class Comment extends ABaseDO {
 
     private static final long serialVersionUID = 1L;
 
     // 编号
     private String code;
+
+    // 类型
+    private String type;
 
     // 得分
     private Integer score;
@@ -28,7 +31,10 @@ public class Comment extends ABaseDO {
     private String status;
 
     // 评论人
-    private String commer;
+    private String commenter;
+
+    // 评论人名称
+    private String commenterName;
 
     // 评论时间
     private Date commentDatetime;
@@ -45,57 +51,45 @@ public class Comment extends ABaseDO {
     // 父类编号
     private String parentCode;
 
-    // 产品编号
-    private String productCode;
+    // 针对实体编号
+    private String entityCode;
+
+    // 针对实体名称
+    private String entityName;
+
+    // 所属公司
+    private String companyCode;
+
+    // 系统编号
+    private String systemCode;
 
     // **********db************
-    // 评论人名称
-    private String commerRealName;
 
     // 状态List
     private List<String> statusList;
-
-    // 头像
-    private String photo;
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getCode() {
         return code;
     }
 
-    public void setCommer(String commer) {
-        this.commer = commer;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getCommer() {
-        return commer;
+    public String getType() {
+        return type;
     }
 
-    public void setCommentDatetime(Date commentDatetime) {
-        this.commentDatetime = commentDatetime;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Date getCommentDatetime() {
-        return commentDatetime;
+    public Integer getScore() {
+        return score;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
-    public String getProductCode() {
-        return productCode;
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
     public String getContent() {
@@ -114,6 +108,30 @@ public class Comment extends ABaseDO {
         this.status = status;
     }
 
+    public String getCommenter() {
+        return commenter;
+    }
+
+    public void setCommenter(String commenter) {
+        this.commenter = commenter;
+    }
+
+    public String getCommenterName() {
+        return commenterName;
+    }
+
+    public void setCommenterName(String commenterName) {
+        this.commenterName = commenterName;
+    }
+
+    public Date getCommentDatetime() {
+        return commentDatetime;
+    }
+
+    public void setCommentDatetime(Date commentDatetime) {
+        this.commentDatetime = commentDatetime;
+    }
+
     public String getApprover() {
         return approver;
     }
@@ -130,36 +148,12 @@ public class Comment extends ABaseDO {
         this.approveDatetime = approveDatetime;
     }
 
-    public Integer getScore() {
-        return score;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    public String getCommerRealName() {
-        return commerRealName;
-    }
-
-    public void setCommerRealName(String commerRealName) {
-        this.commerRealName = commerRealName;
-    }
-
-    public List<String> getStatusList() {
-        return statusList;
-    }
-
-    public void setStatusList(List<String> statusList) {
-        this.statusList = statusList;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public String getParentCode() {
@@ -170,4 +164,43 @@ public class Comment extends ABaseDO {
         this.parentCode = parentCode;
     }
 
+    public String getEntityCode() {
+        return entityCode;
+    }
+
+    public void setEntityCode(String entityCode) {
+        this.entityCode = entityCode;
+    }
+
+    public String getEntityName() {
+        return entityName;
+    }
+
+    public void setEntityName(String entityName) {
+        this.entityName = entityName;
+    }
+
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
+    }
+
+    public String getSystemCode() {
+        return systemCode;
+    }
+
+    public void setSystemCode(String systemCode) {
+        this.systemCode = systemCode;
+    }
+
+    public List<String> getStatusList() {
+        return statusList;
+    }
+
+    public void setStatusList(List<String> statusList) {
+        this.statusList = statusList;
+    }
 }

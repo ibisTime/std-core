@@ -11,6 +11,10 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- 分页BO层注入paginableDao -->
+	<bean id="newsBO" class="com.cdkj.core.bo.impl.NewsBOImpl">
+		<property name="paginableDAO" ref="newsDAOImpl" />
+	</bean>
+	
 	<bean id="activityBO" class="com.cdkj.core.bo.impl.ActivityBOImpl">
 		<property name="paginableDAO" ref="activityDAOImpl"/>
 	</bean>	

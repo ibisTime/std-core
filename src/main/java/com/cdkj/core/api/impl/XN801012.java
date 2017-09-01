@@ -4,34 +4,36 @@ import com.cdkj.core.ao.IKeywordAO;
 import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
-import com.cdkj.core.dto.req.XN660040Req;
-import com.cdkj.core.dto.res.PKCodeRes;
+import com.cdkj.core.dto.req.XN802012Req;
+import com.cdkj.core.dto.res.BooleanRes;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
 
 /**
- * 新增关键词
+ * 修改关键词
  * @author: asus 
- * @since: 2017年7月12日 下午2:40:44 
+ * @since: 2017年7月12日 下午2:41:54 
  * @history:
  */
-public class XN660040 extends AProcessor {
+public class XN801012 extends AProcessor {
 
     private IKeywordAO keywordAO = SpringContextHolder
         .getBean(IKeywordAO.class);
 
-    private XN660040Req req = null;
+    private XN802012Req req = null;
 
     @Override
     public Object doBusiness() throws BizException {
-        return new PKCodeRes(keywordAO.addKeyword(req));
+        keywordAO.editKeyword(req);
+        return new BooleanRes(true);
     }
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660040Req.class);
-        StringValidater.validateBlank(req.getWord(), req.getLevel(),
-            req.getWeight(), req.getReaction(), req.getUpdater());
+        req = JsonUtil.json2Bean(inputparams, XN802012Req.class);
+        StringValidater.validateBlank(req.getCode(), req.getWord(),
+            req.getLevel(), req.getWeight(), req.getReaction(),
+            req.getUpdater());
     }
 }

@@ -6,7 +6,7 @@ package com.cdkj.core.dto.req;
  * @since: 2017年7月12日 下午2:45:39 
  * @history:
  */
-public class XN660045Req extends APageReq {
+public class XN801015Req extends APageReq {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,6 +21,12 @@ public class XN660045Req extends APageReq {
 
     // 更新人(选填)
     private String updater;
+
+    // 所属公司(必填)
+    private String companyCode;
+
+    // 系统编号(必填)
+    private String systemCode;
 
     public String getWord() {
         return word;
@@ -54,4 +60,19 @@ public class XN660045Req extends APageReq {
         this.updater = updater;
     }
 
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
+    }
+
+    public String getSystemCode() {
+        return systemCode;
+    }
+
+    public void setSystemCode(String systemCode) {
+        this.systemCode = systemCode;
+    }
 }

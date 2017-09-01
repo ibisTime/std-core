@@ -11,6 +11,7 @@
 		<result column="updater" property="updater" />
 		<result column="update_datetime" property="updateDatetime" />
 		<result column="remark" property="remark" />
+		<result column="company_code" property="companyCode" />
 		<result column="system_code" property="systemCode" />
 	</resultMap>
 	<sql id="where_condition">
@@ -27,6 +28,9 @@
 			<if test="parentKey != null and parentKey != '' ">
 				AND t.parent_key = #{parentKey}
 			</if>	
+			<if test="companyCode != null and companyCode != '' ">
+				AND t.company_code = #{companyCode}
+			</if>
 			<if test="systemCode != null and systemCode != '' ">
 				AND t.system_code = #{systemCode}
 			</if>	
@@ -43,6 +47,7 @@
 		,updater
 		,update_datetime
 		,remark
+		,company_code
 		,system_code
 		FROM
 		tsys_dict t 
@@ -64,6 +69,7 @@
 		,updater
 		,update_datetime
 		,remark
+		,company_code
 		,system_code
 		)
 		VALUES(
@@ -74,6 +80,7 @@
 		,#{updater}
 		,#{updateDatetime}
 		,#{remark}
+		,#{companyCode}
 		,#{systemCode}
 		)
 	</insert>

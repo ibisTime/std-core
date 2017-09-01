@@ -21,34 +21,26 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
     private ICommentDAO commentDAO;
 
     @Override
-    public boolean isCommentExist(String code) {
-        Comment condition = new Comment();
-        condition.setCode(code);
-        if (commentDAO.selectTotalCount(condition) > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public void saveComment(Comment data) {
         commentDAO.insert(data);
     }
 
     @Override
-    public void removeComment(String code) {
-        if (StringUtils.isNotBlank(code)) {
-            Comment data = new Comment();
-            data.setCode(code);
+    public void removeComment(Comment data) {
+        if (null != data) {
+            data.setCode(data.getCode());
             commentDAO.delete(data);
         }
     }
 
     @Override
-    public void approveComment(Comment data) {
-        if (StringUtils.isNotBlank(data.getCode())) {
-            commentDAO.update(data);
-        }
+    public void approveComment(Comment data, String status, String approver,
+            String remark) {
+        data.setStatus(status);
+        data.setApprover(approver);
+        data.setApproveDatetime(new Date());
+        data.setRemark(remark);
+        commentDAO.approveComment(data);
     }
 
     @Override
@@ -64,20 +56,9 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
             condition.setCode(code);
             data = commentDAO.select(condition);
             if (data == null) {
-                throw new BizException("xn0000", "编号不存在");
+                throw new BizException("xn0000", "评论不存在");
             }
         }
         return data;
     }
-
-    @Override
-    public void approveComment(Comment data, String status, String approver,
-            String remark) {
-        data.setStatus(status);
-        data.setApprover(approver);
-        data.setApproveDatetime(new Date());
-        data.setRemark(remark);
-        commentDAO.approveComment(data);
-    }
-
 }

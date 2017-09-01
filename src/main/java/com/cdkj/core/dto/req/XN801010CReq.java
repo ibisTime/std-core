@@ -1,12 +1,6 @@
 package com.cdkj.core.dto.req;
 
-/**
- * 新增关键词
- * @author: asus 
- * @since: 2017年7月12日 下午2:44:57 
- * @history:
- */
-public class XN660040Req {
+public class XN801010CReq {
 
     // 关键词(必填)
     private String word;

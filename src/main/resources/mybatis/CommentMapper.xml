@@ -7,24 +7,24 @@
 		<result column="score" property="score" />
 		<result column="content" property="content" />
 		<result column="status" property="status" />
-		<result column="commer" property="commer" />
+		<result column="commenter" property="commenter" />
+		
+		<result column="commenter_name" property="commenterName" />
 		<result column="comment_datetime" property="commentDatetime" />
 		<result column="approver" property="approver" />
 		<result column="approve_datetime" property="approveDatetime" />
 		<result column="remark" property="remark" />
+		
 		<result column="parent_code" property="parentCode" />
-		<result column="product_code" property="productCode" />
+		<result column="entity_code" property="entityCode" />
+		<result column="entity_name" property="entityName" />
+		<result column="company_code" property="companyCode" />
+		<result column="system_code" property="systemCode" />
 	</resultMap>
 	<sql id="where_condition">
 		<trim prefix="WHERE" prefixOverrides="AND | OR">
 			<if test="code != null and code != '' ">
 				AND t.code = #{code}
-			</if>
-			<if test="parentCode != null and parentCode != '' ">
-				AND t.parent_code = #{parentCode}
-			</if>
-			<if test="productCode != null and productCode != '' ">
-				AND t.product_code = #{productCode}
 			</if>
 			<if test="content != null and content != '' ">
 				AND t.content like "%"#{content}#"%"
@@ -39,11 +39,29 @@
 					</if>
 				 </otherwise>
 			</choose>
-			<if test="statusList != null and statusList != '' ">
-				AND t.status in 
-                <foreach item="item" index="index" collection="statusList" open="(" separator="," close=")">
-	            	#{item}
-                </foreach> 
+			<if test="commenter != null and commenter != '' ">
+				AND t.commenter = #{commenter}
+			</if>
+			<if test="commenterName != null and commenterName != '' ">
+				AND t.commenter_name = #{commenterName}
+			</if>
+			<if test="approver != null and approver != '' ">
+				AND t.approver = #{approver}
+			</if>
+			<if test="parentCode != null and parentCode != '' ">
+				AND t.parent_code = #{parentCode}
+			</if>
+			<if test="entityCode != null and entityCode != '' ">
+				AND t.entity_code = #{entityCode}
+			</if>
+			<if test="entityName != null and entityName != '' ">
+				AND t.entity_name = #{entityName}
+			</if>
+			<if test="companyCode != null and companyCode != '' ">
+				AND t.company_code = #{companyCode}
+			</if>
+			<if test="systemCode != null and systemCode != '' ">
+				AND t.system_code = #{systemCode}
 			</if>
 		</trim>
 	</sql>
@@ -53,13 +71,17 @@
 		,t.score
 		,t.content
 		,t.status
-		,t.commer
+		,t.commenter
+		,t.commenter_name
 		,t.comment_datetime
 		,t.approver
 		,t.approve_datetime
 		,t.remark
-		,t.product_code
 		,t.parent_code
+		,t.entity_code
+		,t.entity_name
+		,t.company_code
+		,t.system_code
 		FROM
 		tstd_comment t
 		<include refid="where_condition" />
@@ -83,45 +105,42 @@
 		,score
 		,content
 		,status
-		,commer
+		,commenter
+		,commenter_name
 		,comment_datetime
 		,approver
 		,approve_datetime
 		,remark
-		,product_code
 		,parent_code
+		,entity_code
+		,entity_name
+		,company_code
+		,system_code
 		)
 		VALUES(
 		#{code}
 		,#{score}
 		,#{content}
 		,#{status}
-		,#{commer}
+		,#{commenter}
+		,#{commenterName}
 		,#{commentDatetime}
 		,#{approver}
 		,#{approveDatetime}
 		,#{remark}
-		,#{productCode}
 		,#{parentCode}
+		,#{entityCode}
+		,#{entityName}		
+		,#{companyCode}
+		,#{systemCode}
 		)
 	</insert>
 
-	<update id="update_comment" parameterType="comment">
-		UPDATE tstd_comment
-		SET
-		content = #{content}
-		,score = #{score}
-		,status = #{status}
-		,commer = #{commer}
-		,comment_datetime = #{commentDatetime}
-		,approver = #{approver}
-		,approve_datetime = #{approveDatetime}
-		,remark = #{remark}
-		,product_code = #{productCode}
-		,parent_code = #{parentCode}
+    <delete id="delete_comment" parameterType="comment">
+		DELETE FROM tstd_comment
 		WHERE code = #{code}
-	</update>
-
+	</delete>
+	
 	<update id="update_approve" parameterType="comment">
 		UPDATE tstd_comment
 		SET
@@ -131,5 +150,4 @@
 		,remark = #{remark}
 		WHERE code = #{code}
 	</update>
-
 </mapper>

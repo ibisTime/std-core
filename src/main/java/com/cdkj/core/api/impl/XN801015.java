@@ -7,7 +7,7 @@ import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Keyword;
-import com.cdkj.core.dto.req.XN660045Req;
+import com.cdkj.core.dto.req.XN801015Req;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
@@ -18,12 +18,12 @@ import com.cdkj.core.spring.SpringContextHolder;
  * @since: 2017年7月12日 下午2:43:33 
  * @history:
  */
-public class XN660045 extends AProcessor {
+public class XN801015 extends AProcessor {
 
     private IKeywordAO keywordAO = SpringContextHolder
         .getBean(IKeywordAO.class);
 
-    private XN660045Req req = null;
+    private XN801015Req req = null;
 
     @Override
     public Object doBusiness() throws BizException {
@@ -44,7 +44,10 @@ public class XN660045 extends AProcessor {
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660045Req.class);
-        StringValidater.validateBlank(req.getStart(), req.getLimit());
+        req = JsonUtil.json2Bean(inputparams, XN801015Req.class);
+        StringValidater.validateNumber(req.getStart(), req.getLimit());
+        StringValidater
+            .validateBlank(req.getCompanyCode(), req.getSystemCode());
+
     }
 }

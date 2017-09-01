@@ -35,9 +35,6 @@ public class KeywordBOImpl extends PaginableBOImpl<Keyword> implements
     @Autowired
     private IKeywordDAO keywordDAO;
 
-    /** 
-     * @see com.cdkj.core.bo.IKeywordBO#saveKeyword(com.cdkj.core.domain.Keyword)
-     */
     @Override
     public void saveKeyword(Keyword data) {
         if (data != null && StringUtils.isNotBlank(data.getCode())) {

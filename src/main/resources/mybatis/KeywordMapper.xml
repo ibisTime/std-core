@@ -8,9 +8,12 @@
 		<result column="weight" property="weight" />
 		<result column="level" property="level" />
 		<result column="reaction" property="reaction" />
+		
 		<result column="updater" property="updater" />
 		<result column="update_datetime" property="updateDatetime" />
 		<result column="remark" property="remark" />
+		<result column="company_code" property="companyCode" />
+		<result column="system_code" property="systemCode" />
 	</resultMap>
 	<sql id="where_condition">
 		<trim prefix="WHERE" prefixOverrides="AND | OR">
@@ -20,14 +23,23 @@
 			<if test="wordForQuery != null and wordForQuery != '' ">
 		        AND t.word like "%"#{wordForQuery}"%"
 			</if>
+			<if test="weightStart != null and weightStart != '' ">
+				<![CDATA[AND t.weight >= #{weightStart}]]>
+			</if>
+			<if test="weight != null and weight != '' ">
+				<![CDATA[AND t.weight = #{weight}]]>
+			</if>
 			<if test="level != null and level != '' ">
 				AND t.level = #{level}
 			</if>
-			<if test="weightStart != null">
-				<![CDATA[AND t.weight >= #{weightStart}]]>
+			<if test="reaction != null and reaction != '' ">
+				<![CDATA[AND t.reaction = #{reaction}]]>
 			</if>
-			<if test="weight != null">
-				<![CDATA[AND t.weight = #{weight}]]>
+			<if test="companyCode != null and companyCode != '' ">
+				AND t.company_code = #{companyCode}
+			</if>
+			<if test="systemCode != null and systemCode != '' ">
+				AND t.system_code = #{systemCode}
 			</if>
 		</trim>
 	</sql>
@@ -42,6 +54,8 @@
 		,t.updater
 		,t.update_datetime
 		,t.remark
+		,t.company_code
+		,t.system_code
 		FROM
 		tstd_keyword t
 		<include refid="where_condition" />
@@ -70,6 +84,8 @@
 		,updater
 		,update_datetime
 		,remark
+		,company_code
+		,system_code
 		)
 		VALUES(
 		#{code}
@@ -81,9 +97,18 @@
 		,#{updater}
 		,#{updateDatetime}
 		,#{remark}
+		,#{companyCode}
+		,#{systemCode}
 		)
 	</insert>
 
+	<delete id="delete_keyword" parameterType="keyword">
+		DELETE FROM
+		tstd_keyword
+		WHERE
+		code = #{code}
+	</delete>
+	
 	<update id="update_keyword" parameterType="keyword">
 		UPDATE tstd_keyword
 		SET
@@ -96,11 +121,4 @@
 		,remark = #{remark}
 		WHERE code = #{code}
 	</update>
-	
-	<delete id="delete_keyword" parameterType="keyword">
-		DELETE FROM
-		tstd_keyword
-		WHERE
-		code = #{code}
-	</delete>
 </mapper>

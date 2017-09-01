@@ -27,7 +27,7 @@ public class XN660060 extends AProcessor {
     @Override
     public Object doBusiness() throws BizException {
         Comment condition = new Comment();
-        condition.setProductCode(req.getProductCode());
+        condition.setEntityCode(req.getProductCode());
         condition.setStatus(req.getStatus());
         condition.setContent(req.getContent());
         condition.setStatusList(req.getStatusList());

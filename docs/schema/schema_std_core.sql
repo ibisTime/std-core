@@ -10,14 +10,16 @@ CREATE TABLE `tstd_news` (
   `adv_pic` varchar(255) DEFAULT NULL COMMENT '广告图',
   `pic` varchar(255) DEFAULT NULL COMMENT '图片url',
   `content` text COMMENT '内容',
-  `comment_num` int(11) DEFAULT NULL COMMENT '评论数',
   `scan_num` int(11) DEFAULT NULL COMMENT '浏览数',
+  `comment_num` int(11) DEFAULT NULL COMMENT '评论数',
   `location` varchar(4) DEFAULT NULL COMMENT 'UI位置',
   `order_no` int(11) DEFAULT NULL COMMENT '序号',
   `status` varchar(4) DEFAULT NULL COMMENT '状态(0 未发布 1已发布 2 已下架)',
   `updater` varchar(32) DEFAULT NULL COMMENT '更新人',
   `update_datetime` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
+  `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
   PRIMARY KEY (`code`) COMMENT '新闻资讯'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -27,7 +29,7 @@ CREATE TABLE `tstd_news` (
 DROP TABLE IF EXISTS `tstd_interact`;
 CREATE TABLE `tstd_interact` (
   `code` varchar(32) NOT NULL COMMENT '编号',
-  `type` varchar(4) DEFAULT NULL COMMENT '类型(1 点赞 2 收藏 3 打赏 4 举报 5 浏览)',
+  `type` varchar(4) DEFAULT NULL COMMENT '类型(1 点赞 2 收藏 3 浏览)',
   `entity_code` varchar(32) DEFAULT NULL COMMENT '实体编号',
   `interacter` varchar(32) DEFAULT NULL COMMENT '交互人',
   `interact_datetime` datetime DEFAULT NULL COMMENT '交互时间',
@@ -35,26 +37,6 @@ CREATE TABLE `tstd_interact` (
   `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
   `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
   PRIMARY KEY (`code`) COMMENT '新闻'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS `tstd_comment`;
-CREATE TABLE `tstd_comment` (
-  `code` varchar(32) NOT NULL COMMENT '编号',
-  `type` varchar(32) DEFAULT NULL COMMENT '类型',
-  `score` int(11) DEFAULT NULL COMMENT '评星分数',
-  `content` text COMMENT '评论内容',
-  `status` varchar(4) DEFAULT NULL COMMENT '状态',
-  `commer` varchar(32) DEFAULT NULL COMMENT '评论人',
-  `comment_datetime` datetime DEFAULT NULL COMMENT '评论时间',
-  `approver` varchar(32) DEFAULT NULL COMMENT '审核人',
-  `approve_datetime` datetime DEFAULT NULL COMMENT '审核时间',
-  `remark` text COMMENT '备注',
-  `parent_code` varchar(32) DEFAULT NULL COMMENT '父类编号',
-  `entity_code` varchar(32) DEFAULT NULL COMMENT '实体编号',
-  `entity_name` varchar(32) DEFAULT NULL COMMENT '实体名称',
-  `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
-  `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
-  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tstd_keyword`;
@@ -67,6 +49,30 @@ CREATE TABLE `tstd_keyword` (
   `updater` varchar(32) DEFAULT NULL COMMENT '更新人',
   `update_datetime` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
+  `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tstd_comment`;
+CREATE TABLE `tstd_comment` (
+  `code` varchar(32) NOT NULL COMMENT '编号',
+  `type` varchar(32) DEFAULT NULL COMMENT '类型',
+  `score` int(11) DEFAULT NULL COMMENT '评星分数',
+  `content` text COMMENT '评论内容',
+  `status` varchar(4) DEFAULT NULL COMMENT '状态',
+  `commenter` varchar(32) DEFAULT NULL COMMENT '评论人',
+  `commenter_name` varchar(32) DEFAULT NULL COMMENT '评论人名称',
+  `comment_datetime` datetime DEFAULT NULL COMMENT '评论时间',
+  `approver` varchar(32) DEFAULT NULL COMMENT '审核人',
+  `approve_datetime` datetime DEFAULT NULL COMMENT '审核时间',
+  `remark` text COMMENT '备注',
+  `parent_code` varchar(32) DEFAULT NULL COMMENT '父类编号',
+  `order_code` varchar(32) DEFAULT NULL COMMENT '订单编号',
+  `entity_code` varchar(32) DEFAULT NULL COMMENT '实体编号',
+  `entity_name` varchar(32) DEFAULT NULL COMMENT '实体名称',
+  `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
+  `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -82,7 +88,7 @@ CREATE TABLE `tsys_config` (
   `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
   `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tsys_dict`;
 CREATE TABLE `tsys_dict` (

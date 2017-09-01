@@ -40,10 +40,32 @@ public class Keyword extends ABaseDO {
     // 备注
     private String remark;
 
+    // 所属公司
+    private String companyCode;
+
+    // 系统编号
+    private String systemCode;
+
     // *************db properties*******************
     private Double weightStart;
 
     private String wordForQuery;
+
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
+    }
+
+    public String getSystemCode() {
+        return systemCode;
+    }
+
+    public void setSystemCode(String systemCode) {
+        this.systemCode = systemCode;
+    }
 
     public String getCode() {
         return code;

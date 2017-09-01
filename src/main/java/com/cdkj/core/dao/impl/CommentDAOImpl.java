@@ -18,7 +18,7 @@ public class CommentDAOImpl extends AMybatisTemplate implements ICommentDAO {
 
     @Override
     public int delete(Comment data) {
-        return super.delete(NAMESPACE.concat("delete_comment"), data);
+        return 0;
     }
 
     @Override
@@ -46,13 +46,7 @@ public class CommentDAOImpl extends AMybatisTemplate implements ICommentDAO {
     }
 
     @Override
-    public int update(Comment data) {
-        return super.update(NAMESPACE.concat("update_comment"), data);
-    }
-
-    @Override
     public int approveComment(Comment data) {
         return super.update(NAMESPACE.concat("update_approve"), data);
     }
-
 }

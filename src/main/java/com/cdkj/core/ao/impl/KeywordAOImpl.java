@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cdkj.core.ao.IKeywordAO;
 import com.cdkj.core.bo.IKeywordBO;
@@ -12,8 +13,8 @@ import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Keyword;
-import com.cdkj.core.dto.req.XN660040Req;
-import com.cdkj.core.dto.req.XN660042Req;
+import com.cdkj.core.dto.req.XN802012Req;
+import com.cdkj.core.dto.req.XN801010CReq;
 import com.cdkj.core.enums.EPrefixCode;
 
 @Service
@@ -23,20 +24,27 @@ public class KeywordAOImpl implements IKeywordAO {
     private IKeywordBO keywordBO;
 
     @Override
-    public String addKeyword(XN660040Req req) {
-        Keyword data = new Keyword();
-        String code = OrderNoGenerater.generate(EPrefixCode.KEYWORD.getCode());
-        data.setCode(code);
-        data.setWord(req.getWord());
-        data.setWeight(StringValidater.toDouble(req.getWeight()));
-        data.setLevel(req.getLevel());
-        data.setReaction(req.getReaction());
+    @Transactional
+    public void addKeywords(List<XN801010CReq> reqList, String companyCode,
+            String systemCode) {
+        for (XN801010CReq req : reqList) {
+            Keyword data = new Keyword();
+            String code = OrderNoGenerater.generate(EPrefixCode.KEYWORD
+                .getCode());
+            data.setCode(code);
+            data.setWord(req.getWord());
+            data.setWeight(StringValidater.toDouble(req.getWeight()));
+            data.setLevel(req.getLevel());
 
-        data.setUpdater(req.getUpdater());
-        data.setUpdateDatetime(new Date());
-        data.setRemark(req.getRemark());
-        keywordBO.saveKeyword(data);
-        return code;
+            data.setReaction(req.getReaction());
+            data.setUpdater(req.getUpdater());
+            data.setUpdateDatetime(new Date());
+            data.setRemark(req.getRemark());
+            data.setCompanyCode(companyCode);
+
+            data.setSystemCode(systemCode);
+            keywordBO.saveKeyword(data);
+        }
     }
 
     @Override
@@ -45,8 +53,7 @@ public class KeywordAOImpl implements IKeywordAO {
     }
 
     @Override
-    public void editKeyword(XN660042Req req) {
-
+    public void editKeyword(XN802012Req req) {
         Keyword result = new Keyword();
         result.setCode(req.getCode());
         result.setWord(req.getWord());
@@ -69,12 +76,5 @@ public class KeywordAOImpl implements IKeywordAO {
     @Override
     public Keyword getKeyword(String code) {
         return keywordBO.getKeyword(code);
-    }
-
-    @Override
-    public void addKeyword(List<XN660040Req> reqList) {
-        for (XN660040Req req : reqList) {
-            this.addKeyword(req);
-        }
     }
 }

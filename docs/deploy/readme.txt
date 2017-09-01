@@ -14,28 +14,28 @@
   cd /Users/myb858/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp9/wtpwebapps
   
 2，打包
-  scp -P22 ./xn-forum.war root@121.43.101.148:/home
-  T6dh%$%$ss1
+  scp -P22 ./std-core.war root@121.43.101.148:/home
+  cdkj123456Q
   
 3，部署
   ssh root@121.43.101.148 -p 22
   
-  T6dh%$%$ss1
-  cd /home/wwwroot/gym/tomcat_gym_biz/webapps
-  cp ./xn-gym/WEB-INF/classes/application.properties .
-  cp ./xn-gym/WEB-INF/classes/config.properties .
+  cdkj123456Q
+  cd /mnt/www/common/tomcat_std_core/webapps
+  cp ./std-core/WEB-INF/classes/application.properties .
+  cp ./std-core/WEB-INF/classes/config.properties .
   
-  rm -rf xn-gym.war
-  rm -rf xn-gym
-  mv /home/xn-gym.war .
+  rm -rf std-core.war
+  rm -rf std-core
+  mv /home/std-core.war .
   
-  mv -f application.properties ./xn-gym/WEB-INF/classes/
-  mv -f config.properties ./xn-gym/WEB-INF/classes/
+  mv -f application.properties ./std-core/WEB-INF/classes/
+  mv -f config.properties ./std-core/WEB-INF/classes/
   
   ../bin/shutdown.sh
   ../bin/startup.sh
   
-http://121.43.101.148:3602/xn-gym/api
+http://121.43.101.148:8909/std-core/api
 
 
   cd /home/wwwroot/gym/tomcat_std_account/webapps

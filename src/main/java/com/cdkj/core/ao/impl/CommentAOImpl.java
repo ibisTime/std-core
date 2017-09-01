@@ -1,21 +1,18 @@
 package com.cdkj.core.ao.impl;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cdkj.core.ao.ICommentAO;
-import com.cdkj.core.bo.IAccountBO;
 import com.cdkj.core.bo.ICommentBO;
 import com.cdkj.core.bo.IKeywordBO;
-import com.cdkj.core.bo.ISYSConfigBO;
-import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.domain.Comment;
+import com.cdkj.core.dto.req.XN801020Req;
 import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECommentStatus;
 import com.cdkj.core.enums.EPrefixCode;
@@ -29,34 +26,30 @@ public class CommentAOImpl implements ICommentAO {
     private ICommentBO commentBO;
 
     @Autowired
-    private ISYSConfigBO sysConfigBO;
-
-    @Autowired
-    private IUserBO userBO;
-
-    @Autowired
     private IKeywordBO keywordBO;
-
-    @Autowired
-    private IAccountBO accountBO;
 
     @Override
     @Transactional
-    public String comment(String content, String commer, String orderCode) {
-        userBO.getRemoteUser(commer);
+    public String comment(XN801020Req req) {
         // 判断是否含有关键字
         String status = ECommentStatus.PUBLISHED.getCode();
-        EReaction result = keywordBO.checkContent(content);
+        EReaction result = keywordBO.checkContent(req.getContent());
         if (EReaction.REFUSE.getCode().equals(result.getCode())) {
             status = ECommentStatus.FILTERED.getCode();
         }
         Comment data = new Comment();
         String code = OrderNoGenerater.generate(EPrefixCode.COMMENT.getCode());
         data.setCode(code);
-        data.setContent(content);
+        data.setType(req.getType());
+        data.setContent(req.getContent());
         data.setStatus(status);
-        data.setCommer(commer);
+        data.setCommenter(req.getCommenter());
+        data.setCommenterName(req.getCommenterName());
         data.setCommentDatetime(new Date());
+        data.setEntityCode(req.getEntityCode());
+        data.setEntityName(req.getEntityName());
+        data.setCompanyCode(req.getCompanyCode());
+        data.setSystemCode(req.getSystemCode());
         commentBO.saveComment(data);
         if (ECommentStatus.FILTERED.getCode().equals(status)) {
             code = code + "; filter";
@@ -69,7 +62,7 @@ public class CommentAOImpl implements ICommentAO {
             String remark) {
         Comment data = commentBO.getComment(code);
         if (!ECommentStatus.FILTERED.getCode().equals(data.getStatus())) {
-            throw new BizException("xn0000", "评论不在可审核范围内,不能审核");
+            throw new BizException("xn0000", "该评论不是待审核状态,不能审核");
         }
         String status = ECommentStatus.APPROVE_YES.getCode();
         if (EBoolean.NO.getCode().equals(result)) {
@@ -80,26 +73,14 @@ public class CommentAOImpl implements ICommentAO {
 
     @Override
     public void dropComment(String code) {
-        if (!commentBO.isCommentExist(code)) {
-            throw new BizException("xn0000", "记录编号不存在");
-        }
-        commentBO.removeComment(code);
+        Comment comment = commentBO.getComment(code);
+        commentBO.removeComment(comment);
     }
 
     @Override
     public Paginable<Comment> queryCommentPage(int start, int limit,
             Comment condition) {
-        Paginable<Comment> page = commentBO.getPaginable(start, limit,
-            condition);
-        List<Comment> commentList = page.getList();
-        for (Comment comment : commentList) {
-        }
-        return page;
-    }
-
-    @Override
-    public List<Comment> queryCommentList(Comment condition) {
-        return commentBO.queryCommentList(condition);
+        return commentBO.getPaginable(start, limit, condition);
     }
 
     @Override
@@ -107,5 +88,4 @@ public class CommentAOImpl implements ICommentAO {
         Comment comment = commentBO.getComment(code);
         return comment;
     }
-
 }
