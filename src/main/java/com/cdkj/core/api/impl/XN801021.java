@@ -4,34 +4,36 @@ import com.cdkj.core.ao.ICommentAO;
 import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
-import com.cdkj.core.dto.req.XN660051Req;
+import com.cdkj.core.dto.req.XN801021Req;
 import com.cdkj.core.dto.res.BooleanRes;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
 
 /**
- * 删除评论
+ * 
  * @author: asus 
- * @since: 2017年7月19日 下午3:08:53 
+ * @since: 2017年7月19日 下午3:19:45 
  * @history:
  */
-public class XN660051 extends AProcessor {
+public class XN801021 extends AProcessor {
     private ICommentAO commentAO = SpringContextHolder
         .getBean(ICommentAO.class);
 
-    private XN660051Req req = null;
+    private XN801021Req req = null;
 
     @Override
     public Object doBusiness() throws BizException {
-        commentAO.dropComment(req.getCode());
+        commentAO.approveComment(req.getCode(), req.getResult(),
+            req.getApprover(), req.getRemark());
         return new BooleanRes(true);
     }
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660051Req.class);
-        StringValidater.validateBlank(req.getCode());
+        req = JsonUtil.json2Bean(inputparams, XN801021Req.class);
+        StringValidater.validateBlank(req.getCode(), req.getResult(),
+            req.getApprover());
     }
 
 }

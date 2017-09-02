@@ -1,12 +1,12 @@
 package com.cdkj.core.dto.req;
 
 /**
- * 删除评论
+ * 详情查询评论
  * @author: asus 
- * @since: 2017年7月19日 下午3:08:53 
+ * @since: 2017年7月19日 下午3:48:36 
  * @history:
  */
-public class XN660051Req {
+public class XN801026Req {
     // 编号
     private String code;
 

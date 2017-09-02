@@ -71,6 +71,12 @@ public class Comment extends ABaseDO {
     // 状态List
     private List<String> statusList;
 
+    // 昵称
+    private String nickname;
+
+    // 头像
+    private String photo;
+
     public String getCode() {
         return code;
     }
@@ -213,5 +219,21 @@ public class Comment extends ABaseDO {
 
     public void setOrderCode(String orderCode) {
         this.orderCode = orderCode;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

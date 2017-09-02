@@ -1,6 +1,7 @@
 package com.cdkj.core.ao.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,9 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cdkj.core.ao.ICommentAO;
 import com.cdkj.core.bo.ICommentBO;
 import com.cdkj.core.bo.IKeywordBO;
+import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.domain.Comment;
+import com.cdkj.core.domain.User;
 import com.cdkj.core.dto.req.XN801020Req;
 import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECommentStatus;
@@ -27,6 +30,9 @@ public class CommentAOImpl implements ICommentAO {
 
     @Autowired
     private IKeywordBO keywordBO;
+
+    @Autowired
+    private IUserBO userBO;
 
     @Override
     @Transactional
@@ -82,12 +88,24 @@ public class CommentAOImpl implements ICommentAO {
     @Override
     public Paginable<Comment> queryCommentPage(int start, int limit,
             Comment condition) {
-        return commentBO.getPaginable(start, limit, condition);
+        Paginable<Comment> page = commentBO.getPaginable(start, limit,
+            condition);
+        List<Comment> commentList = page.getList();
+        for (Comment comment : commentList) {
+            User user = userBO.getRemoteUser(comment.getCommenter());
+            comment.setNickname(user.getNickname());
+            comment.setPhoto(user.getPhoto());
+        }
+        return page;
+
     }
 
     @Override
     public Comment getComment(String code) {
         Comment comment = commentBO.getComment(code);
+        User user = userBO.getRemoteUser(comment.getCommenter());
+        comment.setNickname(user.getNickname());
+        comment.setPhoto(user.getPhoto());
         return comment;
     }
 }

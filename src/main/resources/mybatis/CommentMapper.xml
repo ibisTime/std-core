@@ -44,7 +44,7 @@
 				AND t.commenter = #{commenter}
 			</if>
 			<if test="commenterName != null and commenterName != '' ">
-				AND t.commenter_name = #{commenterName}
+				AND t.commenter_name like "%"#{commenterName}"%"
 			</if>
 			<if test="approver != null and approver != '' ">
 				AND t.approver = #{approver}
@@ -59,7 +59,7 @@
 				AND t.entity_code = #{entityCode}
 			</if>
 			<if test="entityName != null and entityName != '' ">
-				AND t.entity_name = #{entityName}
+				AND t.entity_name like "%"#{entityName}"%"
 			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}

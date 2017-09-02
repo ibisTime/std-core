@@ -6,7 +6,7 @@ package com.cdkj.core.dto.req;
  * @since: 2017年7月19日 下午3:12:02 
  * @history:
  */
-public class XN660052Req {
+public class XN801021Req {
     // 编号
     private String code;
 
