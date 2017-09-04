@@ -4,6 +4,7 @@
 <mapper namespace="com.cdkj.core.dao.ICommentDAO">
 	<resultMap id="comment_DB_Result" type="comment">
 		<result column="code" property="code" />
+		<result column="type" property="type" />
 		<result column="score" property="score" />
 		<result column="content" property="content" />
 		<result column="status" property="status" />
@@ -26,6 +27,9 @@
 		<trim prefix="WHERE" prefixOverrides="AND | OR">
 			<if test="code != null and code != '' ">
 				AND t.code = #{code}
+			</if>
+			<if test="type != null and type != '' ">
+				AND t.type = #{type}
 			</if>
 			<if test="content != null and content != '' ">
 				AND t.content like "%"#{content}#"%"
@@ -72,6 +76,7 @@
 	<select id="select_comment" parameterType="comment" resultMap="comment_DB_Result">
 		SELECT
 		t.code
+		,t.type
 		,t.score
 		,t.content
 		,t.status
@@ -107,6 +112,7 @@
 		INSERT INTO
 		tstd_comment(
 		code
+		,type
 		,score
 		,content
 		,status
@@ -125,6 +131,7 @@
 		)
 		VALUES(
 		#{code}
+		,#{type}
 		,#{score}
 		,#{content}
 		,#{status}

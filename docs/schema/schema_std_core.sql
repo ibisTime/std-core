@@ -35,7 +35,7 @@ CREATE TABLE `tstd_interact` (
   `interact_datetime` datetime DEFAULT NULL COMMENT '交互时间',
   `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
   `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
-  PRIMARY KEY (`code`) COMMENT '新闻'
+  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tstd_keyword`;

@@ -65,4 +65,16 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
         }
         return data;
     }
+
+    @Override
+    public List<Interact> queryInteractList(String type, String entityCode,
+            String interacter, String companyCode, String systemCode) {
+        Interact condition = new Interact();
+        condition.setType(type);
+        condition.setEntityCode(entityCode);
+        condition.setInteracter(interacter);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        return interactDAO.selectList(condition);
+    }
 }

@@ -97,7 +97,6 @@ public class CommentAOImpl implements ICommentAO {
             comment.setPhoto(user.getPhoto());
         }
         return page;
-
     }
 
     @Override
