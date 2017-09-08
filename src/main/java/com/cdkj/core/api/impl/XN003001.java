@@ -12,7 +12,13 @@ import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
 
-public class XN801035 extends AProcessor {
+/**
+ * 分页查询收藏记录
+ * @author: xieyj 
+ * @since: 2017年9月5日 下午5:18:43 
+ * @history:
+ */
+public class XN003001 extends AProcessor {
     private IInteractAO interactAO = SpringContextHolder
         .getBean(IInteractAO.class);
 

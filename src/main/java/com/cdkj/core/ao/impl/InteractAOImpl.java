@@ -16,9 +16,7 @@ import com.cdkj.core.dto.req.XN801030Req;
 import com.cdkj.core.dto.req.XN801031Req;
 import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.enums.EInteractType;
-import com.cdkj.core.exception.BizException;
 
-//801030-801039
 @Service
 public class InteractAOImpl implements IInteractAO {
 
@@ -27,7 +25,9 @@ public class InteractAOImpl implements IInteractAO {
 
     @Override
     public String addInteract(XN801030Req req) {
-        EInteractType.getDirectionMap().containsKey(req.getType());
+        EInteractType.getMap().containsKey(req.getType());
+        interactBO.doCheckExist(req.getInteracter(), req.getType(),
+            req.getEntityCode());
         Interact data = new Interact();
         String code = OrderNoGenerater.generate(EGeneratePrefix.Interact
             .getCode());
@@ -43,16 +43,8 @@ public class InteractAOImpl implements IInteractAO {
     }
 
     @Override
-    public void editInteract(Interact data) {
-        if (!interactBO.isInteractExist(data.getCode())) {
-            throw new BizException("xn0000", "记录编号不存在");
-        }
-        interactBO.refreshInteract(data);
-    }
-
-    @Override
     public void dropInteract(XN801031Req req) {
-        EInteractType.getDirectionMap().containsKey(req.getType());
+        EInteractType.getMap().containsKey(req.getType());
         Interact condition = new Interact();
         condition.setType(req.getType());
         condition.setEntityCode(req.getEntityCode());
@@ -70,7 +62,15 @@ public class InteractAOImpl implements IInteractAO {
     @Override
     public Paginable<Interact> queryInteractPage(int start, int limit,
             Interact condition) {
-        return interactBO.getPaginable(start, limit, condition);
+        Paginable<Interact> page = interactBO.getPaginable(start, limit,
+            condition);
+        List<Interact> list = page.getList();
+        for (Interact interact : list) {
+            interact.setInteractDatetimeTimes(interact.getInteractDatetime()
+                .getTime());
+            interact.setInteractDatetime(null);
+        }
+        return page;
     }
 
     @Override
@@ -82,5 +82,12 @@ public class InteractAOImpl implements IInteractAO {
     public Interact getInteract(String code, String companyCode,
             String systemCode) {
         return interactBO.getInteract(code, companyCode, systemCode);
+    }
+
+    @Override
+    public boolean isInteract(String userId, String type, String entityCode,
+            String companyCode, String systemCode) {
+        return interactBO.isInteract(userId, type, entityCode, companyCode,
+            systemCode);
     }
 }

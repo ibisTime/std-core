@@ -17,4 +17,6 @@ public interface ICommentBO extends IPaginableBO<Comment> {
     public List<Comment> queryCommentList(Comment condition);
 
     public Comment getComment(String code);
+
+    public Long queryTotalScore(Comment condition);
 }

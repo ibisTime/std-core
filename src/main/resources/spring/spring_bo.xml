@@ -21,6 +21,10 @@
 	<bean id="activityOrderBO" class="com.cdkj.core.bo.impl.ActivityOrderBOImpl">
 		<property name="paginableDAO" ref="activityOrderDAOImpl"/>
     </bean>	
+    
+    <bean id="interactBO" class="com.cdkj.core.bo.impl.InteractBOImpl">
+		<property name="paginableDAO" ref="interactDAOImpl"/>
+    </bean>	
 	
 	<bean id="commentBO" class="com.cdkj.core.bo.impl.CommentBOImpl">
 		<property name="paginableDAO" ref="commentDAOImpl" />

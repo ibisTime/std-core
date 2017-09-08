@@ -6,7 +6,7 @@ package com.cdkj.core.enums;
  * @history:
  */
 public enum ECommentType {
-    PRODUCT("P", "产品"), PRODUCT_RENT("PR", "租赁产品");
+    PRODUCT("P", "产品"), RENT_PRODUCT("PR", "租赁产品");
 
     ECommentType(String code, String value) {
         this.code = code;

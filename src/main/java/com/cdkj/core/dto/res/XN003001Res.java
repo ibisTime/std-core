@@ -1,18 +1,6 @@
-package com.cdkj.core.domain;
+package com.cdkj.core.dto.res;
 
-import java.util.Date;
-
-import com.cdkj.core.dao.base.ABaseDO;
-
-/**
-* 交互
-* @author: shan 
-* @since: 2017-09-01 13:42:25
-* @history:
-*/
-public class Interact extends ABaseDO {
-
-    private static final long serialVersionUID = 1L;
+public class XN003001Res {
 
     // 编号
     private String code;
@@ -27,36 +15,13 @@ public class Interact extends ABaseDO {
     private String interacter;
 
     // 交互时间
-    private Date interactDatetime;
+    private String interactDatetime;
 
     // 公司编号
     private String companyCode;
 
     // 系统编号
     private String systemCode;
-
-    // *************db properties**************
-    // 字符日期
-    private Long interactDatetimeTimes;
-
-    // 资讯
-    private News news;
-
-    public News getNews() {
-        return news;
-    }
-
-    public void setNews(News news) {
-        this.news = news;
-    }
-
-    public Long getInteractDatetimeTimes() {
-        return interactDatetimeTimes;
-    }
-
-    public void setInteractDatetimeTimes(Long interactDatetimeTimes) {
-        this.interactDatetimeTimes = interactDatetimeTimes;
-    }
 
     public void setCode(String code) {
         this.code = code;
@@ -90,11 +55,11 @@ public class Interact extends ABaseDO {
         return interacter;
     }
 
-    public void setInteractDatetime(Date interactDatetime) {
+    public void setInteractDatetime(String interactDatetime) {
         this.interactDatetime = interactDatetime;
     }
 
-    public Date getInteractDatetime() {
+    public String getInteractDatetime() {
         return interactDatetime;
     }
 
@@ -113,5 +78,4 @@ public class Interact extends ABaseDO {
     public String getSystemCode() {
         return systemCode;
     }
-
 }

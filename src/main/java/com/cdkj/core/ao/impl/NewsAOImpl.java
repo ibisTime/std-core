@@ -3,17 +3,23 @@ package com.cdkj.core.ao.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cdkj.core.ao.IInteractAO;
 import com.cdkj.core.ao.INewsAO;
+import com.cdkj.core.bo.IInteractBO;
 import com.cdkj.core.bo.INewsBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.core.OrderNoGenerater;
+import com.cdkj.core.domain.Interact;
 import com.cdkj.core.domain.News;
 import com.cdkj.core.dto.req.XN801000Req;
 import com.cdkj.core.dto.req.XN801002Req;
+import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.EGeneratePrefix;
+import com.cdkj.core.enums.EInteractType;
 import com.cdkj.core.enums.ENewsStatus;
 import com.cdkj.core.exception.BizException;
 
@@ -22,6 +28,9 @@ public class NewsAOImpl implements INewsAO {
 
     @Autowired
     INewsBO newsBO;
+
+    @Autowired
+    IInteractBO interactBO;
 
     @Override
     public String addNews(XN801000Req req) {
@@ -79,13 +88,41 @@ public class NewsAOImpl implements INewsAO {
     }
 
     @Override
+    public Paginable<Interact> queryMyNewsPage(int start, int limit,
+            String userId) {
+        Interact condition = new Interact();
+        condition.setInteracter(userId);
+        condition.setType(EInteractType.NEWS.getCode());
+        condition.setOrder(IInteractAO.DEFAULT_ORDER_COLUMN, "desc");
+        Paginable<Interact> page = interactBO.getPaginable(start, limit,
+            condition);
+        List<Interact> list = page.getList();
+        for (Interact interact : list) {
+            News news = newsBO.getNews(interact.getEntityCode());
+            interact.setNews(news);
+        }
+        return page;
+    }
+
+    @Override
     public List<News> queryNewsList(News condition) {
         return newsBO.queryNewsList(condition);
     }
 
     @Override
-    public News getNews(String code) {
-        return newsBO.getNews(code);
+    public News getNews(String code, String userId) {
+        News news = newsBO.getNews(code);
+        if (StringUtils.isNotBlank(userId)) {
+            boolean result = interactBO.isInteract(userId,
+                EInteractType.NEWS.getCode(), code, news.getCompanyCode(),
+                news.getSystemCode());
+            if (result) {
+                news.setIsCollect(EBoolean.YES.getCode());
+            } else {
+                news.setIsCollect(EBoolean.NO.getCode());
+            }
+        }
+        return news;
     }
 
     @Override

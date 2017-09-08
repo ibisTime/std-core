@@ -3,6 +3,7 @@ package com.cdkj.core.ao;
 import java.util.List;
 
 import com.cdkj.core.bo.base.Paginable;
+import com.cdkj.core.domain.Interact;
 import com.cdkj.core.domain.News;
 import com.cdkj.core.dto.req.XN801000Req;
 import com.cdkj.core.dto.req.XN801002Req;
@@ -36,5 +37,7 @@ public interface INewsAO {
 
     public List<News> queryNewsList(News condition);
 
-    public News getNews(String code);
+    public News getNews(String code, String userId);
+
+    public Paginable<Interact> queryMyNewsPage(int start, int limit,String userId);
 }

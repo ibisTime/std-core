@@ -6,5 +6,7 @@ import com.cdkj.core.domain.Comment;
 public interface ICommentDAO extends IBaseDAO<Comment> {
     String NAMESPACE = ICommentDAO.class.getName().concat(".");
 
-    int approveComment(Comment data);
+    public int approveComment(Comment data);
+
+    public Long selectTotalScore(Comment condition);
 }

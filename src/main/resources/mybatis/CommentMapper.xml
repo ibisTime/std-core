@@ -4,11 +4,12 @@
 <mapper namespace="com.cdkj.core.dao.ICommentDAO">
 	<resultMap id="comment_DB_Result" type="comment">
 		<result column="code" property="code" />
+		<result column="type" property="type" />
 		<result column="score" property="score" />
 		<result column="content" property="content" />
 		<result column="status" property="status" />
-		<result column="commenter" property="commenter" />
 		
+		<result column="commenter" property="commenter" />
 		<result column="commenter_name" property="commenterName" />
 		<result column="comment_datetime" property="commentDatetime" />
 		<result column="approver" property="approver" />
@@ -72,6 +73,7 @@
 	<select id="select_comment" parameterType="comment" resultMap="comment_DB_Result">
 		SELECT
 		t.code
+		,t.type
 		,t.score
 		,t.content
 		,t.status
@@ -102,11 +104,18 @@
 		SELECT count(1) FROM tstd_comment t
 		<include refid="where_condition" />
 	</select>
+	
+	<select id="select_total_score" parameterType="comment"
+		resultType="java.lang.Long">
+		SELECT ifnull(sum(score),0) FROM tstd_comment t
+		<include refid="where_condition" />
+	</select>
 
 	<insert id="insert_comment" parameterType="comment">
 		INSERT INTO
 		tstd_comment(
 		code
+		,type
 		,score
 		,content
 		,status
@@ -125,6 +134,7 @@
 		)
 		VALUES(
 		#{code}
+		,#{type}
 		,#{score}
 		,#{content}
 		,#{status}

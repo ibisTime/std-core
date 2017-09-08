@@ -1,12 +1,6 @@
 package com.cdkj.core.dto.req;
 
-/**
- * 我的收藏分页查
- * @author: asus 
- * @since: 2017年9月1日 下午2:06:17 
- * @history:
- */
-public class XN801035Req extends APageReq {
+public class XN003001Req extends APageReq {
 
     /** 
      * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 

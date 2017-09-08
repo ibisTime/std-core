@@ -10,6 +10,7 @@ import com.cdkj.core.bo.IInteractBO;
 import com.cdkj.core.bo.base.PaginableBOImpl;
 import com.cdkj.core.dao.IInteractDAO;
 import com.cdkj.core.domain.Interact;
+import com.cdkj.core.enums.EInteractType;
 import com.cdkj.core.exception.BizException;
 
 @Component
@@ -20,13 +21,15 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     private IInteractDAO interactDAO;
 
     @Override
-    public boolean isInteractExist(String code) {
+    public void doCheckExist(String userId, String type, String entityCode) {
         Interact condition = new Interact();
-        condition.setCode(code);
-        if (interactDAO.selectTotalCount(condition) > 0) {
-            return true;
+        condition.setInteracter(userId);
+        condition.setType(type);
+        condition.setEntityCode(entityCode);
+        if (getTotalCount(condition) > 0) {
+            throw new BizException("xn000000", "您已"
+                    + EInteractType.getMap().get(type).getValue() + ",无需再次操作");
         }
-        return false;
     }
 
     @Override
@@ -64,5 +67,20 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
             }
         }
         return data;
+    }
+
+    @Override
+    public boolean isInteract(String userId, String type, String entityCode,
+            String companyCode, String systemCode) {
+        boolean result = false;
+        Interact condition = new Interact();
+        condition.setInteracter(userId);
+        condition.setEntityCode(entityCode);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        if (getTotalCount(condition) > 0) {
+            result = true;
+        }
+        return result;
     }
 }

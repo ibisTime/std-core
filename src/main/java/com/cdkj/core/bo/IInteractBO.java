@@ -7,7 +7,7 @@ import com.cdkj.core.domain.Interact;
 
 public interface IInteractBO extends IPaginableBO<Interact> {
 
-    public boolean isInteractExist(String code);
+    public void doCheckExist(String userId, String type, String entityCode);
 
     public void saveInteract(Interact data);
 
@@ -20,4 +20,6 @@ public interface IInteractBO extends IPaginableBO<Interact> {
     public Interact getInteract(String code, String companyCode,
             String systemCode);
 
+    public boolean isInteract(String userId, String type, String entityCode,
+            String companyCode, String systemCode);
 }

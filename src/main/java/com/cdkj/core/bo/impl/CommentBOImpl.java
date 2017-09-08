@@ -28,7 +28,6 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
     @Override
     public void removeComment(Comment data) {
         if (null != data) {
-            data.setCode(data.getCode());
             commentDAO.delete(data);
         }
     }
@@ -61,4 +60,10 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         }
         return data;
     }
+
+    @Override
+    public Long queryTotalScore(Comment condition) {
+        return commentDAO.selectTotalScore(condition);
+    }
+
 }

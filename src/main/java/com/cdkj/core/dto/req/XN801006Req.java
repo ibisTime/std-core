@@ -2,7 +2,10 @@ package com.cdkj.core.dto.req;
 
 public class XN801006Req {
     // 编号（必填）
-    public String code;
+    private String code;
+
+    // 用户编号（选填）
+    private String userId;
 
     public String getCode() {
         return code;
@@ -12,4 +15,11 @@ public class XN801006Req {
         this.code = code;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }

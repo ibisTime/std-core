@@ -17,8 +17,6 @@ public interface IInteractAO {
 
     public void dropInteract(XN801031Req req);
 
-    public void editInteract(Interact data);
-
     public Paginable<Interact> queryInteractPage(int start, int limit,
             Interact condition);
 
@@ -26,5 +24,8 @@ public interface IInteractAO {
 
     public Interact getInteract(String code, String companyCode,
             String systemCode);
+
+    public boolean isInteract(String userId, String type, String entityCode,
+            String companyCode, String systemCode);
 
 }

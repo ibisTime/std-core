@@ -1,18 +1,14 @@
 package com.cdkj.core.dto.req;
 
-/**
- * 评论
- * @author: asus 
- * @since: 2017年7月19日 上午11:35:34 
- * @history:
- */
-public class XN801020Req {
+import java.util.List;
+
+public class XN003010Req {
 
     // 类型（必填）
     private String type;
 
-    // 内容（必填）
-    private String content;
+    // 评论内容列表（必填）
+    private List<XN003010CReq> commentList;
 
     // 评论人（必填）
     private String commenter;
@@ -20,17 +16,8 @@ public class XN801020Req {
     // 评论人名称（必填）
     private String commenterName;
 
-    // 父级编号（必填）
-    private String parentCode;
-
     // 订单编号（选填）
     private String orderCode;
-
-    // 实体编号（必填）
-    private String entityCode;
-
-    // 实体名称（必填）
-    private String entityName;
 
     // 公司编号（必填）
     private String companyCode;
@@ -44,14 +31,6 @@ public class XN801020Req {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getCommenter() {
@@ -70,20 +49,12 @@ public class XN801020Req {
         this.commenterName = commenterName;
     }
 
-    public String getEntityCode() {
-        return entityCode;
+    public String getOrderCode() {
+        return orderCode;
     }
 
-    public void setEntityCode(String entityCode) {
-        this.entityCode = entityCode;
-    }
-
-    public String getEntityName() {
-        return entityName;
-    }
-
-    public void setEntityName(String entityName) {
-        this.entityName = entityName;
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
     }
 
     public String getCompanyCode() {
@@ -102,19 +73,11 @@ public class XN801020Req {
         this.systemCode = systemCode;
     }
 
-    public String getParentCode() {
-        return parentCode;
+    public List<XN003010CReq> getCommentList() {
+        return commentList;
     }
 
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
-    }
-
-    public String getOrderCode() {
-        return orderCode;
-    }
-
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
+    public void setCommentList(List<XN003010CReq> commentList) {
+        this.commentList = commentList;
     }
 }

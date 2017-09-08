@@ -21,7 +21,6 @@ import com.cdkj.core.bo.base.PaginableBOImpl;
 import com.cdkj.core.dao.IKeywordDAO;
 import com.cdkj.core.domain.Keyword;
 import com.cdkj.core.enums.EReaction;
-import com.cdkj.core.exception.BizException;
 
 /** 
  * @author: xieyj 
@@ -116,7 +115,7 @@ public class KeywordBOImpl extends PaginableBOImpl<Keyword> implements
     @Override
     public EReaction checkContent(String content) {
         if (StringUtils.isBlank(content)) {
-            throw new BizException("xn000000", "内容不能为空");
+            return EReaction.NORMAL;
         }
         List<Keyword> resultList = new ArrayList<Keyword>();
         // 针对所有

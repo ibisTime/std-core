@@ -16,6 +16,9 @@
 			<if test="code != null and code != '' ">
 				AND t.code = #{code}
 			</if>
+			<if test="type != null and type != '' ">
+				AND t.type = #{type}
+			</if>
 			<if test="entityCode != null and entityCode != '' ">
 				AND t.entity_code = #{entityCode}
 			</if>

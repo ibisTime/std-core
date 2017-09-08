@@ -67,6 +67,18 @@ public class News extends ABaseDO {
     // 系统编号
     private String systemCode;
 
+    // **********db properties ********
+    // 是否收藏
+    private String isCollect;
+
+    public String getIsCollect() {
+        return isCollect;
+    }
+
+    public void setIsCollect(String isCollect) {
+        this.isCollect = isCollect;
+    }
+
     public String getCode() {
         return code;
     }
