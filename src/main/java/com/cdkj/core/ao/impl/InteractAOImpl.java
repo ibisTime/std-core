@@ -16,6 +16,7 @@ import com.cdkj.core.dto.req.XN801030Req;
 import com.cdkj.core.dto.req.XN801031Req;
 import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.enums.EInteractType;
+import com.cdkj.core.exception.BizException;
 
 @Service
 public class InteractAOImpl implements IInteractAO {
@@ -28,6 +29,15 @@ public class InteractAOImpl implements IInteractAO {
         EInteractType.getMap().containsKey(req.getType());
         interactBO.doCheckExist(req.getInteracter(), req.getType(),
             req.getEntityCode());
+        EInteractType.getMap().containsKey(req.getType());
+        List<Interact> interactList = interactBO.queryInteractList(
+            req.getType(), req.getEntityCode(), req.getInteracter(),
+            req.getCompanyCode(), req.getSystemCode());
+        if (CollectionUtils.isNotEmpty(interactList)) {
+            throw new BizException("xn0000", "您已成功"
+                    + EInteractType.getMap().get(req.getType()).getValue()
+                    + "过,不必重复");
+        }
         Interact data = new Interact();
         String code = OrderNoGenerater.generate(EGeneratePrefix.Interact
             .getCode());
@@ -45,17 +55,17 @@ public class InteractAOImpl implements IInteractAO {
     @Override
     public void dropInteract(XN801031Req req) {
         EInteractType.getMap().containsKey(req.getType());
-        Interact condition = new Interact();
-        condition.setType(req.getType());
-        condition.setEntityCode(req.getEntityCode());
-        condition.setInteracter(req.getInteracter());
-        condition.setCompanyCode(req.getCompanyCode());
-        condition.setSystemCode(req.getSystemCode());
-        List<Interact> interactList = interactBO.queryInteractList(condition);
+        List<Interact> interactList = interactBO.queryInteractList(
+            req.getType(), req.getEntityCode(), req.getInteracter(),
+            req.getCompanyCode(), req.getSystemCode());
         if (CollectionUtils.isNotEmpty(interactList)) {
             for (Interact interact : interactList) {
                 interactBO.removeInteract(interact);
             }
+        } else {
+            throw new BizException("xn0000", "您未成功"
+                    + EInteractType.getMap().get(req.getType()).getValue()
+                    + "过,不能取消");
         }
     }
 
