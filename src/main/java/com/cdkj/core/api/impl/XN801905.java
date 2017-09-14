@@ -7,7 +7,7 @@ import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.SYSDict;
-import com.cdkj.core.dto.req.XN660905Req;
+import com.cdkj.core.dto.req.XN801905Req;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
@@ -18,11 +18,11 @@ import com.cdkj.core.spring.SpringContextHolder;
  * @since: 2016年9月17日 下午1:49:47 
  * @history:
  */
-public class XN660905 extends AProcessor {
+public class XN801905 extends AProcessor {
     private ISYSDictAO sysDictAO = SpringContextHolder
         .getBean(ISYSDictAO.class);
 
-    private XN660905Req req = null;
+    private XN801905Req req = null;
 
     /** 
      * @see com.xnjr.base.api.IProcessor#doBusiness()
@@ -49,7 +49,7 @@ public class XN660905 extends AProcessor {
      */
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660905Req.class);
+        req = JsonUtil.json2Bean(inputparams, XN801905Req.class);
         StringValidater.validateNumber(req.getStart(), req.getLimit());
         StringValidater.validateBlank(req.getSystemCode());
     }

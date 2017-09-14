@@ -57,25 +57,26 @@ public class CommentAOImpl implements ICommentAO {
         // 判断是否含有关键字
         EReaction result = keywordBO.checkContent(comment.getContent());
         String code = OrderNoGenerater.generate(EPrefixCode.COMMENT.getCode());
-        String status = null;
-        if (EReaction.REFUSE.getCode().equals(result.getCode())) {
-            status = ECommentStatus.FILTERED.getCode();
-            code = code + "||" + comment.getEntityCode() + "||" + "||filter";
-        } else {
-            status = ECommentStatus.PUBLISHED.getCode();// 默认状态
-        }
         Comment data = new Comment();
         data.setCode(code);
         data.setType(type);
         data.setOrderCode(orderCode);
         data.setScore(Integer.valueOf(comment.getScore()));
         data.setContent(comment.getContent());
+
+        String status = ECommentStatus.PUBLISHED.getCode();
+        if (EReaction.REFUSE.getCode().equals(result.getCode())) {
+            status = ECommentStatus.FILTERED.getCode();
+            code = code + "||" + comment.getEntityCode() + "||" + "||filter";
+        }
         data.setStatus(status);
+
         data.setCommenter(commenter);
         data.setCommenterName(commenterName);
         data.setCommentDatetime(new Date());
         data.setParentCode(comment.getParentCode());
         data.setEntityCode(comment.getEntityCode());
+
         data.setEntityName(comment.getEntityName());
         data.setCompanyCode(companyCode);
         data.setSystemCode(systemCode);
