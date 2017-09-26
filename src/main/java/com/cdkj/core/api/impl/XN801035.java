@@ -31,6 +31,7 @@ public class XN801035 extends AProcessor {
             column = IInteractAO.DEFAULT_ORDER_COLUMN;
         }
         condition.setOrder(column, req.getOrderDir());
+
         int start = StringValidater.toInteger(req.getStart());
         int limit = StringValidater.toInteger(req.getLimit());
         return interactAO.queryInteractPage(start, limit, condition);

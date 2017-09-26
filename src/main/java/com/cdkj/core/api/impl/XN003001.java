@@ -32,10 +32,12 @@ public class XN003001 extends AProcessor {
         condition.setInteracter(req.getInteracter());
         condition.setCompanyCode(req.getCompanyCode());
         condition.setSystemCode(req.getSystemCode());
-        String orderColumn = req.getOrderColumn();
-        if (StringUtils.isBlank(orderColumn)) {
-            orderColumn = IInteractAO.DEFAULT_ORDER_COLUMN;
+        String column = req.getOrderColumn();
+        if (StringUtils.isBlank(column)) {
+            column = IInteractAO.DEFAULT_ORDER_COLUMN;
         }
+        condition.setOrder(column, req.getOrderDir());
+
         int start = StringValidater.toInteger(req.getStart());
         int limit = StringValidater.toInteger(req.getLimit());
         return interactAO.queryInteractPage(start, limit, condition);

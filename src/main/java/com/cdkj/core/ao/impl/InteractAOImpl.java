@@ -34,9 +34,8 @@ public class InteractAOImpl implements IInteractAO {
             req.getType(), req.getEntityCode(), req.getInteracter(),
             req.getCompanyCode(), req.getSystemCode());
         if (CollectionUtils.isNotEmpty(interactList)) {
-            throw new BizException("xn0000", "您已成功"
-                    + EInteractType.getMap().get(req.getType()).getValue()
-                    + "过,不必重复");
+            throw new BizException("xn0000", "您已收藏该"
+                    + EInteractType.getMap().get(req.getType()).getValue());
         }
         Interact data = new Interact();
         String code = OrderNoGenerater.generate(EGeneratePrefix.Interact

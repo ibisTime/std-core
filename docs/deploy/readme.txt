@@ -35,7 +35,7 @@
   ../bin/shutdown.sh
   ../bin/startup.sh
   
-http://118.178.124.16:3809/std-core/api
+http://121.43.101.148:09/std-core/api
 
 
   cd /home/wwwroot/gym/tomcat_std_account/webapps

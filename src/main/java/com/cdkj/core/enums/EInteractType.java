@@ -17,7 +17,7 @@ import java.util.Map;
  * @history:
  */
 public enum EInteractType {
-    PRODUCT("P", "产品"), NEWS("N", "资讯"), RENT_PRODUCT("RP", "租赁");
+    PRODUCT("P", "产品"), NEWS("N", "资讯"), RENT_PRODUCT("RP", "租赁产品");
     public static Map<String, EInteractType> getMap() {
         Map<String, EInteractType> map = new HashMap<String, EInteractType>();
         for (EInteractType direction : EInteractType.values()) {
