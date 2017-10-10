@@ -15,6 +15,7 @@ import com.cdkj.core.domain.Interact;
 import com.cdkj.core.dto.req.XN801030Req;
 import com.cdkj.core.dto.req.XN801031Req;
 import com.cdkj.core.enums.EGeneratePrefix;
+import com.cdkj.core.enums.EInteractCategory;
 import com.cdkj.core.enums.EInteractType;
 import com.cdkj.core.exception.BizException;
 
@@ -26,13 +27,13 @@ public class InteractAOImpl implements IInteractAO {
 
     @Override
     public String addInteract(XN801030Req req) {
+        EInteractCategory.getMap().containsKey(req.getCategory());
         EInteractType.getMap().containsKey(req.getType());
-        interactBO.doCheckExist(req.getInteracter(), req.getType(),
-            req.getEntityCode());
-        EInteractType.getMap().containsKey(req.getType());
+        interactBO.doCheckExist(req.getInteracter(), req.getCategory(),
+            req.getType(), req.getEntityCode());
         List<Interact> interactList = interactBO.queryInteractList(
-            req.getType(), req.getEntityCode(), req.getInteracter(),
-            req.getCompanyCode(), req.getSystemCode());
+            req.getCategory(), req.getType(), req.getEntityCode(),
+            req.getInteracter(), req.getCompanyCode(), req.getSystemCode());
         if (CollectionUtils.isNotEmpty(interactList)) {
             throw new BizException("xn0000", "您已收藏该"
                     + EInteractType.getMap().get(req.getType()).getValue());
@@ -53,10 +54,14 @@ public class InteractAOImpl implements IInteractAO {
 
     @Override
     public void dropInteract(XN801031Req req) {
+        EInteractCategory.getMap().containsKey(req.getCategory());
         EInteractType.getMap().containsKey(req.getType());
+        if (req.getType().equals(EInteractType.SCAN.getCode())) {
+            throw new BizException("xn0000", "浏览类型不能取消");
+        }
         List<Interact> interactList = interactBO.queryInteractList(
-            req.getType(), req.getEntityCode(), req.getInteracter(),
-            req.getCompanyCode(), req.getSystemCode());
+            req.getCategory(), req.getType(), req.getEntityCode(),
+            req.getInteracter(), req.getCompanyCode(), req.getSystemCode());
         if (CollectionUtils.isNotEmpty(interactList)) {
             for (Interact interact : interactList) {
                 interactBO.removeInteract(interact);
@@ -94,9 +99,9 @@ public class InteractAOImpl implements IInteractAO {
     }
 
     @Override
-    public boolean isInteract(String userId, String type, String entityCode,
-            String companyCode, String systemCode) {
-        return interactBO.isInteract(userId, type, entityCode, companyCode,
-            systemCode);
+    public boolean isInteract(String userId, String category, String type,
+            String entityCode, String companyCode, String systemCode) {
+        return interactBO.isInteract(userId, category, type, entityCode,
+            companyCode, systemCode);
     }
 }

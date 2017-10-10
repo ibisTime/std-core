@@ -39,4 +39,15 @@
 	<bean id="sysConfigBO" class="com.cdkj.core.bo.impl.SYSConfigBOImpl">
 		<property name="paginableDAO" ref="sysConfigDAOImpl" />
 	</bean>
+	
+	<bean id="couponBO" class="com.cdkj.core.bo.impl.CouponBOImpl">
+		<property name="paginableDAO" ref="couponDAOImpl" />
+	</bean>
+	
+	<bean id="currencyActivityBO" class="com.cdkj.core.bo.impl.CurrencyActivityBOImpl">
+		<property name="paginableDAO" ref="currencyActivityDAOImpl"/>
+	</bean>	
+	<bean id="publicityBO" class="com.cdkj.core.bo.impl.PublicityBOImpl">
+		<property name="paginableDAO" ref="publicityDAOImpl"/>
+    </bean>	
 </beans>

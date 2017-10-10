@@ -25,7 +25,7 @@ public interface IInteractAO {
     public Interact getInteract(String code, String companyCode,
             String systemCode);
 
-    public boolean isInteract(String userId, String type, String entityCode,
-            String companyCode, String systemCode);
+    public boolean isInteract(String userId, String category, String type,
+            String entityCode, String companyCode, String systemCode);
 
 }

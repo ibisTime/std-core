@@ -9,5 +9,9 @@
 		<typeAlias alias="interact" type="com.cdkj.core.domain.Interact" />
 		<typeAlias alias="sysDict" type="com.cdkj.core.domain.SYSDict" />
 		<typeAlias alias="sysConfig" type="com.cdkj.core.domain.SYSConfig" />
+		
+		<typeAlias alias="coupon" type="com.cdkj.core.domain.Coupon" />
+		<typeAlias alias="currencyActivity" type="com.cdkj.core.domain.CurrencyActivity" />
+		<typeAlias alias="publicity" type="com.cdkj.core.domain.Publicity" />
 	</typeAliases>
 </configuration>	

@@ -14,6 +14,9 @@ public class XN003000Req {
     // 对象编号(必填)
     private String entityCode;
 
+    // 交互分类(必填)
+    private String interactCategory;
+
     // 交互类型(必填)
     private String interactType;
 
@@ -61,5 +64,13 @@ public class XN003000Req {
 
     public void setSystemCode(String systemCode) {
         this.systemCode = systemCode;
+    }
+
+    public String getInteractCategory() {
+        return interactCategory;
+    }
+
+    public void setInteractCategory(String interactCategory) {
+        this.interactCategory = interactCategory;
     }
 }

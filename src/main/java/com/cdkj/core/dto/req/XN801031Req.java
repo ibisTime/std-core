@@ -7,6 +7,9 @@ package com.cdkj.core.dto.req;
  * @history:
  */
 public class XN801031Req {
+    // 实体类型（必填）
+    private String category;
+
     // 类型(1 点赞 2 收藏 3 浏览)（必填）
     private String type;
 
@@ -60,5 +63,13 @@ public class XN801031Req {
 
     public void setSystemCode(String systemCode) {
         this.systemCode = systemCode;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

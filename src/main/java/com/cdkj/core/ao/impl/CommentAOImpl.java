@@ -22,7 +22,7 @@ import com.cdkj.core.dto.req.XN003010Req;
 import com.cdkj.core.dto.res.XN801028Res;
 import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECommentStatus;
-import com.cdkj.core.enums.EPrefixCode;
+import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.enums.EReaction;
 import com.cdkj.core.exception.BizException;
 
@@ -56,7 +56,8 @@ public class CommentAOImpl implements ICommentAO {
             String systemCode) {
         // 判断是否含有关键字
         EReaction result = keywordBO.checkContent(comment.getContent());
-        String code = OrderNoGenerater.generate(EPrefixCode.COMMENT.getCode());
+        String code = OrderNoGenerater.generate(EGeneratePrefix.Comment
+            .getCode());
         Comment data = new Comment();
         data.setCode(code);
         data.setType(type);

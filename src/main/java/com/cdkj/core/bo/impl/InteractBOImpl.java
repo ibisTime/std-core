@@ -21,9 +21,11 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     private IInteractDAO interactDAO;
 
     @Override
-    public void doCheckExist(String userId, String type, String entityCode) {
+    public void doCheckExist(String userId, String category, String type,
+            String entityCode) {
         Interact condition = new Interact();
         condition.setInteracter(userId);
+        condition.setCategory(category);
         condition.setType(type);
         condition.setEntityCode(entityCode);
         if (getTotalCount(condition) > 0) {
@@ -70,11 +72,13 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     }
 
     @Override
-    public boolean isInteract(String userId, String type, String entityCode,
-            String companyCode, String systemCode) {
+    public boolean isInteract(String userId, String category, String type,
+            String entityCode, String companyCode, String systemCode) {
         boolean result = false;
         Interact condition = new Interact();
         condition.setInteracter(userId);
+        condition.setCategory(category);
+        condition.setType(type);
         condition.setEntityCode(entityCode);
         condition.setCompanyCode(companyCode);
         condition.setSystemCode(systemCode);
@@ -85,9 +89,11 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     }
 
     @Override
-    public List<Interact> queryInteractList(String type, String entityCode,
-            String interacter, String companyCode, String systemCode) {
+    public List<Interact> queryInteractList(String category, String type,
+            String entityCode, String interacter, String companyCode,
+            String systemCode) {
         Interact condition = new Interact();
+        condition.setCategory(category);
         condition.setType(type);
         condition.setEntityCode(entityCode);
         condition.setInteracter(interacter);

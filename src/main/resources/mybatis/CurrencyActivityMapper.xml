@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdkj.core.dao.ICurrencyActivityDAO">
+	<resultMap id="currencyActivity_DB_Result" type="currencyActivity">
+		<result column="code" property="code" />
+		<result column="type" property="type" />
+		<result column="description" property="description" />
+		<result column="start_datetime" property="startDatetime" />
+		<result column="end_datetime" property="endDatetime" />
+		<result column="currency" property="currency" />
+		<result column="number" property="number" />
+		<result column="location" property="location" />
+		<result column="order_no" property="orderNo" />
+		<result column="status" property="status" />
+		<result column="updater" property="updater" />
+		<result column="update_datetime" property="updateDatetime" />
+		<result column="remark" property="remark" />
+		<result column="company_code" property="companyCode" />
+		<result column="system_code" property="systemCode" />
+	</resultMap>
+	<sql id="where_condition">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="code != null and code != '' ">
+				AND t.code = #{code}
+			</if>
+			<if test="type != null and type != '' ">
+				AND t.type = #{type}
+			</if>
+			<if test="currency != null and currency != '' ">
+				AND t.currency = #{currency}
+			</if>
+			<if test="location != null and location != '' ">
+				AND t.location = #{location}
+			</if>
+			<if test="status != null and status != '' ">
+				AND t.status = #{status}
+			</if>
+			<if test="companyCode != null and companyCode != '' ">
+				AND t.company_code = #{companyCode}
+			</if>
+			<if test="systemCode != null and systemCode != '' ">
+				AND t.system_code = #{systemCode}
+			</if>
+			<if test="startDatetime != null and startDatetime != '' ">
+				<![CDATA[AND t.start_datetime >= #{startDatetime}]]>
+			</if>
+			<if test="endDatetime != null and endDatetime != '' ">
+				<![CDATA[AND t.end_datetime <= #{endDatetime}]]>
+			</if>
+		</trim>
+	</sql>
+	<select id="select_currencyActivity" parameterType="currencyActivity" resultMap="currencyActivity_DB_Result">
+		SELECT
+		t.code
+		,t.type
+		,t.description
+		,t.start_datetime
+		,t.end_datetime
+		,t.currency
+		,t.number
+		,t.location
+		,t.order_no
+		,t.status
+		,t.updater
+		,t.update_datetime
+		,t.remark
+		,t.company_code
+		,t.system_code
+		FROM
+		tstd_currency_activity t
+		<include refid="where_condition" />
+		<trim prefix="ORDER BY ">
+			<if test="order != null and order != '' ">
+				t.${order}
+			</if>
+		</trim>
+	</select>
+
+	<select id="select_currencyActivity_count" parameterType="currencyActivity"
+		resultType="java.lang.Long">
+		SELECT count(1) FROM tstd_currency_activity t
+		<include refid="where_condition" />
+	</select>
+
+	<insert id="insert_currencyActivity" parameterType="currencyActivity">
+		INSERT INTO
+		tstd_currency_activity(
+		code
+		,type
+		,description
+		,start_datetime
+		,end_datetime
+		,currency
+		,number
+		,status
+		,updater
+		,update_datetime
+		,remark
+		,company_code
+		,system_code
+		)
+		VALUES(
+		#{code}
+		,#{type}
+		,#{description}
+		,#{startDatetime}
+		,#{endDatetime}
+		,#{currency}
+		,#{number}
+		,#{status}
+		,#{updater}
+		,#{updateDatetime}
+		,#{remark}
+		,#{companyCode}
+		,#{systemCode}
+		)
+	</insert>
+
+	<update id="update_currencyActivity" parameterType="currencyActivity">
+		UPDATE tstd_currency_activity
+		SET
+		type = #{type}
+		,description = #{description}
+		,start_datetime = #{startDatetime}
+		,end_datetime = #{endDatetime}
+		,currency = #{currency}
+		,number = #{number}
+		,updater = #{updater}
+		,update_datetime = #{updateDatetime}
+		,remark = #{remark}
+		WHERE code = #{code}
+	</update>
+
+	<delete id="delete_currencyActivity" parameterType="currencyActivity">
+		DELETE FROM tstd_currency_activity
+		WHERE code = #{code}
+	</delete>
+
+	<update id="update_putOn" parameterType="currencyActivity">
+		UPDATE tstd_currency_activity SET
+		status=#{status}
+		,location=#{location}
+		,order_no=#{orderNo}
+		,updater = #{updater}
+		,update_datetime = #{updateDatetime}
+		,remark = #{remark}
+		WHERE code = #{code}
+	</update>
+	
+	<update id="update_putOff" parameterType="currencyActivity">
+		UPDATE tstd_currency_activity SET
+		status=#{status}
+		,updater = #{updater}
+		,update_datetime = #{updateDatetime}
+		,remark = #{remark}
+		WHERE code = #{code}
+	</update>
+
+</mapper>

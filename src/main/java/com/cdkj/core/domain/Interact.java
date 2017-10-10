@@ -17,7 +17,10 @@ public class Interact extends ABaseDO {
     // 编号
     private String code;
 
-    // 类型(1 点赞 2 收藏 3 浏览)
+    // 实体类型
+    private String category;
+
+    // 分类(1 点赞 2 收藏 3 浏览)
     private String type;
 
     // 实体编号
@@ -112,6 +115,14 @@ public class Interact extends ABaseDO {
 
     public String getSystemCode() {
         return systemCode;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 }

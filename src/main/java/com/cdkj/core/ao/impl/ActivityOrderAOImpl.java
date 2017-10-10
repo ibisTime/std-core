@@ -33,8 +33,8 @@ import com.cdkj.core.enums.EActivityStatus;
 import com.cdkj.core.enums.EBizType;
 import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECurrency;
+import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.enums.EPayType;
-import com.cdkj.core.enums.EPrefixCode;
 import com.cdkj.core.enums.ESysConfigCkey;
 import com.cdkj.core.enums.ESysUser;
 import com.cdkj.core.enums.ESystemCode;
@@ -78,7 +78,7 @@ public class ActivityOrderAOImpl implements IActivityOrderAO {
         this.checkActivity(activity, quantity);
 
         ActivityOrder data = new ActivityOrder();
-        String code = OrderNoGenerater.generate(EPrefixCode.ACTIVITYORDER
+        String code = OrderNoGenerater.generate(EGeneratePrefix.ActivityOrder
             .getCode());
         data.setCode(code);
         data.setActivityCode(activityCode);
@@ -185,8 +185,8 @@ public class ActivityOrderAOImpl implements IActivityOrderAO {
         String userId = order.getApplyUser();
         User user = userBO.getRemoteUser(userId);
         // 生成payGroup,并把订单进行支付。
-        String payGroup = OrderNoGenerater.generate(EPrefixCode.ACTIVITYORDER
-            .getCode());
+        String payGroup = OrderNoGenerater
+            .generate(EGeneratePrefix.ActivityOrder.getCode());
         activityOrderBO.payGroup(order, payGroup);
         if (order.getAmount() == 0L) {
             paySuccess(payGroup, null, order.getAmount(), null);
