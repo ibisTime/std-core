@@ -15,6 +15,7 @@ import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Coupon;
 import com.cdkj.core.domain.User;
 import com.cdkj.core.dto.req.XN801110Req;
+import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECouponStatus;
 import com.cdkj.core.exception.BizException;
 
@@ -42,6 +43,7 @@ public class CouponAOImpl implements ICouponAO {
         data.setParValue(StringValidater.toInteger(req.getParValue()));
         data.setStartDatetime(startDatetime);
         data.setEndDatetime(endDatetime);
+        data.setUseRange(EBoolean.YES.getCode());
         data.setStatus(ECouponStatus.Unused.getCode());
         data.setReleaser(req.getReleaser());
         data.setReleaseDatetime(new Date());

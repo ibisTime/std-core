@@ -28,7 +28,10 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
 
     @Override
     public String addCurrencyActivity(XN801040Req req) {
-        ECurrency.getResultMap().containsKey(req.getCurrency());
+        boolean flag = ECurrency.getResultMap().containsKey(req.getCurrency());
+        if (!flag) {
+            throw new BizException("xn0000", "没有该币种");
+        }
         Date startDatetime = DateUtil.strToDate(req.getStartDatetime(),
             DateUtil.DATA_TIME_PATTERN_1);
         Date endDatetime = DateUtil.strToDate(req.getEndDatetime(),
@@ -58,18 +61,21 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
 
     @Override
     public void editCurrencyActivity(XN801042Req req) {
-        CurrencyActivity data = currencyActivityBO.getCurrencyActivity(req
-            .getCode());
-        if (data.getStatus().equals(ECurrencyActivityStatus.ONLINE.getCode())) {
-            throw new BizException("xn0000", "活动上线中,不能修改");
+        boolean flag = ECurrency.getResultMap().containsKey(req.getCurrency());
+        if (!flag) {
+            throw new BizException("xn0000", "没有该币种");
         }
-        ECurrency.getResultMap().containsKey(req.getCurrency());
         Date startDatetime = DateUtil.strToDate(req.getStartDatetime(),
             DateUtil.DATA_TIME_PATTERN_1);
         Date endDatetime = DateUtil.strToDate(req.getEndDatetime(),
             DateUtil.DATA_TIME_PATTERN_1);
         if (endDatetime.before(startDatetime)) {
             throw new BizException("xn0000", "结束时间不能早于开始时间");
+        }
+        CurrencyActivity data = currencyActivityBO.getCurrencyActivity(req
+            .getCode());
+        if (data.getStatus().equals(ECurrencyActivityStatus.ONLINE.getCode())) {
+            throw new BizException("xn0000", "活动上线中,不能修改");
         }
         data.setType(req.getType());
         data.setDescription(req.getDescription());

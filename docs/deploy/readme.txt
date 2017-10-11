@@ -38,19 +38,20 @@
 http://121.43.101.148:09/std-core/api
 
 
-  cd /home/wwwroot/gym/tomcat_std_account/webapps
-  cp ./std-account/WEB-INF/classes/application.properties .
-  cp ./std-account/WEB-INF/classes/config.properties .
+  cd /mnt/www/wtw/tomcat_std_core/webapps
+  cp ./std-core/WEB-INF/classes/application.properties .
+  cp ./std-core/WEB-INF/classes/config.properties .
   
-  rm -rf std-account.war
-  rm -rf std-account
-  mv /home/std-account.war .
+  rm -rf std-core.war
+  rm -rf std-core
+  mv /mnt/std-core.war .
   
-  mv -f application.properties ./std-account/WEB-INF/classes/
-  mv -f config.properties ./std-account/WEB-INF/classes/
+  mv -f application.properties ./std-core/WEB-INF/classes/
+  mv -f config.properties ./std-core/WEB-INF/classes/
   
   ../bin/shutdown.sh
   ../bin/startup.sh
+  http://121.43.101.148:3903/std-core/api
 -----------------------------------------------------------------
 
   cd /home/wwwroot/gym/tomcat_std_user/webapps
