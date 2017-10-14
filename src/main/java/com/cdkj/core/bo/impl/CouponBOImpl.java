@@ -61,4 +61,26 @@ public class CouponBOImpl extends PaginableBOImpl<Coupon> implements ICouponBO {
         }
         return data;
     }
+
+    @Override
+    public Coupon getCoupon(String code, String companyCode, String systemCode) {
+        Coupon data = null;
+        if (StringUtils.isNotBlank(code)) {
+            Coupon condition = new Coupon();
+            condition.setCode(code);
+            condition.setCompanyCode(companyCode);
+            condition.setSystemCode(systemCode);
+            data = couponDAO.select(condition);
+            if (data == null) {
+                throw new BizException("xn0000", "编号不存在");
+            }
+        }
+        return data;
+    }
+
+    @Override
+    public void useCoupon(Coupon coupon) {
+        coupon.setStatus(ECouponStatus.Used.getCode());
+        couponDAO.useCoupon(coupon);
+    }
 }

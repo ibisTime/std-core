@@ -28,4 +28,7 @@ public interface IInteractAO {
     public boolean isInteract(String userId, String category, String type,
             String entityCode, String companyCode, String systemCode);
 
+    public Long totalInteract(String category, String type, String entityCode,
+            String companyCode, String systemCode);
+
 }

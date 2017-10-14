@@ -66,4 +66,14 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         return commentDAO.selectTotalScore(condition);
     }
 
+    @Override
+    public Long getTotalCount(String entityCode, String companyCode,
+            String systemCode) {
+        Comment condition = new Comment();
+        condition.setEntityCode(entityCode);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        return commentDAO.selectTotalCount(condition);
+    }
+
 }

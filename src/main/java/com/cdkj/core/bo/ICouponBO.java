@@ -15,4 +15,8 @@ public interface ICouponBO extends IPaginableBO<Coupon> {
 
     public Coupon getCoupon(String code);
 
+    public Coupon getCoupon(String code, String companyCode, String systemCode);
+
+    public void useCoupon(Coupon coupon);
+
 }

@@ -15,6 +15,7 @@ import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Publicity;
 import com.cdkj.core.dto.req.XN801060Req;
 import com.cdkj.core.dto.req.XN801062Req;
+import com.cdkj.core.dto.res.XN003020Res;
 import com.cdkj.core.enums.ECurrencyActivityStatus;
 import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.exception.BizException;
@@ -48,6 +49,7 @@ public class PublicityAOImpl implements IPublicityAO {
         data.setStatus(ECurrencyActivityStatus.DRAFT.getCode());
         data.setUpdater(req.getUpdater());
         data.setUpdateDatetime(new Date());
+        data.setRemark(req.getRemark());
         data.setCompanyCode(req.getCompanyCode());
         data.setSystemCode(req.getSystemCode());
         publicityBO.savePublicity(data);
@@ -76,6 +78,7 @@ public class PublicityAOImpl implements IPublicityAO {
         data.setValue3(StringValidater.toDouble(req.getValue3()));
         data.setUpdater(req.getUpdater());
         data.setUpdateDatetime(new Date());
+        data.setRemark(req.getRemark());
         publicityBO.refreshPublicity(data);
     }
 
@@ -121,6 +124,27 @@ public class PublicityAOImpl implements IPublicityAO {
             throw new BizException("xn0000", "活动未上架,不能下架");
         }
         publicityBO.putOff(data, updater, remark);
+    }
 
+    @Override
+    public XN003020Res checkPublicity(String code, String companyCode,
+            String systemCode) {
+        Publicity data = publicityBO
+            .getPublicity(code, companyCode, systemCode);
+        if (!ECurrencyActivityStatus.ONLINE.getCode().equals(data.getStatus())) {
+            throw new BizException("xn0000", "活动未上架,不能参与");
+        }
+        Date startDatetime = data.getStartDatetime();
+        Date endDatetime = data.getEndDatetime();
+        if (startDatetime.after(new Date())) {
+            throw new BizException("xn0000", "活动还未开始,不能报名");
+        }
+        if (endDatetime.before(new Date())) {
+            throw new BizException("xn0000", "活动已结束,不能继续报名");
+        }
+        XN003020Res res = new XN003020Res();
+        res.setType(data.getType());
+        res.setDiscount(data.getValue1());
+        return res;
     }
 }

@@ -3,6 +3,7 @@ package com.cdkj.core.bo.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -64,6 +65,23 @@ public class CurrencyActivityBOImpl extends PaginableBOImpl<CurrencyActivity>
     }
 
     @Override
+    public CurrencyActivity getCurrencyActivity(String code,
+            String companyCode, String systemCode) {
+        CurrencyActivity data = null;
+        if (StringUtils.isNotBlank(code)) {
+            CurrencyActivity condition = new CurrencyActivity();
+            condition.setCode(code);
+            condition.setCompanyCode(companyCode);
+            condition.setSystemCode(systemCode);
+            data = currencyActivityDAO.select(condition);
+            if (data == null) {
+                throw new BizException("xn0000", "编号不存在");
+            }
+        }
+        return data;
+    }
+
+    @Override
     public void putOn(CurrencyActivity data, String location, String orderNo,
             String updater, String remark) {
         data.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
@@ -82,5 +100,30 @@ public class CurrencyActivityBOImpl extends PaginableBOImpl<CurrencyActivity>
         data.setUpdateDatetime(new Date());
         data.setRemark(remark);
         currencyActivityDAO.putOff(data);
+    }
+
+    @Override
+    public Long getTotalCount(String type) {
+        CurrencyActivity condition = new CurrencyActivity();
+        condition.setType(type);
+        condition.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
+        return currencyActivityDAO.selectTotalCount(condition);
+    }
+
+    @Override
+    public CurrencyActivity getCurrencyActivityByType(String type,
+            String companyCode, String systemCode) {
+        CurrencyActivity data = null;
+        CurrencyActivity condition = new CurrencyActivity();
+        condition.setType(type);
+        condition.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        List<CurrencyActivity> currencyActivityList = currencyActivityDAO
+            .selectList(condition);
+        if (CollectionUtils.isNotEmpty(currencyActivityList)) {
+            data = currencyActivityList.get(0);
+        }
+        return data;
     }
 }

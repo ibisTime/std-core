@@ -28,4 +28,7 @@ public interface ICommentAO {
 
     public Comment getComment(String code);
 
+    public Long totalComment(String entityCode, String companyCode,
+            String systemCode);
+
 }

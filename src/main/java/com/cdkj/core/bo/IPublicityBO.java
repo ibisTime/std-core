@@ -15,10 +15,15 @@ public interface IPublicityBO extends IPaginableBO<Publicity> {
 
     public List<Publicity> queryPublicityList(Publicity condition);
 
-    public Publicity getPublicity(String code);
+    public Publicity getPublicity(String code, String companyCode,
+            String systemCode);
 
     public void putOn(Publicity data, String location, String orderNo,
             String updater, String remark);
 
     public void putOff(Publicity data, String updater, String remark);
+
+    public Publicity getPublicity(String code);
+
+    public Long getTotalCount(String type);
 }

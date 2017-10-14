@@ -23,6 +23,18 @@
 			<if test="code != null and code != '' ">
 				AND t.code = #{code}
 			</if>
+			<if test="status != null and status != '' ">
+				AND t.status = #{status}
+			</if>
+			<if test="toUser != null and toUser != '' ">
+				AND t.to_user = #{toUser}
+			</if>
+			<if test="companyCode != null and companyCode != '' ">
+				AND t.company_code = #{companyCode}
+			</if>
+			<if test="systemCode != null and systemCode != '' ">
+				AND t.system_code = #{systemCode}
+			</if>
 		</trim>
 	</sql>
 	<select id="select_coupon" parameterType="coupon" resultMap="coupon_DB_Result">
@@ -96,21 +108,18 @@
 	<update id="update_coupon" parameterType="coupon">
 		UPDATE tstd_coupon
 		SET
-		to_user = #{toUser}
-		,par_value = #{parValue}
-		,start_datetime = #{startDatetime}
-		,end_datetime = #{endDatetime}
-		,use_range = #{useRange}
-		,status = #{status}
-		,releaser = #{releaser}
-		,release_datetime = #{releaseDatetime}
+		status = #{status}
 		,updater = #{updater}
 		,update_datetime = #{updateDatetime}
 		,remark = #{remark}
-		,company_code = #{companyCode}
-		,system_code = #{systemCode}
 		WHERE code = #{code}
 	</update>
 
+	<update id="update_useCoupon" parameterType="coupon">
+		UPDATE tstd_coupon
+		SET
+		status = #{status}
+		WHERE code = #{code}
+	</update>
 
 </mapper>

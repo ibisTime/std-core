@@ -147,4 +147,10 @@ public class CommentAOImpl implements ICommentAO {
         comment.setPhoto(user.getPhoto());
         return comment;
     }
+
+    @Override
+    public Long totalComment(String entityCode, String companyCode,
+            String systemCode) {
+        return commentBO.getTotalCount(entityCode, companyCode, systemCode);
+    }
 }

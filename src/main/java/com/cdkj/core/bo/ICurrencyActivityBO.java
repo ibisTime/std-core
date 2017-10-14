@@ -23,4 +23,11 @@ public interface ICurrencyActivityBO extends IPaginableBO<CurrencyActivity> {
 
     public void putOff(CurrencyActivity data, String updater, String remark);
 
+    public CurrencyActivity getCurrencyActivity(String code,
+            String companyCode, String systemCode);
+
+    public Long getTotalCount(String type);
+
+    public CurrencyActivity getCurrencyActivityByType(String type,
+            String companyCode, String systemCode);
 }

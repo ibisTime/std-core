@@ -8,4 +8,6 @@ public interface ICouponDAO extends IBaseDAO<Coupon> {
     String NAMESPACE = ICouponDAO.class.getName().concat(".");
 
     int update(Coupon data);
+
+    int useCoupon(Coupon coupon);
 }

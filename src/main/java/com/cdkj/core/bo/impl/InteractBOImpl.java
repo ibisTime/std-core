@@ -101,4 +101,16 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
         condition.setSystemCode(systemCode);
         return interactDAO.selectList(condition);
     }
+
+    @Override
+    public Long totalInteract(String category, String type, String entityCode,
+            String companyCode, String systemCode) {
+        Interact condition = new Interact();
+        condition.setCategory(category);
+        condition.setType(type);
+        condition.setEntityCode(entityCode);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        return interactDAO.selectTotalCount(condition);
+    }
 }

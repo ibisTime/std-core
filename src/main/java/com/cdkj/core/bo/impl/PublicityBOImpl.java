@@ -57,6 +57,23 @@ public class PublicityBOImpl extends PaginableBOImpl<Publicity> implements
     }
 
     @Override
+    public Publicity getPublicity(String code, String companyCode,
+            String systemCode) {
+        Publicity data = null;
+        if (StringUtils.isNotBlank(code)) {
+            Publicity condition = new Publicity();
+            condition.setCode(code);
+            condition.setCompanyCode(companyCode);
+            condition.setSystemCode(systemCode);
+            data = publicityDAO.select(condition);
+            if (data == null) {
+                throw new BizException("xn0000", "编号不存在");
+            }
+        }
+        return data;
+    }
+
+    @Override
     public void putOn(Publicity data, String location, String orderNo,
             String updater, String remark) {
         data.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
@@ -75,5 +92,13 @@ public class PublicityBOImpl extends PaginableBOImpl<Publicity> implements
         data.setUpdateDatetime(new Date());
         data.setRemark(remark);
         publicityDAO.putOff(data);
+    }
+
+    @Override
+    public Long getTotalCount(String type) {
+        Publicity condition = new Publicity();
+        condition.setType(type);
+        condition.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
+        return publicityDAO.selectTotalCount(condition);
     }
 }

@@ -104,4 +104,11 @@ public class InteractAOImpl implements IInteractAO {
         return interactBO.isInteract(userId, category, type, entityCode,
             companyCode, systemCode);
     }
+
+    @Override
+    public Long totalInteract(String category, String type, String entityCode,
+            String companyCode, String systemCode) {
+        return interactBO.totalInteract(category, type, entityCode,
+            companyCode, systemCode);
+    }
 }

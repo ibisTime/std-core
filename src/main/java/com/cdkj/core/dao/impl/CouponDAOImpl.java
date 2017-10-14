@@ -50,4 +50,9 @@ public class CouponDAOImpl extends AMybatisTemplate implements ICouponDAO {
         return super.update(NAMESPACE.concat("update_coupon"), data);
     }
 
+    @Override
+    public int useCoupon(Coupon data) {
+        return super.update(NAMESPACE.concat("update_useCoupon"), data);
+    }
+
 }

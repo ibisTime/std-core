@@ -8,6 +8,7 @@ import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.domain.Publicity;
 import com.cdkj.core.dto.req.XN801060Req;
 import com.cdkj.core.dto.req.XN801062Req;
+import com.cdkj.core.dto.res.XN003020Res;
 
 @Component
 public interface IPublicityAO {
@@ -30,4 +31,8 @@ public interface IPublicityAO {
             String updater, String remark);
 
     public void putOff(String code, String updater, String remark);
+
+    public XN003020Res checkPublicity(String code, String companyCode,
+            String systemCode);
+
 }

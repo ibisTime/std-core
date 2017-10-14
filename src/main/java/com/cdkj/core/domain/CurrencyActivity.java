@@ -33,7 +33,7 @@ public class CurrencyActivity extends ABaseDO {
     private String currency;
 
     // 赠送数量
-    private Integer number;
+    private Long number;
 
     // UI位置
     private String location;
@@ -107,11 +107,11 @@ public class CurrencyActivity extends ABaseDO {
         return currency;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
-    public Integer getNumber() {
+    public Long getNumber() {
         return number;
     }
 

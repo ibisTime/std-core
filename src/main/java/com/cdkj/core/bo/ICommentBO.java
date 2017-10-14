@@ -19,4 +19,7 @@ public interface ICommentBO extends IPaginableBO<Comment> {
     public Comment getComment(String code);
 
     public Long queryTotalScore(Comment condition);
+
+    public Long getTotalCount(String entityCode, String companyCode,
+            String systemCode);
 }

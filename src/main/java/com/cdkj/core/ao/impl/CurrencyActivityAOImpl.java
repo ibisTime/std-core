@@ -15,6 +15,8 @@ import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.CurrencyActivity;
 import com.cdkj.core.dto.req.XN801040Req;
 import com.cdkj.core.dto.req.XN801042Req;
+import com.cdkj.core.dto.res.XN003025Res;
+import com.cdkj.core.dto.res.XN003026Res;
 import com.cdkj.core.enums.ECurrency;
 import com.cdkj.core.enums.ECurrencyActivityStatus;
 import com.cdkj.core.enums.EGeneratePrefix;
@@ -48,7 +50,7 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
         data.setStartDatetime(startDatetime);
         data.setEndDatetime(endDatetime);
         data.setCurrency(req.getCurrency());
-        data.setNumber(StringValidater.toInteger(req.getNumber()));
+        data.setNumber(StringValidater.toLong(req.getNumber()));
         data.setStatus(ECurrencyActivityStatus.DRAFT.getCode());
         data.setUpdater(req.getUpdater());
         data.setUpdateDatetime(new Date());
@@ -82,7 +84,7 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
         data.setStartDatetime(startDatetime);
         data.setEndDatetime(endDatetime);
         data.setCurrency(req.getCurrency());
-        data.setNumber(StringValidater.toInteger(req.getNumber()));
+        data.setNumber(StringValidater.toLong(req.getNumber()));
         data.setUpdater(req.getUpdater());
         data.setUpdateDatetime(new Date());
         data.setRemark(req.getRemark());
@@ -122,6 +124,10 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
         if (data.getStatus().equals(ECurrencyActivityStatus.ONLINE.getCode())) {
             throw new BizException("xn0000", "活动已上线,不能重复上架");
         }
+        Long num = currencyActivityBO.getTotalCount(data.getType());
+        if (num > 1) {
+            throw new BizException("xn0000", "同种类型的活动一次只能上架一个");
+        }
         currencyActivityBO.putOn(data, location, orderNo, updater, remark);
     }
 
@@ -132,5 +138,41 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
             throw new BizException("xn0000", "活动未上线,不能下架");
         }
         currencyActivityBO.putOff(data, updater, remark);
+    }
+
+    @Override
+    public XN003025Res checkCurrencyActivity(String code, String companyCode,
+            String systemCode) {
+        CurrencyActivity data = currencyActivityBO.getCurrencyActivity(code,
+            companyCode, systemCode);
+        if (!data.getStatus().equals(ECurrencyActivityStatus.ONLINE.getCode())) {
+            throw new BizException("xn0000", "活动未上线,不能参与");
+        }
+        Date startDatetime = data.getStartDatetime();
+        Date endDatetime = data.getEndDatetime();
+        if (startDatetime.after(new Date())) {
+            throw new BizException("xn0000", "活动还未开始,不能参与");
+        }
+        if (endDatetime.before(new Date())) {
+            throw new BizException("xn0000", "活动已结束,不能继续参与");
+        }
+        XN003025Res res = new XN003025Res();
+        res.setType(data.getType());
+        res.setCurrency(data.getCurrency());
+        res.setNumber(data.getNumber());
+        return res;
+    }
+
+    @Override
+    public XN003026Res getCurrencyActivity(String type, String companyCode,
+            String systemCode) {
+        XN003026Res res = new XN003026Res();
+        CurrencyActivity data = currencyActivityBO.getCurrencyActivityByType(
+            type, companyCode, systemCode);
+        if (data != null) {
+            res.setCurrency(data.getCurrency());
+            res.setNumber(data.getNumber());
+        }
+        return res;
     }
 }

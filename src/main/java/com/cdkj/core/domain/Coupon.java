@@ -21,7 +21,7 @@ public class Coupon extends ABaseDO {
     private String toUser;
 
     // 面值
-    private Integer parValue;
+    private Long parValue;
 
     // 有效期始
     private Date startDatetime;
@@ -76,11 +76,11 @@ public class Coupon extends ABaseDO {
         this.toUser = toUser;
     }
 
-    public Integer getParValue() {
+    public Long getParValue() {
         return parValue;
     }
 
-    public void setParValue(Integer parValue) {
+    public void setParValue(Long parValue) {
         this.parValue = parValue;
     }
 
