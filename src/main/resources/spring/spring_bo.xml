@@ -39,4 +39,8 @@
 	<bean id="sysConfigBO" class="com.cdkj.core.bo.impl.SYSConfigBOImpl">
 		<property name="paginableDAO" ref="sysConfigDAOImpl" />
 	</bean>
+	
+	<bean id="expressRuleBO" class="com.cdkj.core.bo.impl.ExpressRuleBOImpl">
+		<property name="paginableDAO" ref="expressRuleDAOImpl"/>
+	</bean>	
 </beans>

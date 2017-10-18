@@ -103,3 +103,21 @@ CREATE TABLE `tsys_dict` (
   `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tstd_express_rule`;
+CREATE TABLE `tstd_express_rule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `start_point` varchar(255) DEFAULT NULL COMMENT '起点',
+  `end_point` varchar(255) DEFAULT NULL COMMENT '终点',
+  `start_weight` decimal(18,8) DEFAULT NULL COMMENT '首重',
+  `start_price` bigint(20) DEFAULT NULL COMMENT '首重价格',
+  `add_weight` decimal(18,8) DEFAULT NULL COMMENT '递增重量',
+  `add_price` bigint(20) DEFAULT NULL COMMENT '递增价格',
+
+  `updater` varchar(32) NOT NULL COMMENT '更新人',
+  `update_datetime` datetime NOT NULL COMMENT '更新时间',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `company_code` varchar(32) DEFAULT NULL COMMENT '公司编号',
+  `system_code` varchar(32) DEFAULT NULL COMMENT '系统编号',
+  PRIMARY KEY (`id`) COMMENT '油费规则'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -9,5 +9,7 @@
 		<typeAlias alias="interact" type="com.cdkj.core.domain.Interact" />
 		<typeAlias alias="sysDict" type="com.cdkj.core.domain.SYSDict" />
 		<typeAlias alias="sysConfig" type="com.cdkj.core.domain.SYSConfig" />
+		
+		<typeAlias alias="expressRule" type="com.cdkj.core.domain.ExpressRule" />
 	</typeAliases>
 </configuration>	
