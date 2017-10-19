@@ -28,6 +28,6 @@ public interface ICurrencyActivityBO extends IPaginableBO<CurrencyActivity> {
 
     public Long getTotalCount(String type);
 
-    public CurrencyActivity getCurrencyActivityByType(String type,
+    public CurrencyActivity getCurrencyActivityByType(String code, String type,
             String companyCode, String systemCode);
 }

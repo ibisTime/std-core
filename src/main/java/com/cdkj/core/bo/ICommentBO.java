@@ -22,4 +22,7 @@ public interface ICommentBO extends IPaginableBO<Comment> {
 
     public Long getTotalCount(String entityCode, String companyCode,
             String systemCode);
+
+    public List<Comment> queryCommentList(String orderCode, String companyCode,
+            String systemCode);
 }

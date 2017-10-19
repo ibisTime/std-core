@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -152,5 +153,35 @@ public class CommentAOImpl implements ICommentAO {
     public Long totalComment(String entityCode, String companyCode,
             String systemCode) {
         return commentBO.getTotalCount(entityCode, companyCode, systemCode);
+    }
+
+    @Override
+    public String comment(String type, String orderCode, String entityCode,
+            String entityName, String parentCode, String content,
+            String commenter, String commenterName, String companyCode,
+            String systemCode) {
+        XN003010CReq req = new XN003010CReq();
+        req.setEntityCode(entityCode);
+        req.setEntityName(entityName);
+        req.setParentCode(parentCode);
+        req.setContent(content);
+        req.setScore("0");
+        return this.comment(type, orderCode, req, commenter, commenterName,
+            companyCode, systemCode);
+    }
+
+    @Override
+    public Comment getCommentByOrderCode(String orderCode, String companyCode,
+            String systemCode) {
+        Comment comment = null;
+        List<Comment> commentList = commentBO.queryCommentList(orderCode,
+            companyCode, systemCode);
+        if (CollectionUtils.isNotEmpty(commentList)) {
+            comment = commentList.get(0);
+            User user = userBO.getRemoteUser(comment.getCommenter());
+            comment.setNickname(user.getNickname());
+            comment.setPhoto(user.getPhoto());
+        }
+        return comment;
     }
 }

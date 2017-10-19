@@ -23,8 +23,8 @@ public class XN003026 extends AProcessor {
 
     @Override
     public Object doBusiness() throws BizException {
-        return currencyActivityAO.getCurrencyActivity(req.getType(),
-            req.getCompanyCode(), req.getSystemCode());
+        return currencyActivityAO.getCurrencyActivity(req.getActivityCode(),
+            req.getType(), req.getCompanyCode(), req.getSystemCode());
     }
 
     @Override

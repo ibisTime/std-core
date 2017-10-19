@@ -29,19 +29,23 @@ public class InteractAOImpl implements IInteractAO {
     public String addInteract(XN801030Req req) {
         EInteractCategory.getMap().containsKey(req.getCategory());
         EInteractType.getMap().containsKey(req.getType());
-        interactBO.doCheckExist(req.getInteracter(), req.getCategory(),
-            req.getType(), req.getEntityCode());
-        List<Interact> interactList = interactBO.queryInteractList(
-            req.getCategory(), req.getType(), req.getEntityCode(),
-            req.getInteracter(), req.getCompanyCode(), req.getSystemCode());
-        if (CollectionUtils.isNotEmpty(interactList)) {
-            throw new BizException("xn0000", "您已收藏该"
-                    + EInteractType.getMap().get(req.getType()).getValue());
+        if (!EInteractType.SCAN.getCode().equals(req.getType())) {
+            interactBO.doCheckExist(req.getInteracter(), req.getCategory(),
+                req.getType(), req.getEntityCode());
+            List<Interact> interactList = interactBO.queryInteractList(
+                req.getCategory(), req.getType(), req.getEntityCode(),
+                req.getInteracter(), req.getCompanyCode(), req.getSystemCode());
+            if (CollectionUtils.isNotEmpty(interactList)) {
+                throw new BizException("xn0000", "您已收藏该"
+                        + EInteractType.getMap().get(req.getType()).getValue());
+            }
         }
+
         Interact data = new Interact();
         String code = OrderNoGenerater.generate(EGeneratePrefix.Interact
             .getCode());
         data.setCode(code);
+        data.setCategory(req.getCategory());
         data.setType(req.getType());
         data.setEntityCode(req.getEntityCode());
         data.setInteracter(req.getInteracter());

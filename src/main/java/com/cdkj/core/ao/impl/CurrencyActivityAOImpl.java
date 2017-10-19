@@ -164,11 +164,11 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
     }
 
     @Override
-    public XN003026Res getCurrencyActivity(String type, String companyCode,
-            String systemCode) {
+    public XN003026Res getCurrencyActivity(String code, String type,
+            String companyCode, String systemCode) {
         XN003026Res res = new XN003026Res();
         CurrencyActivity data = currencyActivityBO.getCurrencyActivityByType(
-            type, companyCode, systemCode);
+            code, type, companyCode, systemCode);
         if (data != null) {
             res.setCurrency(data.getCurrency());
             res.setNumber(data.getNumber());

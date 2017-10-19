@@ -111,10 +111,11 @@ public class CurrencyActivityBOImpl extends PaginableBOImpl<CurrencyActivity>
     }
 
     @Override
-    public CurrencyActivity getCurrencyActivityByType(String type,
+    public CurrencyActivity getCurrencyActivityByType(String code, String type,
             String companyCode, String systemCode) {
         CurrencyActivity data = null;
         CurrencyActivity condition = new CurrencyActivity();
+        condition.setCode(code);
         condition.setType(type);
         condition.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
         condition.setCompanyCode(companyCode);

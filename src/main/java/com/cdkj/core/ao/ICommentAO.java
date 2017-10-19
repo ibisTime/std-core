@@ -31,4 +31,12 @@ public interface ICommentAO {
     public Long totalComment(String entityCode, String companyCode,
             String systemCode);
 
+    public String comment(String type, String orderCode, String entityCode,
+            String entityName, String parentCode, String content,
+            String commenter, String commenterName, String companyCode,
+            String systemCode);
+
+    public Comment getCommentByOrderCode(String orderCode, String companyCode,
+            String systemCode);
+
 }

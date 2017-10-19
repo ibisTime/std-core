@@ -37,6 +37,6 @@ public interface ICurrencyActivityAO {
     public XN003025Res checkCurrencyActivity(String code, String companyCode,
             String systemCode);
 
-    public XN003026Res getCurrencyActivity(String type, String companyCode,
-            String systemCode);
+    public XN003026Res getCurrencyActivity(String code, String type,
+            String companyCode, String systemCode);
 }

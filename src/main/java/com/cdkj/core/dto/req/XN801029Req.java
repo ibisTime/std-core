@@ -1,23 +1,27 @@
 package com.cdkj.core.dto.req;
 
 /**
- * 根据type获取币种和数量
+ * 根据订单编号,详情查询评论
  * @author: asus 
- * @since: 2017年10月12日 上午10:05:35 
+ * @since: 2017年10月17日 下午8:54:27 
  * @history:
  */
-public class XN003026Req {
-    // 活动编号
-    private String activityCode;
-
-    // 类型
-    private String type;
+public class XN801029Req {
+    private String orderCode;
 
     // 所属公司
     private String companyCode;
 
     // 系统编号
     private String systemCode;
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
+    }
 
     public String getCompanyCode() {
         return companyCode;
@@ -34,21 +38,4 @@ public class XN003026Req {
     public void setSystemCode(String systemCode) {
         this.systemCode = systemCode;
     }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getActivityCode() {
-        return activityCode;
-    }
-
-    public void setActivityCode(String activityCode) {
-        this.activityCode = activityCode;
-    }
-
 }
