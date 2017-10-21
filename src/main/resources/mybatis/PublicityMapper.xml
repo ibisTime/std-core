@@ -5,6 +5,7 @@
 	<resultMap id="publicity_DB_Result" type="publicity">
 		<result column="code" property="code" />
 		<result column="type" property="type" />
+		<result column="adv_pic" property="advPic" />
 		<result column="description" property="description" />
 		<result column="start_datetime" property="startDatetime" />
 		<result column="end_datetime" property="endDatetime" />
@@ -52,6 +53,7 @@
 		SELECT
 		t.code
 		,t.type
+		,t.adv_pic
 		,t.description
 		,t.start_datetime
 		,t.end_datetime
@@ -87,6 +89,7 @@
 		tstd_publicity(
 		code
 		,type
+		,adv_pic
 		,description
 		,start_datetime
 		,end_datetime
@@ -103,6 +106,7 @@
 		VALUES(
 		#{code}
 		,#{type}
+		,#{advPic}
 		,#{description}
 		,#{startDatetime}
 		,#{endDatetime}
@@ -122,6 +126,7 @@
 		UPDATE tstd_publicity
 		SET
 		type = #{type}
+		,adv_pic=#{advPic}
 		,description = #{description}
 		,start_datetime = #{startDatetime}
 		,end_datetime = #{endDatetime}

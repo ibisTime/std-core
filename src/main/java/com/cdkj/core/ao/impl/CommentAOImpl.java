@@ -116,6 +116,25 @@ public class CommentAOImpl implements ICommentAO {
             User user = userBO.getRemoteUser(comment.getCommenter());
             comment.setNickname(user.getNickname());
             comment.setPhoto(user.getPhoto());
+            comment.setCommentDatetimeTime(comment.getCommentDatetime()
+                .getTime());
+        }
+        return page;
+    }
+
+    @Override
+    public Paginable<Comment> queryBizCommentPage(int start, int limit,
+            Comment condition) {
+        Paginable<Comment> page = commentBO.getPaginable(start, limit,
+            condition);
+        List<Comment> commentList = page.getList();
+        for (Comment comment : commentList) {
+            User user = userBO.getRemoteUser(comment.getCommenter());
+            comment.setNickname(user.getNickname());
+            comment.setPhoto(user.getPhoto());
+            comment.setCommentDatetimeTime(comment.getCommentDatetime()
+                .getTime());
+            comment.setCommentDatetime(null);
         }
         return page;
     }

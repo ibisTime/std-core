@@ -10,6 +10,9 @@ public class XN801060Req {
     // 类型（必填）
     private String type;
 
+    // 广告图
+    private String advPic;
+
     // 图文描述（必填）
     private String description;
 
@@ -126,6 +129,14 @@ public class XN801060Req {
 
     public void setSystemCode(String systemCode) {
         this.systemCode = systemCode;
+    }
+
+    public String getAdvPic() {
+        return advPic;
+    }
+
+    public void setAdvPic(String advPic) {
+        this.advPic = advPic;
     }
 
 }

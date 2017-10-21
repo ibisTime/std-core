@@ -40,6 +40,7 @@ public class PublicityAOImpl implements IPublicityAO {
             .getCode());
         data.setCode(code);
         data.setType(req.getType());
+        data.setAdvPic(req.getAdvPic());
         data.setDescription(req.getDescription());
         data.setStartDatetime(startDatetime);
         data.setEndDatetime(endDatetime);
@@ -70,6 +71,7 @@ public class PublicityAOImpl implements IPublicityAO {
             throw new BizException("xn0000", "活动已上架,不可修改");
         }
         data.setType(req.getType());
+        data.setAdvPic(req.getAdvPic());
         data.setDescription(req.getDescription());
         data.setStartDatetime(startDatetime);
         data.setEndDatetime(endDatetime);

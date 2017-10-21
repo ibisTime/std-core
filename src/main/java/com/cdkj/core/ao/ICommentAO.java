@@ -39,4 +39,7 @@ public interface ICommentAO {
     public Comment getCommentByOrderCode(String orderCode, String companyCode,
             String systemCode);
 
+    public Paginable<Comment> queryBizCommentPage(int start, int limit,
+            Comment condition);
+
 }

@@ -77,6 +77,9 @@ public class Comment extends ABaseDO {
     // 头像
     private String photo;
 
+    // 评论时间戳
+    private Long commentDatetimeTime;
+
     public String getCode() {
         return code;
     }
@@ -235,5 +238,13 @@ public class Comment extends ABaseDO {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Long getCommentDatetimeTime() {
+        return commentDatetimeTime;
+    }
+
+    public void setCommentDatetimeTime(Long commentDatetimeTime) {
+        this.commentDatetimeTime = commentDatetimeTime;
     }
 }

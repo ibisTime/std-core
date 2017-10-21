@@ -20,6 +20,9 @@ public class Publicity extends ABaseDO {
     // 类型
     private String type;
 
+    // 图片
+    private String advPic;
+
     // 图文详情
     private String description;
 
@@ -188,6 +191,14 @@ public class Publicity extends ABaseDO {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAdvPic() {
+        return advPic;
+    }
+
+    public void setAdvPic(String advPic) {
+        this.advPic = advPic;
     }
 
 }
