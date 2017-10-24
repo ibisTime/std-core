@@ -122,4 +122,15 @@ public class CouponAOImpl implements ICouponAO {
         }
         couponBO.useCoupon(coupon);
     }
+
+    @Override
+    public void overDue() {
+        Coupon condition = new Coupon();
+        condition.setStatus(ECouponStatus.Unused.getCode());
+        condition.setEndDatetime(new Date());
+        List<Coupon> couponList = couponBO.queryCouponList(condition);
+        for (Coupon coupon : couponList) {
+            couponBO.overDue(coupon);
+        }
+    }
 }

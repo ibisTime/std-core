@@ -29,6 +29,9 @@
 			<if test="toUser != null and toUser != '' ">
 				AND t.to_user = #{toUser}
 			</if>
+			<if test="endDatetime != null and endDatetime != '' ">
+				<![CDATA[AND t.end_datetime > #{endDatetime}]]>
+			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}
 			</if>

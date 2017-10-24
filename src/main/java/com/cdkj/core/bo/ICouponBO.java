@@ -19,4 +19,6 @@ public interface ICouponBO extends IPaginableBO<Coupon> {
 
     public void useCoupon(Coupon coupon);
 
+    public void overDue(Coupon coupon);
+
 }

@@ -83,4 +83,10 @@ public class CouponBOImpl extends PaginableBOImpl<Coupon> implements ICouponBO {
         coupon.setStatus(ECouponStatus.Used.getCode());
         couponDAO.useCoupon(coupon);
     }
+
+    @Override
+    public void overDue(Coupon coupon) {
+        coupon.setStatus(ECouponStatus.Past_due.getCode());
+        couponDAO.useCoupon(coupon);
+    }
 }

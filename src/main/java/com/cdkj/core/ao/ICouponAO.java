@@ -31,4 +31,7 @@ public interface ICouponAO {
             String systemCode);
 
     public void useCoupon(String code, String companyCode, String systemCode);
+
+    // 过期
+    public void overDue();
 }
