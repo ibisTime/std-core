@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cdkj.core.ao.IInteractAO;
 import com.cdkj.core.bo.IInteractBO;
 import com.cdkj.core.bo.base.Paginable;
+import com.cdkj.core.common.DateUtil;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.domain.Interact;
 import com.cdkj.core.dto.req.XN801030Req;
@@ -29,6 +30,7 @@ public class InteractAOImpl implements IInteractAO {
     public String addInteract(XN801030Req req) {
         EInteractCategory.getMap().containsKey(req.getCategory());
         EInteractType.getMap().containsKey(req.getType());
+        String code = null;
         if (!EInteractType.SCAN.getCode().equals(req.getType())) {
             interactBO.doCheckExist(req.getInteracter(), req.getCategory(),
                 req.getType(), req.getEntityCode());
@@ -39,11 +41,18 @@ public class InteractAOImpl implements IInteractAO {
                 throw new BizException("xn0000", "您已收藏该"
                         + EInteractType.getMap().get(req.getType()).getValue());
             }
+        } else {
+            Long number = interactBO.totalInteract(req.getCategory(),
+                req.getType(), req.getEntityCode(), DateUtil.getTodayStart(),
+                DateUtil.getTodayEnd(), req.getCompanyCode(),
+                req.getSystemCode());
+            if (number > 0) {
+                return code;
+            }
         }
 
         Interact data = new Interact();
-        String code = OrderNoGenerater.generate(EGeneratePrefix.Interact
-            .getCode());
+        code = OrderNoGenerater.generate(EGeneratePrefix.Interact.getCode());
         data.setCode(code);
         data.setCategory(req.getCategory());
         data.setType(req.getType());
@@ -112,7 +121,7 @@ public class InteractAOImpl implements IInteractAO {
     @Override
     public Long totalInteract(String category, String type, String entityCode,
             String companyCode, String systemCode) {
-        return interactBO.totalInteract(category, type, entityCode,
+        return interactBO.totalInteract(category, type, entityCode, null, null,
             companyCode, systemCode);
     }
 }

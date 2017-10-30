@@ -129,9 +129,6 @@ public class CommentAOImpl implements ICommentAO {
             condition);
         List<Comment> commentList = page.getList();
         for (Comment comment : commentList) {
-            User user = userBO.getRemoteUser(comment.getCommenter());
-            comment.setNickname(user.getNickname());
-            comment.setPhoto(user.getPhoto());
             comment.setCommentDatetimeTime(comment.getCommentDatetime()
                 .getTime());
             comment.setCommentDatetime(null);

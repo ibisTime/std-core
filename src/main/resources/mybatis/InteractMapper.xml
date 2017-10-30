@@ -29,6 +29,12 @@
 			<if test="interacter != null and interacter != '' ">
 				AND t.interacter = #{interacter}
 			</if>
+			<if test="startInteractDate != null and startInteractDate != '' ">
+				<![CDATA[AND t.interact_datetime >= #{startInteractDate}]]>
+			</if>
+			<if test="endInteractDate != null and endInteractDate != '' ">
+				<![CDATA[AND t.interact_datetime <= #{endInteractDate}]]>
+			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}
 			</if>

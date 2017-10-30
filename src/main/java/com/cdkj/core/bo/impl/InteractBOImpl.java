@@ -1,5 +1,6 @@
 package com.cdkj.core.bo.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -104,8 +105,11 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
 
     @Override
     public Long totalInteract(String category, String type, String entityCode,
-            String companyCode, String systemCode) {
+            Date startInteractDate, Date endInteractDate, String companyCode,
+            String systemCode) {
         Interact condition = new Interact();
+        condition.setStartInteractDate(startInteractDate);
+        condition.setEndInteractDate(endInteractDate);
         condition.setCategory(category);
         condition.setType(type);
         condition.setEntityCode(entityCode);

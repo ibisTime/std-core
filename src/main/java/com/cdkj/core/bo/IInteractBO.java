@@ -1,5 +1,6 @@
 package com.cdkj.core.bo;
 
+import java.util.Date;
 import java.util.List;
 
 import com.cdkj.core.bo.base.IPaginableBO;
@@ -29,5 +30,6 @@ public interface IInteractBO extends IPaginableBO<Interact> {
             String systemCode);
 
     public Long totalInteract(String category, String type, String entityCode,
-            String companyCode, String systemCode);
+            Date startInteractDate, Date endInteractDate, String companyCode,
+            String systemCode);
 }

@@ -45,6 +45,10 @@ public class Interact extends ABaseDO {
     // 资讯
     private News news;
 
+    private Date startInteractDate;
+
+    private Date endInteractDate;
+
     public News getNews() {
         return news;
     }
@@ -123,6 +127,22 @@ public class Interact extends ABaseDO {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Date getStartInteractDate() {
+        return startInteractDate;
+    }
+
+    public void setStartInteractDate(Date startInteractDate) {
+        this.startInteractDate = startInteractDate;
+    }
+
+    public Date getEndInteractDate() {
+        return endInteractDate;
+    }
+
+    public void setEndInteractDate(Date endInteractDate) {
+        this.endInteractDate = endInteractDate;
     }
 
 }
