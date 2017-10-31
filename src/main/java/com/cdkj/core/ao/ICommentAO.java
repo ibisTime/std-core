@@ -20,7 +20,7 @@ public interface ICommentAO {
     public void approveComment(String code, String result, String approver,
             String remark);
 
-    public Paginable<Comment> queryCommentPage(int start, int limit,
+    public Paginable<Comment> queryOssCommentPage(int start, int limit,
             Comment condition);
 
     public XN801028Res queryFrontCommentPage(int start, int limit,

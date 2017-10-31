@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cdkj.core.ao.ICommentAO;
 import com.cdkj.core.bo.ICommentBO;
 import com.cdkj.core.bo.IKeywordBO;
+import com.cdkj.core.bo.IProductBO;
 import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.Page;
 import com.cdkj.core.bo.base.Paginable;
@@ -20,9 +21,11 @@ import com.cdkj.core.domain.Comment;
 import com.cdkj.core.domain.User;
 import com.cdkj.core.dto.req.XN003010CReq;
 import com.cdkj.core.dto.req.XN003010Req;
+import com.cdkj.core.dto.res.XN004000Res;
 import com.cdkj.core.dto.res.XN801028Res;
 import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECommentStatus;
+import com.cdkj.core.enums.ECommentType;
 import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.enums.EReaction;
 import com.cdkj.core.exception.BizException;
@@ -38,6 +41,9 @@ public class CommentAOImpl implements ICommentAO {
 
     @Autowired
     private IUserBO userBO;
+
+    @Autowired
+    private IProductBO productBO;
 
     @Override
     @Transactional
@@ -107,7 +113,7 @@ public class CommentAOImpl implements ICommentAO {
     }
 
     @Override
-    public Paginable<Comment> queryCommentPage(int start, int limit,
+    public Paginable<Comment> queryOssCommentPage(int start, int limit,
             Comment condition) {
         Paginable<Comment> page = commentBO.getPaginable(start, limit,
             condition);
@@ -116,8 +122,14 @@ public class CommentAOImpl implements ICommentAO {
             User user = userBO.getRemoteUser(comment.getCommenter());
             comment.setNickname(user.getNickname());
             comment.setPhoto(user.getPhoto());
-            comment.setCommentDatetimeTime(comment.getCommentDatetime()
-                .getTime());
+            if (null != comment.getEntityCode()
+                    && ECommentType.PRODUCT.getCode().equals(comment.getType())) {
+                XN004000Res res = productBO.getProduct(comment.getEntityCode(),
+                    comment.getCompanyCode(), comment.getSystemCode());
+                if (null != res) {
+                    comment.setProductName(res.getProductName());
+                }
+            }
         }
         return page;
     }
@@ -132,6 +144,11 @@ public class CommentAOImpl implements ICommentAO {
             comment.setCommentDatetimeTime(comment.getCommentDatetime()
                 .getTime());
             comment.setCommentDatetime(null);
+            if (null != comment.getApproveDatetime()) {
+                comment.setApproveDatetimeTime(comment.getApproveDatetime()
+                    .getTime());
+                comment.setApproveDatetime(null);
+            }
         }
         return page;
     }
@@ -162,6 +179,14 @@ public class CommentAOImpl implements ICommentAO {
         User user = userBO.getRemoteUser(comment.getCommenter());
         comment.setNickname(user.getNickname());
         comment.setPhoto(user.getPhoto());
+        if (null != comment.getEntityCode()
+                && ECommentType.PRODUCT.getCode().equals(comment.getType())) {
+            XN004000Res res = productBO.getProduct(comment.getEntityCode(),
+                comment.getCompanyCode(), comment.getSystemCode());
+            if (null != res) {
+                comment.setProductName(res.getProductName());
+            }
+        }
         return comment;
     }
 

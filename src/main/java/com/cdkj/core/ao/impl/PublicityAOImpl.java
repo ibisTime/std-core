@@ -149,4 +149,16 @@ public class PublicityAOImpl implements IPublicityAO {
         res.setDiscount(data.getValue1());
         return res;
     }
+
+    @Override
+    public void overDue() {
+        Publicity condition = new Publicity();
+        condition.setEndDatetime(new Date());
+        condition.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
+        List<Publicity> publicityList = publicityBO
+            .queryPublicityList(condition);
+        for (Publicity publicity : publicityList) {
+            publicityBO.putOff(publicity, publicity.getUpdater(), "活动结束,自动下架");
+        }
+    }
 }

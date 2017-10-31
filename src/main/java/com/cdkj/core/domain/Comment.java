@@ -71,6 +71,9 @@ public class Comment extends ABaseDO {
     // 状态List
     private List<String> statusList;
 
+    // 商品名称
+    private String productName;
+
     // 昵称
     private String nickname;
 
@@ -79,6 +82,9 @@ public class Comment extends ABaseDO {
 
     // 评论时间戳
     private Long commentDatetimeTime;
+
+    // 审核时间戳
+    private Long approveDatetimeTime;
 
     public String getCode() {
         return code;
@@ -246,5 +252,21 @@ public class Comment extends ABaseDO {
 
     public void setCommentDatetimeTime(Long commentDatetimeTime) {
         this.commentDatetimeTime = commentDatetimeTime;
+    }
+
+    public Long getApproveDatetimeTime() {
+        return approveDatetimeTime;
+    }
+
+    public void setApproveDatetimeTime(Long approveDatetimeTime) {
+        this.approveDatetimeTime = approveDatetimeTime;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

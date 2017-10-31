@@ -44,6 +44,12 @@
 					</if>
 				 </otherwise>
 			</choose>
+			<if test="statusList != null and statusList.size() != 0 ">
+				AND t.status in 
+                <foreach item="item" index="index" collection="statusList" open="(" separator="," close=")">
+	            	#{item}
+                </foreach> 
+			</if>
 			<if test="commenter != null and commenter != '' ">
 				AND t.commenter = #{commenter}
 			</if>

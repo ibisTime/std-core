@@ -19,11 +19,12 @@
        <property name="triggers">  
            <list>
            	  <ref bean="couponTrigger"/> 
+           	  <ref bean="publicityTrigger"/> 
            </list>  
        </property>  
        <property name="autoStartup" value="true"/>  
     </bean> 
-	 <bean id="couponTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+ 	<bean id="couponTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
        <property name="jobDetail" ref="changeCouponStatus"/>  
        <property name="cronExpression" value="0 0/10 * * * ?"/> 
 	</bean>
@@ -34,6 +35,15 @@
 	   <property name="concurrent" value="true"/>  
    	</bean> 
 	
+	<bean id="publicityTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+       <property name="jobDetail" ref="changePublicityStatus"/>  
+       <property name="cronExpression" value="0 0/20 * * * ?"/> 
+	</bean>
 	
+	<bean id="changePublicityStatus" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+	   <property name="targetObject" ref="publicityAOImpl"/>  
+	   <property name="targetMethod" value="overDue"/>  
+	   <property name="concurrent" value="true"/>  
+   	</bean> 
 	
 </beans>

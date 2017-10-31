@@ -35,4 +35,5 @@ public interface IPublicityAO {
     public XN003020Res checkPublicity(String code, String companyCode,
             String systemCode);
 
+    public void overDue();
 }
