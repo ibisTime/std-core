@@ -40,8 +40,7 @@ public class XN003010 extends AProcessor {
         } else {
             for (XN003010CReq req : req.getCommentList()) {
                 StringValidater.validateNumber(req.getScore());
-                StringValidater.validateBlank(req.getEntityCode(),
-                    req.getParentCode());
+                StringValidater.validateBlank(req.getParentCode());
             }
         }
     }

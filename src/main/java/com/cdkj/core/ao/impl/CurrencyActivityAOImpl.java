@@ -125,7 +125,7 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
             throw new BizException("xn0000", "活动已上线,不能重复上架");
         }
         Long num = currencyActivityBO.getTotalCount(data.getType());
-        if (num > 1) {
+        if (num >= 1) {
             throw new BizException("xn0000", "同种类型的活动一次只能上架一个");
         }
         currencyActivityBO.putOn(data, location, orderNo, updater, remark);
