@@ -32,6 +32,22 @@ public interface IAccountBO extends IPaginableBO<Account> {
             String fromBizNote, String toBizNote, String refNo);
 
     /**
+     * 根据用户编号进行账户资金划转
+     * @param fromUserId
+     * @param toUserId
+     * @param currency
+     * @param amount
+     * @param bizType
+     * @param fromBizNote
+     * @param toBizNote 
+     * @param refNo
+     * @create: 2017年3月26日 下午8:42:38 xieyj
+     * @history:
+     */
+    public void doTransferAmountRemote(String fromUserId, String fromCurrency,
+            Long fromAmount, EBizType bizType, String fromBizNote);
+
+    /**
      * 获取用户账户
      * @param userId
      * @param type

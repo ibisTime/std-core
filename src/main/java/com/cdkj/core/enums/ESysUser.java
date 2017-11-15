@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum ESysUser {
-    SYS_USER_ZWZJ("SYS_USER_ZWZJ", "系统账号");
+    SYS_USER_ZWZJ("SYS_USER_ZWZJ", "自玩自健系统账号"), SYS_USER_CAIGO(
+            "SYS_USER_CAIGO", "菜狗系统账号");
 
     public static Map<String, ESysUser> getResultMap() {
         Map<String, ESysUser> map = new HashMap<String, ESysUser>();

@@ -14,6 +14,7 @@ import com.cdkj.core.domain.Account;
 import com.cdkj.core.dto.req.XN001303Req;
 import com.cdkj.core.dto.req.XN002050Req;
 import com.cdkj.core.dto.req.XN002100Req;
+import com.cdkj.core.dto.req.XN002101Req;
 import com.cdkj.core.dto.req.XN002501Req;
 import com.cdkj.core.dto.res.XN001303Res;
 import com.cdkj.core.dto.res.XN002050Res;
@@ -43,6 +44,7 @@ public class AccountBOImpl extends PaginableBOImpl<Account> implements
             XN002100Req req = new XN002100Req();
             req.setFromUserId(fromUserId);
             req.setToUserId(toUserId);
+            req.setCurrency(currency.getCode());
             req.setFromCurrency(currency.getCode());
             req.setToCurrency(currency.getCode());
             req.setTransAmount(String.valueOf(amount));
@@ -127,5 +129,20 @@ public class AccountBOImpl extends PaginableBOImpl<Account> implements
 
         account.setSystemCode(res.getSystemCode());
         return account;
+    }
+
+    @Override
+    public void doTransferAmountRemote(String fromUserId, String fromCurrency,
+            Long fromAmount, EBizType bizType, String fromBizNote) {
+        if (fromAmount != null && fromAmount != 0) {
+            XN002101Req req = new XN002101Req();
+            req.setFromUserId(fromUserId);
+            req.setFromCurrency(fromCurrency);
+            req.setFromTransAmount(String.valueOf(fromAmount));
+            req.setBizType(bizType.getCode());
+            req.setFromBizNote(fromBizNote);
+            BizConnecter.getBizData("002101", JsonUtils.object2Json(req),
+                Object.class);
+        }
     }
 }

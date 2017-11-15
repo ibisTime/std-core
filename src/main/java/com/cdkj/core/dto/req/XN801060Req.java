@@ -10,7 +10,7 @@ public class XN801060Req {
     // 类型（必填）
     private String type;
 
-    // 广告图
+    // 广告图（必填）
     private String advPic;
 
     // 图文描述（必填）

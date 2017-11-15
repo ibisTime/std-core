@@ -8,12 +8,13 @@ import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.domain.Interact;
 import com.cdkj.core.dto.req.XN801030Req;
 import com.cdkj.core.dto.req.XN801031Req;
+import com.cdkj.core.dto.res.XN801030Res;
 
 @Component
 public interface IInteractAO {
     static final String DEFAULT_ORDER_COLUMN = "code";
 
-    public String addInteract(XN801030Req req);
+    public XN801030Res addInteract(XN801030Req req);
 
     public void dropInteract(XN801031Req req);
 

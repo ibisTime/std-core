@@ -105,14 +105,16 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
 
     @Override
     public Long totalInteract(String category, String type, String entityCode,
-            Date startInteractDate, Date endInteractDate, String companyCode,
-            String systemCode) {
+            String interacter, String refereer, Date startInteractDate,
+            Date endInteractDate, String companyCode, String systemCode) {
         Interact condition = new Interact();
         condition.setStartInteractDate(startInteractDate);
         condition.setEndInteractDate(endInteractDate);
         condition.setCategory(category);
         condition.setType(type);
         condition.setEntityCode(entityCode);
+        condition.setInteracter(interacter);
+        condition.setRefereer(refereer);
         condition.setCompanyCode(companyCode);
         condition.setSystemCode(systemCode);
         return interactDAO.selectTotalCount(condition);

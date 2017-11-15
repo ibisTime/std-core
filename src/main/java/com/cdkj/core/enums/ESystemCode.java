@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum ESystemCode {
-    SYSTEM_CODE("CD-ZWZJ000012", "系统编号");
+    SYSTEM_CODE("CD-ZWZJ000012", "系统编号"), SYS_USER_CAIGO("CD-CCG000007",
+            "菜狗系统编号");
 
     public static Map<String, ESystemCode> getChannelTypeResultMap() {
         Map<String, ESystemCode> map = new HashMap<String, ESystemCode>();

@@ -20,7 +20,7 @@ public class Interact extends ABaseDO {
     // 实体类型
     private String category;
 
-    // 分类(1 点赞 2 收藏 3 浏览)
+    // 分类(1 点赞 2 收藏 3 浏览 4 分享)
     private String type;
 
     // 实体编号
@@ -31,6 +31,9 @@ public class Interact extends ABaseDO {
 
     // 交互时间
     private Date interactDatetime;
+
+    // 推荐人
+    private String refereer;
 
     // 公司编号
     private String companyCode;
@@ -48,6 +51,9 @@ public class Interact extends ABaseDO {
     private Date startInteractDate;
 
     private Date endInteractDate;
+
+    // 统计分享人数
+    private Long number;
 
     public News getNews() {
         return news;
@@ -143,6 +149,22 @@ public class Interact extends ABaseDO {
 
     public void setEndInteractDate(Date endInteractDate) {
         this.endInteractDate = endInteractDate;
+    }
+
+    public String getRefereer() {
+        return refereer;
+    }
+
+    public void setRefereer(String refereer) {
+        this.refereer = refereer;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
     }
 
 }

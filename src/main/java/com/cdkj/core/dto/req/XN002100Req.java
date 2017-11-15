@@ -17,6 +17,9 @@ public class XN002100Req {
     // 接收方用户编号(必填)
     private String toUserId;
 
+    // 币种
+    private String currency;
+
     // 去方币种(必填)
     private String toCurrency;
 
@@ -105,5 +108,13 @@ public class XN002100Req {
 
     public void setToCurrency(String toCurrency) {
         this.toCurrency = toCurrency;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }

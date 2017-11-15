@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdkj.core.dao.ICaigopoolDAO">
+	<resultMap id="caigopool_DB_Result" type="caigopool">
+		<result column="code" property="code" />
+		<result column="activity_code" property="activityCode" />
+		<result column="cz_amount" property="czAmount" />
+		
+		<result column="amount" property="amount" />
+		<result column="used_amount" property="usedAmount" />
+		<result column="add_user" property="addUser" />
+		<result column="add_datetime" property="addDatetime" />
+		<result column="remark" property="remark" />
+		
+		<result column="company_code" property="companyCode" />
+		<result column="system_code" property="systemCode" />
+		<result column="title" property="title" />
+	</resultMap>
+	<sql id="where_condition">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="code != null and code != '' ">
+				AND t.code = #{code}
+			</if>
+			<if test="activityCode != null and activityCode != '' ">
+				AND t.activity_code = #{activityCode}
+			</if>
+			<if test="title != null and title != '' ">
+				AND tca.title like "%"#{title}"%"
+			</if>
+			<if test="addUser != null and addUser != '' ">
+				AND t.add_user = #{addUser}
+			</if>
+			
+			<if test="companyCode != null and companyCode != '' ">
+				AND t.company_code = #{companyCode}
+			</if>
+			<if test="systemCode != null and systemCode != '' ">
+				AND t.system_code = #{systemCode}
+			</if>
+		</trim>
+	</sql>
+	<select id="select_caigopool" parameterType="caigopool" resultMap="caigopool_DB_Result">
+		SELECT
+		t.code
+		,t.activity_code
+		,tca.title
+		,t.cz_amount
+		
+		,t.amount
+		,t.used_amount
+		,t.add_user
+		,t.add_datetime
+		,t.remark
+		
+		,t.company_code
+		,t.system_code
+		FROM
+		tstd_caigopool t inner join tstd_currency_activity tca on t.activity_code=tca.code
+		<include refid="where_condition" />
+		<trim prefix="ORDER BY ">
+			<if test="order != null and order != '' ">
+				t.${order}
+			</if>
+		</trim>
+	</select>
+
+	<select id="select_caigopool_count" parameterType="caigopool"
+		resultType="java.lang.Long">
+		SELECT count(1) FROM tstd_caigopool t
+		<include refid="where_condition" />
+	</select>
+
+	<insert id="insert_caigopool" parameterType="caigopool">
+		INSERT INTO
+		tstd_caigopool(
+		code
+		,activity_code
+		,cz_amount
+		
+		,amount
+		,used_amount
+		,add_user
+		,add_datetime
+		,remark
+		
+		,company_code
+		,system_code
+		)
+		VALUES(
+		#{code}
+		,#{activityCode}
+		,#{czAmount}
+		
+		,#{amount}
+		,#{usedAmount}
+		,#{addUser}
+		,#{addDatetime}
+		,#{remark}
+		
+		,#{companyCode}
+		,#{systemCode}
+		)
+	</insert>
+
+	<update id="update_addAmount" parameterType="caigopool">
+		UPDATE tstd_caigopool
+		SET
+		cz_amount=#{czAmount}
+		,amount = #{amount}
+		,add_user = #{addUser}
+		,add_datetime = #{addDatetime}
+		,remark = #{remark}
+		WHERE code = #{code}
+	</update>
+	
+	<update id="update_outAmount" parameterType="caigopool">
+		UPDATE tstd_caigopool
+		SET
+		used_Amount = #{usedAmount}
+		,amount = #{amount}
+		WHERE code = #{code}
+	</update>
+	
+	<delete id="delete_caigopool" parameterType="caigopool">
+		DELETE FROM
+		tstd_caigopool
+		WHERE
+		code = #{code}
+	</delete>
+	
+	
+</mapper>

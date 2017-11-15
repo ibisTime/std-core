@@ -5,7 +5,6 @@ import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.dto.req.XN801030Req;
-import com.cdkj.core.dto.res.PKCodeRes;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
@@ -24,7 +23,7 @@ public class XN801030 extends AProcessor {
 
     @Override
     public Object doBusiness() throws BizException {
-        return new PKCodeRes(interactAO.addInteract(req));
+        return interactAO.addInteract(req);
     }
 
     @Override

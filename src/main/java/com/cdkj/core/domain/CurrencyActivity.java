@@ -20,6 +20,15 @@ public class CurrencyActivity extends ABaseDO {
     // 类型
     private String type;
 
+    // 标题
+    private String title;
+
+    // 缩率图
+    private String advPic;
+
+    // 广告语
+    private String slogn;
+
     // 图文详情
     private String description;
 
@@ -32,8 +41,11 @@ public class CurrencyActivity extends ABaseDO {
     // 币种
     private String currency;
 
-    // 赠送数量
+    // 首次推荐人赠送数量
     private Long number;
+
+    // 间接推荐人赠送数量
+    private Long indirectNumber;
 
     // UI位置
     private String location;
@@ -58,6 +70,9 @@ public class CurrencyActivity extends ABaseDO {
 
     // 系统编号
     private String systemCode;
+
+    // 统计数量
+    private Long count;
 
     public void setCode(String code) {
         this.code = code;
@@ -177,6 +192,46 @@ public class CurrencyActivity extends ABaseDO {
 
     public void setOrderNo(Integer orderNo) {
         this.orderNo = orderNo;
+    }
+
+    public String getAdvPic() {
+        return advPic;
+    }
+
+    public void setAdvPic(String advPic) {
+        this.advPic = advPic;
+    }
+
+    public Long getIndirectNumber() {
+        return indirectNumber;
+    }
+
+    public void setIndirectNumber(Long indirectNumber) {
+        this.indirectNumber = indirectNumber;
+    }
+
+    public String getSlogn() {
+        return slogn;
+    }
+
+    public void setSlogn(String slogn) {
+        this.slogn = slogn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
 }

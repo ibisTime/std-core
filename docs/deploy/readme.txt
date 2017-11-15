@@ -14,28 +14,28 @@
   cd /Users/myb858/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp9/wtpwebapps
   
 2，打包
-  scp -P22 ./std-core.war root@121.43.101.148:/home
+  scp -P22 ./std-core.war root@121.43.101.148:/mnt
   cdkj123456Q
   
 3，部署
   ssh root@121.43.101.148 -p 22
   
   cdkj123456Q
-  cd /mnt/www/common/tomcat_std_core/webapps
+  cd /mnt/www/caigo/tomcat_std_core/webapps
   cp ./std-core/WEB-INF/classes/application.properties .
   cp ./std-core/WEB-INF/classes/config.properties .
   
   rm -rf std-core.war
   rm -rf std-core
-  mv /home/std-core.war .
+  mv /mnt/std-core.war .
   
   mv -f application.properties ./std-core/WEB-INF/classes/
   mv -f config.properties ./std-core/WEB-INF/classes/
   
   ../bin/shutdown.sh
   ../bin/startup.sh
-  
-http://121.43.101.148:09/std-core/api
+  http://47.96.161.183:5303/std-core/api
+http://121.43.101.148:5303/std-core/api
 
 
   cd /mnt/www/wtw/tomcat_std_core/webapps

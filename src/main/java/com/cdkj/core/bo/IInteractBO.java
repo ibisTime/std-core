@@ -30,6 +30,6 @@ public interface IInteractBO extends IPaginableBO<Interact> {
             String systemCode);
 
     public Long totalInteract(String category, String type, String entityCode,
-            Date startInteractDate, Date endInteractDate, String companyCode,
-            String systemCode);
+            String interacter, String refereer, Date startInteractDate,
+            Date endInteractDate, String companyCode, String systemCode);
 }

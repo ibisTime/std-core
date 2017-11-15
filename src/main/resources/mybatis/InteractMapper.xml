@@ -9,6 +9,7 @@
 		<result column="entity_code" property="entityCode" />
 		<result column="interacter" property="interacter" />
 		<result column="interact_datetime" property="interactDatetime" />
+		<result column="refereer" property="refereer" />
 		<result column="company_code" property="companyCode" />
 		<result column="system_code" property="systemCode" />
 	</resultMap>
@@ -28,6 +29,9 @@
 			</if>
 			<if test="interacter != null and interacter != '' ">
 				AND t.interacter = #{interacter}
+			</if>
+			<if test="refereer != null and refereer != '' ">
+				AND t.refereer = #{refereer}
 			</if>
 			<if test="startInteractDate != null and startInteractDate != '' ">
 				<![CDATA[AND t.interact_datetime >= #{startInteractDate}]]>
@@ -51,6 +55,7 @@
 		,t.entity_code
 		,t.interacter
 		,t.interact_datetime
+		,t.refereer
 		,t.company_code
 		,t.system_code
 		FROM
@@ -78,6 +83,7 @@
 		,entity_code
 		,interacter
 		,interact_datetime
+		,refereer
 		,company_code
 		,system_code
 		)
@@ -88,6 +94,7 @@
 		,#{entityCode}
 		,#{interacter}
 		,#{interactDatetime}
+		,#{refereer}
 		,#{companyCode}
 		,#{systemCode}
 		)
@@ -101,6 +108,7 @@
 		,entity_code = #{entityCode}
 		,interacter = #{interacter}
 		,interact_datetime = #{interactDatetime}
+		,refereer=#{refereer}
 		,company_code = #{companyCode}
 		,system_code = #{systemCode}
 		WHERE code = #{code}

@@ -17,7 +17,7 @@ import java.util.Map;
  * @history:
  */
 public enum EInteractType {
-    COLLECT("1", "收藏"), LIKE("2", "点赞"), SCAN("3", "浏览");
+    COLLECT("1", "收藏"), LIKE("2", "点赞"), SCAN("3", "浏览"), SHARE("4", "分享");
     public static Map<String, EInteractType> getMap() {
         Map<String, EInteractType> map = new HashMap<String, EInteractType>();
         for (EInteractType direction : EInteractType.values()) {

@@ -5,11 +5,15 @@
 	<resultMap id="currencyActivity_DB_Result" type="currencyActivity">
 		<result column="code" property="code" />
 		<result column="type" property="type" />
+		<result column="title" property="title" />
+		<result column="adv_pic" property="advPic" />
+		<result column="slogn" property="slogn" />
 		<result column="description" property="description" />
 		<result column="start_datetime" property="startDatetime" />
 		<result column="end_datetime" property="endDatetime" />
 		<result column="currency" property="currency" />
 		<result column="number" property="number" />
+		<result column="indirect_number" property="indirectNumber" />
 		<result column="location" property="location" />
 		<result column="order_no" property="orderNo" />
 		<result column="status" property="status" />
@@ -54,11 +58,15 @@
 		SELECT
 		t.code
 		,t.type
+		,t.title
+		,t.adv_pic
+		,t.slogn
 		,t.description
 		,t.start_datetime
 		,t.end_datetime
 		,t.currency
 		,t.number
+		,t.indirect_number
 		,t.location
 		,t.order_no
 		,t.status
@@ -88,11 +96,15 @@
 		tstd_currency_activity(
 		code
 		,type
+		,title
+		,adv_pic
+		,slogn
 		,description
 		,start_datetime
 		,end_datetime
 		,currency
 		,number
+		,indirect_number
 		,status
 		,updater
 		,update_datetime
@@ -103,11 +115,15 @@
 		VALUES(
 		#{code}
 		,#{type}
+		,#{title}
+		,#{advPic}
+		,#{slogn}
 		,#{description}
 		,#{startDatetime}
 		,#{endDatetime}
 		,#{currency}
 		,#{number}
+		,#{indirectNumber}
 		,#{status}
 		,#{updater}
 		,#{updateDatetime}
@@ -121,11 +137,15 @@
 		UPDATE tstd_currency_activity
 		SET
 		type = #{type}
+		,title=#{title}
+		,adv_pic=#{advPic}
+		,slogn=#{slogn}
 		,description = #{description}
 		,start_datetime = #{startDatetime}
 		,end_datetime = #{endDatetime}
 		,currency = #{currency}
 		,number = #{number}
+		,indirect_number=#{indirectNumber}
 		,updater = #{updater}
 		,update_datetime = #{updateDatetime}
 		,remark = #{remark}

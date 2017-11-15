@@ -13,6 +13,15 @@ public class XN801042Req {
     // 类型(必填)
     private String type;
 
+    // 标题(必填)
+    private String title;
+
+    // 缩率图(必填)
+    private String advPic;
+
+    // 广告语(必填)
+    private String slogn;
+
     // 图文详情(必填)
     private String description;
 
@@ -27,6 +36,9 @@ public class XN801042Req {
 
     // 赠送数量(必填)
     private String number;
+
+    // 间接推荐人赠送数量
+    private String indirectNumber;
 
     // 更新人(必填)
     private String updater;
@@ -104,5 +116,37 @@ public class XN801042Req {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getAdvPic() {
+        return advPic;
+    }
+
+    public void setAdvPic(String advPic) {
+        this.advPic = advPic;
+    }
+
+    public String getIndirectNumber() {
+        return indirectNumber;
+    }
+
+    public void setIndirectNumber(String indirectNumber) {
+        this.indirectNumber = indirectNumber;
+    }
+
+    public String getSlogn() {
+        return slogn;
+    }
+
+    public void setSlogn(String slogn) {
+        this.slogn = slogn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

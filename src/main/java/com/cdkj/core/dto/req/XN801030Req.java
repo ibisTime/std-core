@@ -19,6 +19,9 @@ public class XN801030Req {
     // 交互人（必填）
     private String interacter;
 
+    // 推荐人
+    private String refereer;
+
     // 公司编号（必填）
     private String companyCode;
 
@@ -71,5 +74,13 @@ public class XN801030Req {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getRefereer() {
+        return refereer;
+    }
+
+    public void setRefereer(String refereer) {
+        this.refereer = refereer;
     }
 }

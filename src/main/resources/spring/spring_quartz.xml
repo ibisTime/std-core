@@ -20,6 +20,7 @@
            <list>
            	  <ref bean="couponTrigger"/> 
            	  <ref bean="publicityTrigger"/> 
+           	  <ref bean="currencyActivityTrigger"/> 
            </list>  
        </property>  
        <property name="autoStartup" value="true"/>  
@@ -45,5 +46,15 @@
 	   <property name="targetMethod" value="overDue"/>  
 	   <property name="concurrent" value="true"/>  
    	</bean> 
+   	
+	<bean id="currencyActivityTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+       <property name="jobDetail" ref="changeCurrencyActivityStatus"/>  
+       <property name="cronExpression" value="0 0/15 * * * ?"/> 
+	</bean>
 	
+	<bean id="changeCurrencyActivityStatus" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+	   <property name="targetObject" ref="currencyActivityAOImpl"/>  
+	   <property name="targetMethod" value="changeCurrencyActivityStatus"/>  
+	   <property name="concurrent" value="true"/>  
+   	</bean> 
 </beans>

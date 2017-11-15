@@ -13,5 +13,8 @@
 		<typeAlias alias="coupon" type="com.cdkj.core.domain.Coupon" />
 		<typeAlias alias="currencyActivity" type="com.cdkj.core.domain.CurrencyActivity" />
 		<typeAlias alias="publicity" type="com.cdkj.core.domain.Publicity" />
+		
+		<typeAlias alias="caigopool" type="com.cdkj.core.domain.Caigopool" />
+		<typeAlias alias="caigopoolBack" type="com.cdkj.core.domain.CaigopoolBack" />
 	</typeAliases>
 </configuration>	

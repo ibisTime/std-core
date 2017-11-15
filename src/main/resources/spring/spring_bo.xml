@@ -50,4 +50,11 @@
 	<bean id="publicityBO" class="com.cdkj.core.bo.impl.PublicityBOImpl">
 		<property name="paginableDAO" ref="publicityDAOImpl"/>
     </bean>	
+    
+    <bean id="caigopoolBO" class="com.cdkj.core.bo.impl.CaigopoolBOImpl">
+		<property name="paginableDAO" ref="caigopoolDAOImpl"/>
+	</bean>	
+	<bean id="caigopoolBackBO" class="com.cdkj.core.bo.impl.CaigopoolBackBOImpl">
+		<property name="paginableDAO" ref="caigopoolBackDAOImpl"/>
+	</bean>	
 </beans>
