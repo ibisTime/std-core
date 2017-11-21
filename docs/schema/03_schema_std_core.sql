@@ -100,6 +100,7 @@ CREATE TABLE `tstd_currency_activity` (
   `number` int(11) NOT NULL COMMENT '赠送数量',
   `location` varchar(32) DEFAULT NULL COMMENT 'ui位置',
   `order_no` int(11) DEFAULT NULL COMMENT 'ui顺序',
+  `read_times` int(11) DEFAULT NULL COMMENT '阅读时间',
   `status` varchar(4) DEFAULT NULL COMMENT '状态',
   `updater` varchar(32) DEFAULT NULL COMMENT '更新人',
   `update_datetime` datetime DEFAULT NULL COMMENT '更新时间',
