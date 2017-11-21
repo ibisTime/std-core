@@ -25,7 +25,8 @@ public class XN801043 extends AProcessor {
     @Override
     public Object doBusiness() throws BizException {
         currencyActivityAO.putOn(req.getCode(), req.getLocation(),
-            req.getOrderNo(), req.getUpdater(), req.getRemark());
+            req.getOrderNo(), req.getReadTimes(), req.getUpdater(),
+            req.getRemark());
         return new BooleanRes(true);
     }
 
@@ -34,7 +35,7 @@ public class XN801043 extends AProcessor {
         req = JsonUtil.json2Bean(inputparams, XN801043Req.class);
         StringValidater.validateBlank(req.getCode(), req.getLocation(),
             req.getUpdater());
-        StringValidater.validateNumber(req.getOrderNo());
+        StringValidater.validateNumber(req.getOrderNo(), req.getReadTimes());
     }
 
 }

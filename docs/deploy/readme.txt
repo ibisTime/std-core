@@ -34,7 +34,7 @@
   
   ../bin/shutdown.sh
   ../bin/startup.sh
-  http://47.96.161.183:5303/std-core/api
+http://47.96.161.183:5303/std-core/api
 http://121.43.101.148:5303/std-core/api
 
 

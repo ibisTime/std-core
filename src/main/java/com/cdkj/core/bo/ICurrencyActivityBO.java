@@ -19,7 +19,7 @@ public interface ICurrencyActivityBO extends IPaginableBO<CurrencyActivity> {
     public CurrencyActivity getCurrencyActivity(String code);
 
     public void putOn(CurrencyActivity data, String location, String orderNo,
-            String updater, String remark);
+            String readTimes, String updater, String remark);
 
     public void putOff(CurrencyActivity data, String updater, String remark);
 

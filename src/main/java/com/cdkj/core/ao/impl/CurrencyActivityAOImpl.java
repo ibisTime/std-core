@@ -176,7 +176,7 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
 
     @Override
     public void putOn(String code, String location, String orderNo,
-            String updater, String remark) {
+            String readTimes, String updater, String remark) {
         CurrencyActivity data = currencyActivityBO.getCurrencyActivity(code);
         if (data.getStatus().equals(ECurrencyActivityStatus.ONLINE.getCode())) {
             throw new BizException("xn0000", "活动已上线,不能重复上架");
@@ -192,7 +192,8 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
                 throw new BizException("xn0000", "同种类型的活动一次只能上架一个");
             }
         }
-        currencyActivityBO.putOn(data, location, orderNo, updater, remark);
+        currencyActivityBO.putOn(data, location, orderNo, readTimes, updater,
+            remark);
     }
 
     @Override

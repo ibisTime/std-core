@@ -83,10 +83,11 @@ public class CurrencyActivityBOImpl extends PaginableBOImpl<CurrencyActivity>
 
     @Override
     public void putOn(CurrencyActivity data, String location, String orderNo,
-            String updater, String remark) {
+            String readTimes, String updater, String remark) {
         data.setStatus(ECurrencyActivityStatus.ONLINE.getCode());
         data.setLocation(location);
         data.setOrderNo(StringValidater.toInteger(orderNo));
+        data.setReadTimes(StringValidater.toInteger(readTimes));
         data.setUpdater(updater);
         data.setUpdateDatetime(new Date());
         data.setRemark(remark);

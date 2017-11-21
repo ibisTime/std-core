@@ -30,7 +30,7 @@ public interface ICurrencyActivityAO {
     public CurrencyActivity getCurrencyActivity(String code);
 
     public void putOn(String code, String location, String orderNo,
-            String updater, String remark);
+            String readTimes, String updater, String remark);
 
     public void putOff(String code, String updater, String remark);
 

@@ -16,6 +16,9 @@ public class XN801043Req {
     // 顺序（必填）
     private String orderNo;
 
+    // 阅读时长
+    private String readTimes;
+
     // 更新人（必填）
     private String updater;
 
@@ -60,6 +63,14 @@ public class XN801043Req {
 
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
+    }
+
+    public String getReadTimes() {
+        return readTimes;
+    }
+
+    public void setReadTimes(String readTimes) {
+        this.readTimes = readTimes;
     }
 
 }

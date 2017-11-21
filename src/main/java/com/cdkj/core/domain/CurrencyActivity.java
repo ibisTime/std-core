@@ -53,6 +53,9 @@ public class CurrencyActivity extends ABaseDO {
     // 顺序
     private Integer orderNo;
 
+    // 阅读时长
+    private Integer readTimes;
+
     // 状态
     private String status;
 
@@ -232,6 +235,14 @@ public class CurrencyActivity extends ABaseDO {
 
     public void setCount(Long count) {
         this.count = count;
+    }
+
+    public Integer getReadTimes() {
+        return readTimes;
+    }
+
+    public void setReadTimes(Integer readTimes) {
+        this.readTimes = readTimes;
     }
 
 }

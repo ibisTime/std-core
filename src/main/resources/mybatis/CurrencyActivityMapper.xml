@@ -16,6 +16,7 @@
 		<result column="indirect_number" property="indirectNumber" />
 		<result column="location" property="location" />
 		<result column="order_no" property="orderNo" />
+		<result column="read_times" property="readTimes" />
 		<result column="status" property="status" />
 		<result column="updater" property="updater" />
 		<result column="update_datetime" property="updateDatetime" />
@@ -69,6 +70,7 @@
 		,t.indirect_number
 		,t.location
 		,t.order_no
+		,t.read_times
 		,t.status
 		,t.updater
 		,t.update_datetime
@@ -162,6 +164,7 @@
 		status=#{status}
 		,location=#{location}
 		,order_no=#{orderNo}
+		,read_times=#{readTimes}
 		,updater = #{updater}
 		,update_datetime = #{updateDatetime}
 		,remark = #{remark}
