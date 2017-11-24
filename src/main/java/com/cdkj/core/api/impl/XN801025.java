@@ -51,7 +51,7 @@ public class XN801025 extends AProcessor {
         condition.setOrder(orderColumn, req.getOrderDir());
         int start = StringValidater.toInteger(req.getStart());
         int limit = StringValidater.toInteger(req.getLimit());
-        return commentAO.queryCommentPage(start, limit, condition);
+        return commentAO.queryOssCommentPage(start, limit, condition);
     }
 
     @Override

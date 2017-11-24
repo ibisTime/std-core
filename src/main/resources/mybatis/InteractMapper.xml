@@ -4,6 +4,7 @@
 <mapper namespace="com.cdkj.core.dao.IInteractDAO">
 	<resultMap id="interact_DB_Result" type="interact">
 		<result column="code" property="code" />
+		<result column="category" property="category" />
 		<result column="type" property="type" />
 		<result column="entity_code" property="entityCode" />
 		<result column="interacter" property="interacter" />
@@ -19,11 +20,20 @@
 			<if test="type != null and type != '' ">
 				AND t.type = #{type}
 			</if>
+			<if test="category != null and category != '' ">
+				AND t.category = #{category}
+			</if>
 			<if test="entityCode != null and entityCode != '' ">
 				AND t.entity_code = #{entityCode}
 			</if>
 			<if test="interacter != null and interacter != '' ">
 				AND t.interacter = #{interacter}
+			</if>
+			<if test="startInteractDate != null and startInteractDate != '' ">
+				<![CDATA[AND t.interact_datetime >= #{startInteractDate}]]>
+			</if>
+			<if test="endInteractDate != null and endInteractDate != '' ">
+				<![CDATA[AND t.interact_datetime <= #{endInteractDate}]]>
 			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}
@@ -36,6 +46,7 @@
 	<select id="select_interact" parameterType="interact" resultMap="interact_DB_Result">
 		SELECT
 		t.code
+		,t.category
 		,t.type
 		,t.entity_code
 		,t.interacter
@@ -62,6 +73,7 @@
 		INSERT INTO
 		tstd_interact(
 		code
+		,category
 		,type
 		,entity_code
 		,interacter
@@ -71,6 +83,7 @@
 		)
 		VALUES(
 		#{code}
+		,#{category}
 		,#{type}
 		,#{entityCode}
 		,#{interacter}
@@ -83,7 +96,8 @@
 	<update id="update_interact" parameterType="interact">
 		UPDATE tstd_interact
 		SET
-		type = #{type}
+		category=#{category}
+		,type = #{type}
 		,entity_code = #{entityCode}
 		,interacter = #{interacter}
 		,interact_datetime = #{interactDatetime}

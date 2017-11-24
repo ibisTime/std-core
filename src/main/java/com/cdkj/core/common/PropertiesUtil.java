@@ -39,6 +39,8 @@ public class PropertiesUtil {
 
         public static String ACCOUNT_URL = props.getProperty("ACCOUNT_URL");
 
+        public static String MALL_URL = props.getProperty("MALL_URL");
+
         public static String USER_DB = props.getProperty("USER_DB");
     }
 }

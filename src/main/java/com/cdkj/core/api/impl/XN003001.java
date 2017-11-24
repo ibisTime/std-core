@@ -27,6 +27,7 @@ public class XN003001 extends AProcessor {
     @Override
     public Object doBusiness() throws BizException {
         Interact condition = new Interact();
+        condition.setCategory(req.getCategory());
         condition.setType(req.getType());
         condition.setEntityCode(req.getEntityCode());
         condition.setInteracter(req.getInteracter());

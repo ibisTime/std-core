@@ -25,14 +25,15 @@ public class XN003000 extends AProcessor {
     @Override
     public Object doBusiness() throws BizException {
         return new FlagRes(interactAO.isInteract(req.getUserId(),
-            req.getInteractType(), req.getEntityCode(), req.getCompanyCode(),
-            req.getSystemCode()));
+            req.getInteractCategory(), req.getInteractType(),
+            req.getEntityCode(), req.getCompanyCode(), req.getSystemCode()));
     }
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
         req = JsonUtil.json2Bean(inputparams, XN003000Req.class);
-        StringValidater.validateBlank(req.getUserId(), req.getInteractType(),
+        StringValidater.validateBlank(req.getUserId(),
+            req.getInteractCategory(), req.getInteractType(),
             req.getEntityCode(), req.getCompanyCode(), req.getSystemCode());
     }
 }

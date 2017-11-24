@@ -31,7 +31,7 @@ public class News extends ABaseDO {
     // 广告图
     private String advPic;
 
-    // 图片url
+    // 缩略图
     private String pic;
 
     // 内容

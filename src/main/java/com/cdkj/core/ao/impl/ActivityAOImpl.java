@@ -19,7 +19,7 @@ import com.cdkj.core.domain.Activity;
 import com.cdkj.core.dto.req.XN660000Req;
 import com.cdkj.core.dto.req.XN660002Req;
 import com.cdkj.core.enums.EActivityStatus;
-import com.cdkj.core.enums.EPrefixCode;
+import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.exception.BizException;
 
 /**
@@ -41,7 +41,8 @@ public class ActivityAOImpl implements IActivityAO {
     @Override
     public String addNewActivity(XN660000Req req) {
         Activity data = new Activity();
-        String code = OrderNoGenerater.generate(EPrefixCode.ACTIVITY.getCode());
+        String code = OrderNoGenerater.generate(EGeneratePrefix.Activity
+            .getCode());
         data.setCode(code);
         data.setTitle(req.getTitle());
         data.setPic(req.getPic());

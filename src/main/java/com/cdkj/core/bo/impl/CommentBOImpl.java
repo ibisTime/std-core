@@ -11,6 +11,7 @@ import com.cdkj.core.bo.ICommentBO;
 import com.cdkj.core.bo.base.PaginableBOImpl;
 import com.cdkj.core.dao.ICommentDAO;
 import com.cdkj.core.domain.Comment;
+import com.cdkj.core.enums.ECommentStatus;
 import com.cdkj.core.exception.BizException;
 
 @Component
@@ -64,6 +65,27 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
     @Override
     public Long queryTotalScore(Comment condition) {
         return commentDAO.selectTotalScore(condition);
+    }
+
+    @Override
+    public Long getTotalCount(String entityCode, String companyCode,
+            String systemCode) {
+        Comment condition = new Comment();
+        condition.setStatus(ECommentStatus.PUBLISHALL.getCode());
+        condition.setEntityCode(entityCode);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        return commentDAO.selectTotalCount(condition);
+    }
+
+    @Override
+    public List<Comment> queryCommentList(String orderCode, String companyCode,
+            String systemCode) {
+        Comment condition = new Comment();
+        condition.setOrderCode(orderCode);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        return commentDAO.selectList(condition);
     }
 
 }

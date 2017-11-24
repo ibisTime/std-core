@@ -19,6 +19,7 @@ import com.cdkj.core.dto.req.XN801000Req;
 import com.cdkj.core.dto.req.XN801002Req;
 import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.EGeneratePrefix;
+import com.cdkj.core.enums.EInteractCategory;
 import com.cdkj.core.enums.EInteractType;
 import com.cdkj.core.enums.ENewsStatus;
 import com.cdkj.core.exception.BizException;
@@ -92,7 +93,8 @@ public class NewsAOImpl implements INewsAO {
             String userId) {
         Interact condition = new Interact();
         condition.setInteracter(userId);
-        condition.setType(EInteractType.NEWS.getCode());
+        condition.setCategory(EInteractCategory.NEWS.getCode());
+        condition.setType(EInteractType.COLLECT.getCode());
         condition.setOrder(IInteractAO.DEFAULT_ORDER_COLUMN, "desc");
         Paginable<Interact> page = interactBO.getPaginable(start, limit,
             condition);
@@ -114,7 +116,8 @@ public class NewsAOImpl implements INewsAO {
         News news = newsBO.getNews(code);
         if (StringUtils.isNotBlank(userId)) {
             boolean result = interactBO.isInteract(userId,
-                EInteractType.NEWS.getCode(), code, news.getCompanyCode(),
+                EInteractCategory.NEWS.getCode(),
+                EInteractType.COLLECT.getCode(), code, news.getCompanyCode(),
                 news.getSystemCode());
             if (result) {
                 news.setIsCollect(EBoolean.YES.getCode());

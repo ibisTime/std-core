@@ -20,12 +20,26 @@ public interface ICommentAO {
     public void approveComment(String code, String result, String approver,
             String remark);
 
-    public Paginable<Comment> queryCommentPage(int start, int limit,
+    public Paginable<Comment> queryOssCommentPage(int start, int limit,
             Comment condition);
 
     public XN801028Res queryFrontCommentPage(int start, int limit,
             Comment condition);
 
     public Comment getComment(String code);
+
+    public Long totalComment(String entityCode, String companyCode,
+            String systemCode);
+
+    public String comment(String type, String orderCode, String entityCode,
+            String entityName, String parentCode, String content,
+            String commenter, String commenterName, String companyCode,
+            String systemCode);
+
+    public Comment getCommentByOrderCode(String orderCode, String companyCode,
+            String systemCode);
+
+    public Paginable<Comment> queryBizCommentPage(int start, int limit,
+            Comment condition);
 
 }
