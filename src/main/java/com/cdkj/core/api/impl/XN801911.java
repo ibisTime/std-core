@@ -5,7 +5,7 @@ import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.SYSConfig;
-import com.cdkj.core.dto.req.XN660911Req;
+import com.cdkj.core.dto.req.XN801911Req;
 import com.cdkj.core.dto.res.BooleanRes;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
@@ -17,11 +17,11 @@ import com.cdkj.core.spring.SpringContextHolder;
  * @since: 2016年9月17日 下午1:54:21 
  * @history:
  */
-public class XN660911 extends AProcessor {
+public class XN801911 extends AProcessor {
     private ISYSConfigAO sysConfigAO = SpringContextHolder
         .getBean(ISYSConfigAO.class);
 
-    private XN660911Req req = null;
+    private XN801911Req req = null;
 
     @Override
     public Object doBusiness() throws BizException {
@@ -36,7 +36,7 @@ public class XN660911 extends AProcessor {
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660911Req.class);
+        req = JsonUtil.json2Bean(inputparams, XN801911Req.class);
         StringValidater.validateBlank(req.getCvalue(), req.getUpdater());
 
     }

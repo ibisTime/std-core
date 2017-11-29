@@ -4,7 +4,7 @@ import com.cdkj.core.ao.ISYSConfigAO;
 import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
-import com.cdkj.core.dto.req.XN660916Req;
+import com.cdkj.core.dto.req.XN801916Req;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
@@ -15,11 +15,11 @@ import com.cdkj.core.spring.SpringContextHolder;
  * @since: 2016年9月17日 下午1:55:26 
  * @history:
  */
-public class XN660916 extends AProcessor {
+public class XN801916 extends AProcessor {
     private ISYSConfigAO sysConfigAO = SpringContextHolder
         .getBean(ISYSConfigAO.class);
 
-    private XN660916Req req = null;
+    private XN801916Req req = null;
 
     /** 
      * @see com.xnjr.base.api.IProcessor#doBusiness()
@@ -34,7 +34,7 @@ public class XN660916 extends AProcessor {
      */
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660916Req.class);
+        req = JsonUtil.json2Bean(inputparams, XN801916Req.class);
         StringValidater.validateBlank(req.getId());
     }
 

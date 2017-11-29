@@ -5,7 +5,7 @@ package com.cdkj.core.dto.req;
  * @since: 2016年9月17日 下午3:58:52 
  * @history:
  */
-public class XN660917Req {
+public class XN801917Req {
     // 配置名（必填）
     private String ckey;
 

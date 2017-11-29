@@ -14,12 +14,14 @@ import com.cdkj.core.bo.IAccountBO;
 import com.cdkj.core.bo.ICaigopoolBO;
 import com.cdkj.core.bo.ICurrencyActivityBO;
 import com.cdkj.core.bo.IInteractBO;
+import com.cdkj.core.bo.ISYSConfigBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.common.DateUtil;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Caigopool;
 import com.cdkj.core.domain.CurrencyActivity;
+import com.cdkj.core.domain.SYSConfig;
 import com.cdkj.core.dto.req.XN801040Req;
 import com.cdkj.core.dto.req.XN801042Req;
 import com.cdkj.core.dto.res.XN003025Res;
@@ -29,6 +31,7 @@ import com.cdkj.core.enums.ECurrencyActivityStatus;
 import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.enums.EInteractCategory;
 import com.cdkj.core.enums.EInteractType;
+import com.cdkj.core.enums.ESysConfigCkey;
 import com.cdkj.core.enums.ESystemCode;
 import com.cdkj.core.exception.BizException;
 
@@ -42,6 +45,9 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
 
     @Autowired
     private ICaigopoolBO caigopoolBO;
+
+    @Autowired
+    private ISYSConfigBO sysconfigBO;
 
     @Autowired
     private IAccountBO accountBO;
@@ -147,7 +153,12 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
                     EInteractType.SHARE.getCode(), currencyActivity.getCode(),
                     null, null, null, null, currencyActivity.getCompanyCode(),
                     currencyActivity.getSystemCode());
-                currencyActivity.setCount(count);
+                SYSConfig sysConfig = sysconfigBO.getConfigValue(
+                    ESysConfigCkey.BS.getCode(),
+                    currencyActivity.getCompanyCode(),
+                    currencyActivity.getSystemCode());
+                currencyActivity.setCount(count
+                        * StringValidater.toLong(sysConfig.getCvalue()));
             }
         }
         return page;
