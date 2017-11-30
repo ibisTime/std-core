@@ -47,7 +47,7 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
     private ICaigopoolBO caigopoolBO;
 
     @Autowired
-    private ISYSConfigBO sysconfigBO;
+    private ISYSConfigBO sysConfigBO;
 
     @Autowired
     private IAccountBO accountBO;
@@ -153,7 +153,7 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
                     EInteractType.SHARE.getCode(), currencyActivity.getCode(),
                     null, null, null, null, currencyActivity.getCompanyCode(),
                     currencyActivity.getSystemCode());
-                SYSConfig sysConfig = sysconfigBO.getConfigValue(
+                SYSConfig sysConfig = sysConfigBO.getConfigValue(
                     ESysConfigCkey.BS.getCode(),
                     currencyActivity.getCompanyCode(),
                     currencyActivity.getSystemCode());
@@ -180,7 +180,11 @@ public class CurrencyActivityAOImpl implements ICurrencyActivityAO {
                 EInteractType.SHARE.getCode(), currencyActivity.getCode(),
                 null, null, null, null, currencyActivity.getCompanyCode(),
                 currencyActivity.getSystemCode());
-            currencyActivity.setCount(count);
+            SYSConfig sysConfig = sysConfigBO.getConfigValue(
+                ESysConfigCkey.BS.getCode(), currencyActivity.getCompanyCode(),
+                currencyActivity.getSystemCode());
+            currencyActivity.setCount(count
+                    * StringValidater.toLong(sysConfig.getCvalue()));
         }
         return currencyActivity;
     }

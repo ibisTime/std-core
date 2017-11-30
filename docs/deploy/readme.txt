@@ -14,7 +14,7 @@
   cd /Users/myb858/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp9/wtpwebapps
   
 2，打包
-  scp -P22 ./std-mall.war root@121.43.101.148:/mnt
+  scp -P22 ./std-core.war root@121.43.101.148:/mnt
   cdkj123456Q
   
 3，部署

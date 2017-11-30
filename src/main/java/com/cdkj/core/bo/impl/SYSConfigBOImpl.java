@@ -24,6 +24,7 @@ import com.cdkj.core.exception.BizException;
 @Component
 public class SYSConfigBOImpl extends PaginableBOImpl<SYSConfig> implements
         ISYSConfigBO {
+
     @Autowired
     private ISYSConfigDAO sysConfigDAO;
 
