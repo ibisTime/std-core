@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.cdkj.core.ao.IInteractAO;
 import com.cdkj.core.bo.IInteractBO;
+import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.domain.Interact;
+import com.cdkj.core.domain.User;
 import com.cdkj.core.dto.req.XN801030Req;
 import com.cdkj.core.dto.req.XN801031Req;
 import com.cdkj.core.enums.EGeneratePrefix;
@@ -23,6 +25,9 @@ public class InteractAOImpl implements IInteractAO {
 
     @Autowired
     private IInteractBO interactBO;
+
+    @Autowired
+    private IUserBO userBO;
 
     @Override
     public String addInteract(XN801030Req req) {
@@ -38,7 +43,7 @@ public class InteractAOImpl implements IInteractAO {
                     + EInteractType.getMap().get(req.getType()).getValue());
         }
         Interact data = new Interact();
-        String code = OrderNoGenerater.generate(EGeneratePrefix.Interact
+        String code = OrderNoGenerater.generateME(EGeneratePrefix.Interact
             .getCode());
         data.setCode(code);
         data.setType(req.getType());
@@ -74,10 +79,28 @@ public class InteractAOImpl implements IInteractAO {
         Paginable<Interact> page = interactBO.getPaginable(start, limit,
             condition);
         List<Interact> list = page.getList();
-        for (Interact interact : list) {
-            interact.setInteractDatetimeTimes(interact.getInteractDatetime()
-                .getTime());
-            interact.setInteractDatetime(null);
+        if (CollectionUtils.isNotEmpty(list)) {
+            for (Interact data : list) {
+                data.setInteractDatetimeTimes(data.getInteractDatetime()
+                    .getTime());
+                data.setInteractDatetime(null);
+            }
+        }
+        return page;
+    }
+
+    @Override
+    public Paginable<Interact> queryFrontInteractPage(int start, int limit,
+            Interact condition) {
+        Paginable<Interact> page = interactBO.getPaginable(start, limit,
+            condition);
+        List<Interact> list = page.getList();
+        if (CollectionUtils.isNotEmpty(list)) {
+            for (Interact data : list) {
+                User user = userBO.getRemoteUser(data.getInteracter());
+                data.setNickname(user.getNickname());
+                data.setPhoto(user.getPhoto());
+            }
         }
         return page;
     }

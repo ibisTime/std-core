@@ -41,7 +41,8 @@ public class ActivityAOImpl implements IActivityAO {
     @Override
     public String addNewActivity(XN660000Req req) {
         Activity data = new Activity();
-        String code = OrderNoGenerater.generate(EPrefixCode.ACTIVITY.getCode());
+        String code = OrderNoGenerater.generateME(EPrefixCode.ACTIVITY
+            .getCode());
         data.setCode(code);
         data.setTitle(req.getTitle());
         data.setPic(req.getPic());

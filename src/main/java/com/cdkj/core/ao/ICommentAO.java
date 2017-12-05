@@ -23,7 +23,10 @@ public interface ICommentAO {
     public Paginable<Comment> queryCommentPage(int start, int limit,
             Comment condition);
 
-    public XN801028Res queryFrontCommentPage(int start, int limit,
+    public XN801028Res queryFrontScoreCommentPage(int start, int limit,
+            Comment condition);
+
+    public Paginable<Comment> queryFrontCommentPage(int start, int limit,
             Comment condition);
 
     public Comment getComment(String code);

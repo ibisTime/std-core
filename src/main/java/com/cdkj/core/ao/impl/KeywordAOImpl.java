@@ -13,8 +13,8 @@ import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Keyword;
-import com.cdkj.core.dto.req.XN802012Req;
 import com.cdkj.core.dto.req.XN801010CReq;
+import com.cdkj.core.dto.req.XN802012Req;
 import com.cdkj.core.enums.EPrefixCode;
 
 @Service
@@ -29,7 +29,7 @@ public class KeywordAOImpl implements IKeywordAO {
             String systemCode) {
         for (XN801010CReq req : reqList) {
             Keyword data = new Keyword();
-            String code = OrderNoGenerater.generate(EPrefixCode.KEYWORD
+            String code = OrderNoGenerater.generateME(EPrefixCode.KEYWORD
                 .getCode());
             data.setCode(code);
             data.setWord(req.getWord());

@@ -77,6 +77,17 @@ public class Comment extends ABaseDO {
     // 头像
     private String photo;
 
+    // 父评论
+    private Comment parentComment;
+
+    public Comment getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
+    }
+
     public String getCode() {
         return code;
     }
@@ -236,4 +247,5 @@ public class Comment extends ABaseDO {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
 }

@@ -78,7 +78,7 @@ public class ActivityOrderAOImpl implements IActivityOrderAO {
         this.checkActivity(activity, quantity);
 
         ActivityOrder data = new ActivityOrder();
-        String code = OrderNoGenerater.generate(EPrefixCode.ACTIVITYORDER
+        String code = OrderNoGenerater.generateME(EPrefixCode.ACTIVITYORDER
             .getCode());
         data.setCode(code);
         data.setActivityCode(activityCode);
@@ -185,7 +185,7 @@ public class ActivityOrderAOImpl implements IActivityOrderAO {
         String userId = order.getApplyUser();
         User user = userBO.getRemoteUser(userId);
         // 生成payGroup,并把订单进行支付。
-        String payGroup = OrderNoGenerater.generate(EPrefixCode.ACTIVITYORDER
+        String payGroup = OrderNoGenerater.generateME(EPrefixCode.ACTIVITYORDER
             .getCode());
         activityOrderBO.payGroup(order, payGroup);
         if (order.getAmount() == 0L) {

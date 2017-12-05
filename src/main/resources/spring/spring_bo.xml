@@ -26,6 +26,10 @@
 		<property name="paginableDAO" ref="interactDAOImpl"/>
     </bean>	
 	
+	<bean id="travelsBO" class="com.cdkj.core.bo.impl.TravelsBOImpl">
+		<property name="paginableDAO" ref="travelsDAOImpl" />
+	</bean>
+	
 	<bean id="commentBO" class="com.cdkj.core.bo.impl.CommentBOImpl">
 		<property name="paginableDAO" ref="commentDAOImpl" />
 	</bean>

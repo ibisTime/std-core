@@ -5,9 +5,11 @@
 	<resultMap id="interact_DB_Result" type="interact">
 		<result column="code" property="code" />
 		<result column="type" property="type" />
+		<result column="kind" property="kind" />
 		<result column="entity_code" property="entityCode" />
 		<result column="interacter" property="interacter" />
 		<result column="interact_datetime" property="interactDatetime" />
+		<result column="remark" property="remark" />
 		<result column="company_code" property="companyCode" />
 		<result column="system_code" property="systemCode" />
 	</resultMap>
@@ -18,6 +20,9 @@
 			</if>
 			<if test="type != null and type != '' ">
 				AND t.type = #{type}
+			</if>
+			<if test="kind != null and kind != '' ">
+				AND t.kind = #{kind}
 			</if>
 			<if test="entityCode != null and entityCode != '' ">
 				AND t.entity_code = #{entityCode}
@@ -37,9 +42,11 @@
 		SELECT
 		t.code
 		,t.type
+		,t.kind
 		,t.entity_code
 		,t.interacter
 		,t.interact_datetime
+		,t.remark
 		,t.company_code
 		,t.system_code
 		FROM
@@ -63,34 +70,26 @@
 		tstd_interact(
 		code
 		,type
+		,kind
 		,entity_code
 		,interacter
 		,interact_datetime
+		,remark
 		,company_code
 		,system_code
 		)
 		VALUES(
 		#{code}
 		,#{type}
+		,#{kind}
 		,#{entityCode}
 		,#{interacter}
 		,#{interactDatetime}
+		,#{remark}
 		,#{companyCode}
 		,#{systemCode}
 		)
 	</insert>
-
-	<update id="update_interact" parameterType="interact">
-		UPDATE tstd_interact
-		SET
-		type = #{type}
-		,entity_code = #{entityCode}
-		,interacter = #{interacter}
-		,interact_datetime = #{interactDatetime}
-		,company_code = #{companyCode}
-		,system_code = #{systemCode}
-		WHERE code = #{code}
-	</update>
 
 	<delete id="delete_interact" parameterType="interact">
 		DELETE FROM tstd_interact

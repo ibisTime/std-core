@@ -34,7 +34,8 @@ public class NewsAOImpl implements INewsAO {
 
     @Override
     public String addNews(XN801000Req req) {
-        String code = OrderNoGenerater.generate(EGeneratePrefix.News.getCode());
+        String code = OrderNoGenerater.generateME(EGeneratePrefix.News
+            .getCode());
         News data = new News();
         data.setCode(code);
         data.setType(req.getType());

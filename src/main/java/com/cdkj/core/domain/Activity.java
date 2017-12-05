@@ -31,14 +31,26 @@ public class Activity extends ABaseDO {
     // 广告语
     private String slogan;
 
-    // 费用
-    private Long amount;
-
     // 描述
     private String description;
 
+    // 费用
+    private Long amount;
+
+    // 开始时间
+    private Date startDatetime;
+
+    // 结束时间
+    private Date endDatetime;
+
     // 举办地
     private String holdPlace;
+
+    // 总人数
+    private Integer totalNum;
+
+    // 剩余人数
+    private Integer remainNum;
 
     // 联系方式
     private String contact;
@@ -48,18 +60,6 @@ public class Activity extends ABaseDO {
 
     // 序号
     private Integer orderNo;
-
-    // 开始时间
-    private Date startDatetime;
-
-    // 结束时间
-    private Date endDatetime;
-
-    // 总人数
-    private Integer totalNum;
-
-    // 剩余人数
-    private Integer remainNum;
 
     // 状态
     private String status;

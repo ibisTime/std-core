@@ -20,6 +20,9 @@ public interface IInteractAO {
     public Paginable<Interact> queryInteractPage(int start, int limit,
             Interact condition);
 
+    public Paginable<Interact> queryFrontInteractPage(int start, int limit,
+            Interact condition);
+
     public List<Interact> queryInteractList(Interact condition);
 
     public Interact getInteract(String code, String companyCode,

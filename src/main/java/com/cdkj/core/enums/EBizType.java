@@ -14,7 +14,8 @@ public enum EBizType {
             "活动购买退款"), AJ_TKGM("TKGM", "团课购买"), AJ_TKGMTK("TKGMTK", "团课购买退款"), AJ_SKGM(
             "SKGM", "私课购买"), AJ_SKGMTK("SKGMTK", "私课购买退款"), HDGMSJF("HDGMSJF",
             "活动购买送积分"), SKGMSJF("SKGMSJF", "私课购买加积分"), KCGMSJF("KCGMSJF",
-            "团课购买加积分"), TJ("TJ", "推荐得分成"), TTJFC("TTJFC", "团课教练分成");
+            "团课购买加积分"), TJ("TJ", "推荐得分成"), TTJFC("TTJFC", "团课教练分成"), TRAVELS_DS(
+            "TRDS", "游记打赏");
 
     public static Map<String, EBizType> getBizTypeMap() {
         Map<String, EBizType> map = new HashMap<String, EBizType>();

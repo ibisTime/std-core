@@ -17,8 +17,11 @@ public class Interact extends ABaseDO {
     // 编号
     private String code;
 
-    // 类型(1 点赞 2 收藏 3 浏览)
+    // 类型
     private String type;
+
+    // 种类()
+    private String kind;
 
     // 实体编号
     private String entityCode;
@@ -28,6 +31,9 @@ public class Interact extends ABaseDO {
 
     // 交互时间
     private Date interactDatetime;
+
+    // 备注
+    private String remark;
 
     // 公司编号
     private String companyCode;
@@ -41,6 +47,55 @@ public class Interact extends ABaseDO {
 
     // 资讯
     private News news;
+
+    // 交互人名称
+    private String interacterName;
+
+    // 昵称
+    private String nickname;
+
+    // 头像
+    private String photo;
+
+    public String getInteracterName() {
+        return interacterName;
+    }
+
+    public void setInteracterName(String interacterName) {
+        this.interacterName = interacterName;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
 
     public News getNews() {
         return news;

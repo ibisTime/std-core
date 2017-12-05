@@ -14,13 +14,13 @@
   cd /Users/myb858/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp9/wtpwebapps
   
 2，打包
-  scp -P22 ./std-core.war root@106.15.49.68:/home
-  zhkj12580QQ
+  scp -P22 ./std-core.war root@121.43.101.148:/home
+  cdkj123456Q
   
 3，部署
-  ssh root@106.15.49.68 -p 22
+  ssh root@121.43.101.148 -p 22
   
-  zhkj12580QQ
+  cdkj123456Q
   cd /mnt/www/hwds/tomcat_std_core/webapps
   cp ./std-core/WEB-INF/classes/application.properties .
   cp ./std-core/WEB-INF/classes/config.properties .
@@ -35,35 +35,4 @@
   ../bin/shutdown.sh
   ../bin/startup.sh
   
-http://106.15.49.68:3809/std-core/api
-
-
-  cd /home/wwwroot/gym/tomcat_std_account/webapps
-  cp ./std-account/WEB-INF/classes/application.properties .
-  cp ./std-account/WEB-INF/classes/config.properties .
-  
-  rm -rf std-account.war
-  rm -rf std-account
-  mv /home/std-account.war .
-  
-  mv -f application.properties ./std-account/WEB-INF/classes/
-  mv -f config.properties ./std-account/WEB-INF/classes/
-  
-  ../bin/shutdown.sh
-  ../bin/startup.sh
------------------------------------------------------------------
-
-  cd /home/wwwroot/gym/tomcat_std_user/webapps
-  cp ./std-user/WEB-INF/classes/application.properties .
-  cp ./std-user/WEB-INF/classes/config.properties .
-  
-  rm -rf std-user.war
-  rm -rf std-user
-  mv /home/std-user.war .
-  
-  mv -f application.properties ./std-user/WEB-INF/classes/
-  mv -f config.properties ./std-user/WEB-INF/classes/
-  
-  ../bin/shutdown.sh
-  ../bin/startup.sh
-  
+http://121.43.101.148:3809/std-core/api

@@ -8,8 +8,12 @@ package com.cdkj.core.dto.req;
  */
 public class XN801030Req {
 
-    // 类型(1 点赞 2 收藏 3 浏览)（必填）
+    // 类型 PRODUCT("P", "产品"), NEWS("N", "资讯"), RENT_PRODUCT("RP", "租赁产品"),
+    // TRAVEL("TR", "游记");（必填）
     private String type;
+
+    // 种类Collect("cl", "收藏"), Ds("ds", "打赏"), Dz("dz", "点赞");（必填）
+    private String kind;
 
     // 实体编号（必填）
     private String entityCode;
@@ -39,12 +43,12 @@ public class XN801030Req {
         this.entityCode = entityCode;
     }
 
-    public String getInteracter() {
-        return interacter;
+    public String getKind() {
+        return kind;
     }
 
-    public void setInteracter(String interacter) {
-        this.interacter = interacter;
+    public void setKind(String kind) {
+        this.kind = kind;
     }
 
     public String getCompanyCode() {
@@ -61,5 +65,13 @@ public class XN801030Req {
 
     public void setSystemCode(String systemCode) {
         this.systemCode = systemCode;
+    }
+
+    public String getInteracter() {
+        return interacter;
+    }
+
+    public void setInteracter(String interacter) {
+        this.interacter = interacter;
     }
 }

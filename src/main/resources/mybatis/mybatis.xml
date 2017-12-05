@@ -11,5 +11,6 @@
 		<typeAlias alias="sysConfig" type="com.cdkj.core.domain.SYSConfig" />
 		
 		<typeAlias alias="expressRule" type="com.cdkj.core.domain.ExpressRule" />
+		<typeAlias alias="travels" type="com.cdkj.core.domain.Travels" />
 	</typeAliases>
 </configuration>	

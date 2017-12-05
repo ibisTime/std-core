@@ -14,7 +14,7 @@ import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
 
 /**
- * 分页查询评论_前端
+ * 分页查询评论(统计分数)
  * @author: xieyj 
  * @since: 2017年9月5日 下午2:06:53 
  * @history:
@@ -40,7 +40,7 @@ public class XN801028 extends AProcessor {
         condition.setOrder(orderColumn, req.getOrderDir());
         int start = StringValidater.toInteger(req.getStart());
         int limit = StringValidater.toInteger(req.getLimit());
-        return commentAO.queryFrontCommentPage(start, limit, condition);
+        return commentAO.queryFrontScoreCommentPage(start, limit, condition);
     }
 
     @Override

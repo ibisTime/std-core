@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import com.cdkj.core.ao.ICommentAO;
 import com.cdkj.core.bo.ICommentBO;
@@ -56,7 +57,8 @@ public class CommentAOImpl implements ICommentAO {
             String systemCode) {
         // 判断是否含有关键字
         EReaction result = keywordBO.checkContent(comment.getContent());
-        String code = OrderNoGenerater.generate(EPrefixCode.COMMENT.getCode());
+        String code = OrderNoGenerater
+            .generateME(EPrefixCode.COMMENT.getCode());
         Comment data = new Comment();
         data.setCode(code);
         data.setType(type);
@@ -119,7 +121,21 @@ public class CommentAOImpl implements ICommentAO {
     }
 
     @Override
-    public XN801028Res queryFrontCommentPage(int start, int limit,
+    public Paginable<Comment> queryFrontCommentPage(int start, int limit,
+            Comment condition) {
+        Paginable<Comment> page = commentBO.getPaginable(start, limit,
+            condition);
+        List<Comment> commentList = page.getList();
+        if (!CollectionUtils.isEmpty(commentList)) {
+            for (Comment comment : commentList) {
+                commentBO.getRichComment(comment);
+            }
+        }
+        return page;
+    }
+
+    @Override
+    public XN801028Res queryFrontScoreCommentPage(int start, int limit,
             Comment condition) {
         Page<Comment> page = (Page<Comment>) commentBO.getPaginable(start,
             limit, condition);
