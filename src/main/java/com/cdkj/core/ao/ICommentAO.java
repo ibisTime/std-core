@@ -15,6 +15,10 @@ public interface ICommentAO {
 
     public List<String> comment(XN003010Req req);
 
+    public void comment(String entityCode, String type, String userId,
+            String content, String parentCode, String companyCode,
+            String systemCode);
+
     public void dropComment(String code);
 
     public void approveComment(String code, String result, String approver,

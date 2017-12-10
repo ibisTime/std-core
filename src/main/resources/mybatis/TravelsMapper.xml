@@ -35,6 +35,9 @@
 			<if test="status != null and status != '' ">
 				AND t.status = #{status}
 			</if>
+			<if test="publisher != null and publisher != '' ">
+				AND t.publisher = #{publisher}
+			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}
 			</if>
@@ -138,6 +141,7 @@
 		,updater = #{updater}
 		,update_datetime = #{updateDatetime}
 		,remark = #{remark}
+		WHERE code = #{code}
 	</update>
 	
 	<update id="update_status" parameterType="travels">
@@ -147,5 +151,6 @@
 		,updater = #{updater}
 		,update_datetime = #{updateDatetime}
 		,remark = #{remark}
+		WHERE code = #{code}
 	</update>
 </mapper>

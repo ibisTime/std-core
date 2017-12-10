@@ -20,7 +20,7 @@ public class XN801056 extends AProcessor {
 
     @Override
     public Object doBusiness() throws BizException {
-        return travelsAO.getTravels(req.getCode());
+        return travelsAO.getTravels(req.getCode(), req.getUserId());
     }
 
     @Override

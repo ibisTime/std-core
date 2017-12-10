@@ -230,9 +230,17 @@ public class TravelsAOImpl implements ITravelsAO {
     }
 
     @Override
-    public Travels getTravels(String code) {
+    public Travels getTravels(String code, String userId) {
         Travels data = travelsBO.getTravels(code);
         getTravelsDetail(data);
+        if (StringUtils.isNotBlank(userId)) {
+            boolean likeResult = interactBO.isInteract(userId,
+                EInteractType.TRAVEL, EInteractKind.Dz, data.getCode(),
+                data.getCompanyCode(), data.getSystemCode());
+            if (likeResult) {
+                data.setIsLike(EBoolean.YES.getCode());
+            }
+        }
         return data;
     }
 

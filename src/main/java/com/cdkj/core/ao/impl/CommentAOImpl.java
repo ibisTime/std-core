@@ -23,6 +23,7 @@ import com.cdkj.core.dto.req.XN003010Req;
 import com.cdkj.core.dto.res.XN801028Res;
 import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECommentStatus;
+import com.cdkj.core.enums.ECommentType;
 import com.cdkj.core.enums.EPrefixCode;
 import com.cdkj.core.enums.EReaction;
 import com.cdkj.core.exception.BizException;
@@ -84,6 +85,15 @@ public class CommentAOImpl implements ICommentAO {
         data.setSystemCode(systemCode);
         commentBO.saveComment(data);
         return code;
+    }
+
+    @Override
+    public void comment(String entityCode, String type, String userId,
+            String content, String parentCode, String companyCode,
+            String systemCode) {
+        ECommentType eCommentType = ECommentType.getResultMap().get(type);
+        commentBO.saveComment(userId, eCommentType, content, parentCode,
+            entityCode, companyCode, systemCode);
     }
 
     @Override

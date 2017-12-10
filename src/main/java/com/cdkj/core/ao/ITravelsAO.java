@@ -44,5 +44,5 @@ public interface ITravelsAO {
 
     public List<Travels> queryTravelsList(Travels condition);
 
-    public Travels getTravels(String code);
+    public Travels getTravels(String code, String userId);
 }

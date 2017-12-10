@@ -6,6 +6,14 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','user_status','0','正常','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','user_status','1','程序锁定','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','user_status','2','人工锁定','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'ol_user_status','用户状态','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','ol_user_status','0','正常','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','ol_user_status','1','程序锁定','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','ol_user_status','2','人工锁定','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','ol_user_status','3','待审核','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','ol_user_status','4','审核不通过','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'id_kind','证件类型','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','id_kind','1','身份证','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'role_level','角色等级','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
@@ -20,6 +28,7 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','lock_direction','2','解锁','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'user_kind','针对人群','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','user_kind','C','C端用户','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','user_kind','OL','领队用户','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'notice_status','公告状态','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','notice_status','0','未发布','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','notice_status','1','已发布','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
@@ -41,6 +50,8 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'account_type','账户类型','admin',now(),'','CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','account_type','C','C端用户','admin',now(),'','CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','account_type','P','平台用户','admin',now(),'','CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','account_type','OL','领队用户','admin',now(),'','CD-CHW000015','CD-CHW000015');
+
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'account_status','账户状态','admin',now(),'','CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','account_status','0','正常','admin',now(),'','CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','account_status','1','程序锁定','admin',now(),'','CD-CHW000015','CD-CHW000015');
@@ -201,6 +212,34 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','back_kd_company','JJKD','快捷快递','admin',now(),'','CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','back_kd_company','YSKD','优速快递','admin',now(),'','CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','back_kd_company','QTKD','其他','admin',now(),'','CD-CHW000015','CD-CHW000015');
+
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'travel_status','游记状态','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','travel_status','0','待审核','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','travel_status','1','审核通过','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','travel_status','2','审核不通过','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'act_type','活动类型','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','1','极限','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','2','滑雪','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','3','登山徒步','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','4','漂流溯溪','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','5','行摄','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','6','骑行','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','7','水上项目','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','8','空中项目','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','9','攀岩探洞','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','10','海岛露营','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','11','攀岩探洞','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','99','其他','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'act_status','活动状态','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_status','0','待审核','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_status','1','审核通过','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_status','2','审核不通过','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_status','3','未成团','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_status','4','已成团','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_status','5','已完成','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_status','9','已取消','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 
 /*
 -- Query: SELECT start_point,end_point,'1' start_weight,'10000' start_price,'1' add_weight,'1000' add_price,'admin' updater, now() as update_datetime,'CD-CHW000015' company_code,'CD-CHW000015' system_code FROM tstd_express_rule where start_point='浙江省'
