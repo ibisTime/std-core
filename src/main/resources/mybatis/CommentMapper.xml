@@ -65,6 +65,12 @@
 			<if test="entityName != null and entityName != '' ">
 				AND t.entity_name like "%"#{entityName}"%"
 			</if>
+			<if test="commentDatetimeStart != null and commentDatetimeStart != '' ">
+				<![CDATA[AND t.comment_datetime >= #{commentDatetimeStart}]]>
+			</if>
+			<if test="commentDatetimeEnd != null and commentDatetimeEnd != '' ">
+				<![CDATA[AND t.comment_datetime <= #{commentDatetimeEnd}]]>
+			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}
 			</if>

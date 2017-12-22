@@ -131,20 +131,6 @@ public class CommentAOImpl implements ICommentAO {
     }
 
     @Override
-    public Paginable<Comment> queryFrontCommentPage(int start, int limit,
-            Comment condition) {
-        Paginable<Comment> page = commentBO.getPaginable(start, limit,
-            condition);
-        List<Comment> commentList = page.getList();
-        if (!CollectionUtils.isEmpty(commentList)) {
-            for (Comment comment : commentList) {
-                commentBO.getRichComment(comment);
-            }
-        }
-        return page;
-    }
-
-    @Override
     public XN801028Res queryFrontScoreCommentPage(int start, int limit,
             Comment condition) {
         Page<Comment> page = (Page<Comment>) commentBO.getPaginable(start,
@@ -162,6 +148,34 @@ public class CommentAOImpl implements ICommentAO {
             avgScore = (totalScore) / totalCount;
         }
         return new XN801028Res(page, avgScore);
+    }
+
+    @Override
+    public Paginable<Comment> queryFrontCommentPage(int start, int limit,
+            Comment condition) {
+        Paginable<Comment> page = commentBO.getPaginable(start, limit,
+            condition);
+        List<Comment> commentList = page.getList();
+        if (!CollectionUtils.isEmpty(commentList)) {
+            for (Comment comment : commentList) {
+                commentBO.getRichComment(comment);
+            }
+        }
+        return page;
+    }
+
+    @Override
+    public Paginable<Comment> queryFrontOneCommentPage(int start, int limit,
+            Comment condition) {
+        Paginable<Comment> page = commentBO.getPaginable(start, limit,
+            condition);
+        List<Comment> commentList = page.getList();
+        if (!CollectionUtils.isEmpty(commentList)) {
+            for (Comment comment : commentList) {
+                commentBO.getNextComment(comment);
+            }
+        }
+        return page;
     }
 
     @Override

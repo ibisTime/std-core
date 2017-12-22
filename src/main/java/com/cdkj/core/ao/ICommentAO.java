@@ -33,6 +33,9 @@ public interface ICommentAO {
     public Paginable<Comment> queryFrontCommentPage(int start, int limit,
             Comment condition);
 
+    public Paginable<Comment> queryFrontOneCommentPage(int start, int limit,
+            Comment condition);
+
     public Comment getComment(String code);
 
 }

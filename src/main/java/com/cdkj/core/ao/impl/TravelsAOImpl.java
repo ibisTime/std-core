@@ -18,6 +18,7 @@ import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.common.AmountUtil;
 import com.cdkj.core.core.OrderNoGenerater;
+import com.cdkj.core.domain.Interact;
 import com.cdkj.core.domain.Travels;
 import com.cdkj.core.domain.User;
 import com.cdkj.core.dto.req.XN801050Req;
@@ -76,8 +77,8 @@ public class TravelsAOImpl implements ITravelsAO {
     @Override
     public void dropTravels(String code) {
         Travels data = travelsBO.getTravels(code);
-        if (!ETravelsStatus.TO_PUBLISH.getCode().equals(data.getStatus())) {
-            throw new BizException("xn0000", "当前游记不是待发布状态,不能操作");
+        if (ETravelsStatus.PUBLISH_YES.getCode().equals(data.getStatus())) {
+            throw new BizException("xn0000", "当前游记已发布,不能操作");
         }
         travelsBO.removeTravels(code);
     }
@@ -85,13 +86,14 @@ public class TravelsAOImpl implements ITravelsAO {
     @Override
     public void editTravels(XN801052Req req) {
         Travels data = travelsBO.getTravels(req.getCode());
-        if (!ETravelsStatus.TO_PUBLISH.getCode().equals(data.getStatus())) {
-            throw new BizException("xn0000", "当前游记不是待发布状态,不能操作");
+        if (ETravelsStatus.PUBLISH_YES.getCode().equals(data.getStatus())) {
+            throw new BizException("xn0000", "当前游记已发布,不能操作");
         }
         data.setCode(req.getCode());
         data.setTitle(req.getTitle());
         data.setDescription(req.getDescription());
         data.setPic(req.getPic());
+        data.setStatus(ETravelsStatus.TO_PUBLISH.getCode());
         data.setPublisher(req.getPublisher());
         data.setPublishDatetime(new Date());
         travelsBO.refreshTravels(data);
@@ -248,6 +250,9 @@ public class TravelsAOImpl implements ITravelsAO {
     @Transactional
     public void dsTravels(String userId, String travelCode, Long quantity) {
         Travels data = travelsBO.getTravels(travelCode);
+        if (userId.equals(data.getPublisher())) {
+            throw new BizException("xn0000", "自己的游记就不用打赏了吧");
+        }
         String remark = "赏金" + String.valueOf(AmountUtil.div(quantity, 1000L));
         interactBO.saveInteract(userId, EInteractType.TRAVEL, EInteractKind.Ds,
             travelCode, remark, data.getCompanyCode(), data.getSystemCode());
@@ -260,14 +265,16 @@ public class TravelsAOImpl implements ITravelsAO {
     @Override
     public void likeTravels(String userId, String travelCode) {
         Travels data = travelsBO.getTravels(travelCode);
-        boolean result = interactBO.isInteract(userId, EInteractType.TRAVEL,
+        Interact result = interactBO.getInteract(userId, EInteractType.TRAVEL,
             EInteractKind.Dz, travelCode, data.getCompanyCode(),
             data.getSystemCode());
-        if (result) {
-            throw new BizException("xn0000", "您已点过赞，不用重复点赞");
+        if (null == result) {
+            interactBO.saveInteract(userId, EInteractType.TRAVEL,
+                EInteractKind.Dz, travelCode, data.getCompanyCode(),
+                data.getSystemCode());
+        } else {
+            interactBO.removeInteract(result);
         }
-        interactBO.saveInteract(userId, EInteractType.TRAVEL, EInteractKind.Dz,
-            travelCode, data.getCompanyCode(), data.getSystemCode());
     }
 
     @Override

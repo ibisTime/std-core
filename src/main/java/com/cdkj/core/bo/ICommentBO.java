@@ -31,6 +31,8 @@ public interface ICommentBO extends IPaginableBO<Comment> {
 
     public Comment getRichComment(Comment comment);
 
+    public Comment getNextComment(Comment comment);
+
     public int getTotalCountComment(String entityCode, ECommentStatus status,
             String companyCode, String systemCode);
 }

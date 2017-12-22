@@ -3,6 +3,7 @@ package com.cdkj.core.bo.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,11 @@ import com.cdkj.core.bo.ISYSConfigBO;
 import com.cdkj.core.bo.base.PaginableBOImpl;
 import com.cdkj.core.dao.ISYSConfigDAO;
 import com.cdkj.core.domain.SYSConfig;
+import com.cdkj.core.dto.req.XN008001Req;
+import com.cdkj.core.dto.res.XN008001Res;
 import com.cdkj.core.exception.BizException;
+import com.cdkj.core.http.BizConnecter;
+import com.cdkj.core.http.JsonUtils;
 
 /**
  * @author: xieyj 
@@ -62,6 +67,25 @@ public class SYSConfigBOImpl extends PaginableBOImpl<SYSConfig> implements
             }
         }
         return result;
+    }
+
+    @Override
+    public String getConfigValueRemote(String ckey, String companyCode,
+            String systemCode) {
+        String cvalue = null;
+        if (StringUtils.isNotBlank(ckey)) {
+            XN008001Req req = new XN008001Req();
+            req.setKey(ckey);
+            req.setCompanyCode(companyCode);
+            req.setSystemCode(systemCode);
+            XN008001Res res = BizConnecter.getBizData("008001",
+                JsonUtils.object2Json(req), XN008001Res.class);
+            if (res == null) {
+                throw new BizException("XN000000", "系统参数不存在");
+            }
+            cvalue = res.getCvalue();
+        }
+        return cvalue;
     }
 
     @Override

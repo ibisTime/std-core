@@ -80,6 +80,39 @@ public class Comment extends ABaseDO {
     // 父评论
     private Comment parentComment;
 
+    // 子评论
+    private Comment childComment;
+
+    // 评论时间开始
+    private Date commentDatetimeStart;
+
+    // 评论时间结束
+    private Date commentDatetimeEnd;
+
+    public Date getCommentDatetimeStart() {
+        return commentDatetimeStart;
+    }
+
+    public void setCommentDatetimeStart(Date commentDatetimeStart) {
+        this.commentDatetimeStart = commentDatetimeStart;
+    }
+
+    public Date getCommentDatetimeEnd() {
+        return commentDatetimeEnd;
+    }
+
+    public void setCommentDatetimeEnd(Date commentDatetimeEnd) {
+        this.commentDatetimeEnd = commentDatetimeEnd;
+    }
+
+    public Comment getChildComment() {
+        return childComment;
+    }
+
+    public void setChildComment(Comment childComment) {
+        this.childComment = childComment;
+    }
+
     public Comment getParentComment() {
         return parentComment;
     }

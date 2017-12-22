@@ -35,5 +35,8 @@ public interface ISYSConfigBO extends IPaginableBO<SYSConfig> {
     public SYSConfig getConfigValue(String ckey, String companyCode,
             String systemCode);
 
+    public String getConfigValueRemote(String ckey, String companyCode,
+            String systemCode);
+
     public List<SYSConfig> querySYSConfigList(String type);
 }

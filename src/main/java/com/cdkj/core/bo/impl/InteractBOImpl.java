@@ -3,6 +3,7 @@ package com.cdkj.core.bo.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -143,6 +144,25 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
         condition.setSystemCode(systemCode);
         if (getTotalCount(condition) > 0) {
             result = true;
+        }
+        return result;
+    }
+
+    @Override
+    public Interact getInteract(String userId, EInteractType type,
+            EInteractKind kind, String entityCode, String companyCode,
+            String systemCode) {
+        Interact result = null;
+        Interact condition = new Interact();
+        condition.setInteracter(userId);
+        condition.setType(type.getCode());
+        condition.setKind(kind.getCode());
+        condition.setEntityCode(entityCode);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        List<Interact> list = interactDAO.selectList(condition);
+        if (CollectionUtils.isNotEmpty(list)) {
+            result = list.get(0);
         }
         return result;
     }

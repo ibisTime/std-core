@@ -3,22 +3,30 @@ package com.cdkj.core.bo.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.cdkj.core.bo.IAccountBO;
 import com.cdkj.core.bo.ICommentBO;
 import com.cdkj.core.bo.IKeywordBO;
+import com.cdkj.core.bo.ISYSConfigBO;
 import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.PaginableBOImpl;
+import com.cdkj.core.common.AmountUtil;
+import com.cdkj.core.common.DateUtil;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.dao.ICommentDAO;
 import com.cdkj.core.domain.Comment;
 import com.cdkj.core.domain.User;
+import com.cdkj.core.enums.EBizType;
 import com.cdkj.core.enums.ECommentStatus;
 import com.cdkj.core.enums.ECommentType;
+import com.cdkj.core.enums.ECurrency;
 import com.cdkj.core.enums.EPrefixCode;
 import com.cdkj.core.enums.EReaction;
+import com.cdkj.core.enums.EUserKind;
 import com.cdkj.core.exception.BizException;
 
 @Component
@@ -34,6 +42,12 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
     @Autowired
     private IKeywordBO keywordBO;
 
+    @Autowired
+    private IAccountBO accountBO;
+
+    @Autowired
+    private ISYSConfigBO sysConfigBO;
+
     @Override
     public void saveComment(Comment data) {
         commentDAO.insert(data);
@@ -48,6 +62,8 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         EReaction result = keywordBO.checkContent(content);
         String code = OrderNoGenerater
             .generateME(EPrefixCode.COMMENT.getCode());
+        // 活动回帖：用户在审核通过的活动中回帖，每次回帖可获得20积分。每日前五次可获得奖励
+        addJfUser(user, type, code, companyCode, systemCode);
         Comment data = new Comment();
         data.setCode(code);
         data.setType(type.getCode());
@@ -73,6 +89,27 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         data.setCompanyCode(companyCode);
         data.setSystemCode(systemCode);
         commentDAO.insert(data);
+    }
+
+    private void addJfUser(User user, ECommentType type, String commentCode,
+            String companyCode, String systemCode) {
+        if (!EUserKind.OUT_LEADER.getCode().equals(user.getKind())) {
+            return;
+        }
+        Comment condition = new Comment();
+        condition.setCommentDatetimeStart(DateUtil.getTodayStart());
+        condition.setCommentDatetimeEnd(DateUtil.getTodayEnd());
+        condition.setCommenter(user.getUserId());
+        Long count = commentDAO.selectTotalCount(condition);
+        if (count < 5) {
+            EBizType bizType = EBizType.HD_FK;
+            String cvalue = sysConfigBO.getConfigValueRemote("ACT_HT_JF",
+                companyCode, systemCode);
+            Long jfAmount = AmountUtil.mul(1000L, Double.valueOf(cvalue));
+            accountBO.doTransferAmountRemote("SYS_USER_HW", user.getUserId(),
+                ECurrency.JF, jfAmount, bizType, bizType.getValue(),
+                bizType.getValue(), commentCode);
+        }
     }
 
     @Override
@@ -133,6 +170,19 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         return data;
     }
 
+    private Comment getChildComment(String code) {
+        Comment data = null;
+        if (StringUtils.isNotBlank(code)) {
+            Comment condition = new Comment();
+            condition.setParentCode(code);
+            List<Comment> list = commentDAO.selectList(condition);
+            if (CollectionUtils.isNotEmpty(list)) {
+                data = list.get(0);
+            }
+        }
+        return data;
+    }
+
     @Override
     public Long queryTotalScore(Comment condition) {
         return commentDAO.selectTotalScore(condition);
@@ -156,18 +206,20 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         return comment;
     }
 
-    // @Override
-    // public void orderCommentList(List<Comment> commentList) {
-    // for (int i = 0; i < commentList.size(); i++) {
-    // for (int j = i + 1; j < commentList.size(); j++) {
-    // if (commentList.get(i).getCommentDatetime().getTime() > commentList
-    // .get(j).getCommentDatetime().getTime()) {
-    // Comment temp = new Comment();
-    // temp = commentList.get(i);
-    // commentList.set(i, commentList.get(j));
-    // commentList.set(j, temp);
-    // }
-    // }
-    // }
-    // }
+    @Override
+    public Comment getNextComment(Comment comment) {
+        User commentUser = userBO.getRemoteUser(comment.getCommenter());
+        comment.setCommenterName(commentUser.getMobile());
+        comment.setNickname(commentUser.getNickname());
+        comment.setPhoto(commentUser.getPhoto());
+        Comment childComment = getChildComment(comment.getCode());
+        if (null != childComment) {
+            User parentUser = userBO.getRemoteUser(childComment.getCommenter());
+            childComment.setCommenterName(parentUser.getMobile());
+            childComment.setNickname(parentUser.getNickname());
+            childComment.setPhoto(parentUser.getPhoto());
+            comment.setChildComment(childComment);
+        }
+        return comment;
+    }
 }

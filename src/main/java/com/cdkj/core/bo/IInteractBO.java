@@ -37,6 +37,10 @@ public interface IInteractBO extends IPaginableBO<Interact> {
             EInteractKind kind, String entityCode, String companyCode,
             String systemCode);
 
+    public Interact getInteract(String userId, EInteractType type,
+            EInteractKind kind, String entityCode, String companyCode,
+            String systemCode);
+
     public List<Interact> queryInteractList(String type, String entityCode,
             String interacter, String companyCode, String systemCode);
 
