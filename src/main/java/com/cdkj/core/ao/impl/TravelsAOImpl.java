@@ -1,5 +1,6 @@
 package com.cdkj.core.ao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.common.AmountUtil;
 import com.cdkj.core.core.OrderNoGenerater;
+import com.cdkj.core.domain.Comment;
 import com.cdkj.core.domain.Interact;
 import com.cdkj.core.domain.Travels;
 import com.cdkj.core.domain.User;
@@ -76,11 +78,14 @@ public class TravelsAOImpl implements ITravelsAO {
 
     @Override
     public void dropTravels(String code) {
-        Travels data = travelsBO.getTravels(code);
-        if (ETravelsStatus.PUBLISH_YES.getCode().equals(data.getStatus())) {
-            throw new BizException("xn0000", "当前游记已发布,不能操作");
-        }
         travelsBO.removeTravels(code);
+        List<Comment> commentList = new ArrayList<Comment>();
+        commentBO.searchCycleComment(code, commentList);
+        for (Comment commentData : commentList) {
+            commentBO.removeComment(commentData);
+        }
+        // 删除相关的数据
+        interactBO.removeInteractByEntityCode(code);
     }
 
     @Override
@@ -282,6 +287,7 @@ public class TravelsAOImpl implements ITravelsAO {
             String content, String parentCode) {
         Travels data = travelsBO.getTravels(travelCode);
         commentBO.saveComment(userId, ECommentType.TRAVEL, content, parentCode,
-            travelCode, data.getCompanyCode(), data.getSystemCode());
+            travelCode, data.getDescription(), data.getCompanyCode(),
+            data.getSystemCode());
     }
 }

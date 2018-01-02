@@ -8,4 +8,6 @@ public interface IInteractDAO extends IBaseDAO<Interact> {
     String NAMESPACE = IInteractDAO.class.getName().concat(".");
 
     int update(Interact data);
+
+    int deleteByEntityCode(Interact data);
 }

@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public enum ECommentType {
     PRODUCT("P", "产品"), RENT_PRODUCT("PR", "租赁产品"), TRAVEL("TR", "游记"), ACT_ANSWER(
-            "AN", "活动问题");
+            "AN", "活动留言");
 
     public static Map<String, ECommentType> getResultMap() {
         Map<String, ECommentType> map = new HashMap<String, ECommentType>();

@@ -12,13 +12,15 @@ public interface ICommentBO extends IPaginableBO<Comment> {
     public void saveComment(Comment data);
 
     public void saveComment(String userId, ECommentType type, String content,
-            String parentCommentCode, String entityCode, String companyCode,
-            String systemCode);
+            String parentCommentCode, String entityCode, String entityName,
+            String companyCode, String systemCode);
 
     public void removeComment(Comment data);
 
     public void approveComment(Comment data, String status, String approver,
             String remark);
+
+    public void searchCycleComment(String parentCode, List<Comment> list);
 
     public List<Comment> queryCommentList(Comment condition);
 
@@ -32,6 +34,8 @@ public interface ICommentBO extends IPaginableBO<Comment> {
     public Comment getRichComment(Comment comment);
 
     public Comment getNextComment(Comment comment);
+
+    public List<Comment> queryChildComment(String parentCode);
 
     public int getTotalCountComment(String entityCode, ECommentStatus status,
             String companyCode, String systemCode);

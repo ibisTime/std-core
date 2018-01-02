@@ -1,10 +1,12 @@
 package com.cdkj.core.dto.req;
 
-
 public class XN801020Req {
 
     // 实体编号（必填）
     private String entityCode;
+
+    // 实体名称（必填）
+    private String entityName;
 
     // 类型（必填）
     private String type;
@@ -30,6 +32,14 @@ public class XN801020Req {
 
     public void setEntityCode(String entityCode) {
         this.entityCode = entityCode;
+    }
+
+    public String getEntityName() {
+        return entityName;
+    }
+
+    public void setEntityName(String entityName) {
+        this.entityName = entityName;
     }
 
     public String getType() {

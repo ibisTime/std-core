@@ -22,6 +22,12 @@ public class InteractDAOImpl extends AMybatisTemplate implements IInteractDAO {
     }
 
     @Override
+    public int deleteByEntityCode(Interact data) {
+        return super.delete(NAMESPACE.concat("delete_interactByEntityCode"),
+            data);
+    }
+
+    @Override
     public Interact select(Interact condition) {
         return super.select(NAMESPACE.concat("select_interact"), condition,
             Interact.class);

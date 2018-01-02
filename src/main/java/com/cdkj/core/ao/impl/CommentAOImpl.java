@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 
 import com.cdkj.core.ao.ICommentAO;
 import com.cdkj.core.bo.ICommentBO;
@@ -88,12 +88,12 @@ public class CommentAOImpl implements ICommentAO {
     }
 
     @Override
-    public void comment(String entityCode, String type, String userId,
-            String content, String parentCode, String companyCode,
-            String systemCode) {
+    public void comment(String entityCode, String entityName, String type,
+            String userId, String content, String parentCode,
+            String companyCode, String systemCode) {
         ECommentType eCommentType = ECommentType.getResultMap().get(type);
         commentBO.saveComment(userId, eCommentType, content, parentCode,
-            entityCode, companyCode, systemCode);
+            entityCode, entityName, companyCode, systemCode);
     }
 
     @Override
@@ -113,7 +113,13 @@ public class CommentAOImpl implements ICommentAO {
     @Override
     public void dropComment(String code) {
         Comment comment = commentBO.getComment(code);
-        commentBO.removeComment(comment);
+        List<Comment> commentList = new ArrayList<Comment>();
+        commentList.add(comment);
+        // 删除下级，下下级评论
+        commentBO.searchCycleComment(code, commentList);
+        for (Comment data : commentList) {
+            commentBO.removeComment(data);
+        }
     }
 
     @Override
@@ -181,9 +187,7 @@ public class CommentAOImpl implements ICommentAO {
     @Override
     public Comment getComment(String code) {
         Comment comment = commentBO.getComment(code);
-        User user = userBO.getRemoteUser(comment.getCommenter());
-        comment.setNickname(user.getNickname());
-        comment.setPhoto(user.getPhoto());
+        commentBO.getRichComment(comment);
         return comment;
     }
 }

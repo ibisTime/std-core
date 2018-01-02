@@ -89,6 +89,13 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     }
 
     @Override
+    public void removeInteractByEntityCode(String entityCode) {
+        Interact data = new Interact();
+        data.setEntityCode(entityCode);
+        interactDAO.deleteByEntityCode(data);
+    }
+
+    @Override
     public void refreshInteract(Interact data) {
         interactDAO.update(data);
     }

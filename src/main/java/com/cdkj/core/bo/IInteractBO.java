@@ -23,6 +23,8 @@ public interface IInteractBO extends IPaginableBO<Interact> {
 
     public void removeInteract(Interact interact);
 
+    public void removeInteractByEntityCode(String entityCode);
+
     public void refreshInteract(Interact data);
 
     public List<Interact> queryInteractList(Interact condition);

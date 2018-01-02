@@ -44,6 +44,14 @@ public interface IKeywordBO extends IPaginableBO<Keyword> {
     public EReaction checkContent(String content);
 
     /**
+     * 检查内容
+     * @param content 
+     * @create: 2017年12月29日 上午11:08:32 xieyj
+     * @history:
+     */
+    public void checkKeywordContent(String content);
+
+    /**
      * 过滤替换关键字
      * @param content
      * @param word

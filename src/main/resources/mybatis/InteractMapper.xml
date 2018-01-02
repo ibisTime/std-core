@@ -95,4 +95,9 @@
 		DELETE FROM tstd_interact
 		WHERE code = #{code}
 	</delete>
+	
+	<delete id="delete_interactByEntityCode" parameterType="interact">
+		DELETE FROM tstd_interact
+		WHERE entity_code = #{entityCode}
+	</delete>
 </mapper>

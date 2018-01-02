@@ -21,6 +21,7 @@ import com.cdkj.core.bo.base.PaginableBOImpl;
 import com.cdkj.core.dao.IKeywordDAO;
 import com.cdkj.core.domain.Keyword;
 import com.cdkj.core.enums.EReaction;
+import com.cdkj.core.exception.BizException;
 
 /** 
  * @author: xieyj 
@@ -131,6 +132,30 @@ public class KeywordBOImpl extends PaginableBOImpl<Keyword> implements
             return EReaction.REFUSE;
         } else {
             return EReaction.NORMAL;
+        }
+    }
+
+    @Override
+    public void checkKeywordContent(String content) {
+        if (StringUtils.isBlank(content)) {
+            return;
+        }
+        List<Keyword> resultList = new ArrayList<Keyword>();
+        // 针对所有
+        Keyword condition = new Keyword();
+        condition.setWeightStart(0.5);
+        List<Keyword> allList = keywordDAO.selectList(condition);
+        for (Keyword keyword : allList) {
+            if (content.indexOf(keyword.getWord()) >= 0) {
+                resultList.add(keyword);
+            }
+        }
+        if (CollectionUtils.isNotEmpty(resultList)) {
+            String firstKeyword = resultList.get(0).getWord();
+            if (resultList.size() > 1) {
+                firstKeyword = firstKeyword + "等";
+            }
+            throw new BizException("xn0000", "当前评论存在敏感词汇[" + firstKeyword + "]");
         }
     }
 }

@@ -24,18 +24,18 @@ public class XN801020 extends AProcessor {
 
     @Override
     public Object doBusiness() throws BizException {
-        commentAO.comment(req.getEntityCode(), req.getType(), req.getUserId(),
-            req.getContent(), req.getParentCode(), req.getCompanyCode(),
-            req.getSystemCode());
+        commentAO.comment(req.getEntityCode(), req.getEntityName(),
+            req.getType(), req.getUserId(), req.getContent(),
+            req.getParentCode(), req.getCompanyCode(), req.getSystemCode());
         return new BooleanRes(true);
     }
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
         req = JsonUtil.json2Bean(inputparams, XN801020Req.class);
-        StringValidater.validateBlank(req.getEntityCode(), req.getType(),
-            req.getUserId(), req.getContent(), req.getParentCode(),
-            req.getCompanyCode(), req.getSystemCode());
+        StringValidater.validateBlank(req.getEntityCode(), req.getEntityName(),
+            req.getType(), req.getUserId(), req.getContent(),
+            req.getParentCode(), req.getCompanyCode(), req.getSystemCode());
     }
 
 }

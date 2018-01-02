@@ -12,6 +12,7 @@ import com.cdkj.core.bo.IAccountBO;
 import com.cdkj.core.bo.ICommentBO;
 import com.cdkj.core.bo.IKeywordBO;
 import com.cdkj.core.bo.ISYSConfigBO;
+import com.cdkj.core.bo.ITravelsBO;
 import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.PaginableBOImpl;
 import com.cdkj.core.common.AmountUtil;
@@ -25,7 +26,6 @@ import com.cdkj.core.enums.ECommentStatus;
 import com.cdkj.core.enums.ECommentType;
 import com.cdkj.core.enums.ECurrency;
 import com.cdkj.core.enums.EPrefixCode;
-import com.cdkj.core.enums.EReaction;
 import com.cdkj.core.enums.EUserKind;
 import com.cdkj.core.exception.BizException;
 
@@ -43,6 +43,9 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
     private IKeywordBO keywordBO;
 
     @Autowired
+    private ITravelsBO travelsBO;
+
+    @Autowired
     private IAccountBO accountBO;
 
     @Autowired
@@ -55,27 +58,18 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
 
     @Override
     public void saveComment(String userId, ECommentType type, String content,
-            String parentCommentCode, String entityCode, String companyCode,
-            String systemCode) {
+            String parentCommentCode, String entityCode, String entityName,
+            String companyCode, String systemCode) {
         User user = userBO.getRemoteUser(userId);
         // 判断是否含有关键字
-        EReaction result = keywordBO.checkContent(content);
+        keywordBO.checkKeywordContent(content);
         String code = OrderNoGenerater
             .generateME(EPrefixCode.COMMENT.getCode());
-        // 活动回帖：用户在审核通过的活动中回帖，每次回帖可获得20积分。每日前五次可获得奖励
-        addJfUser(user, type, code, companyCode, systemCode);
         Comment data = new Comment();
         data.setCode(code);
         data.setType(type.getCode());
         data.setContent(content);
-
-        String status = ECommentStatus.PUBLISHED.getCode();
-        if (EReaction.REFUSE.getCode().equals(result.getCode())) {
-            status = ECommentStatus.FILTERED.getCode();
-            code = code + "||" + parentCommentCode + "||" + "||filter";
-        }
-        data.setStatus(status);
-
+        data.setStatus(ECommentStatus.PUBLISHED.getCode());
         data.setCommenter(user.getUserId());
         String commenterName = user.getMobile();
         if (StringUtils.isBlank(commenterName)) {
@@ -85,10 +79,12 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         data.setCommentDatetime(new Date());
         data.setParentCode(parentCommentCode);
         data.setEntityCode(entityCode);
-
+        data.setEntityName(entityName);
         data.setCompanyCode(companyCode);
         data.setSystemCode(systemCode);
         commentDAO.insert(data);
+        // 活动回帖：用户在审核通过的活动中回帖，每次回帖可获得20积分。每日前五次可获得奖励
+        addJfUser(user, type, code, companyCode, systemCode);
     }
 
     private void addJfUser(User user, ECommentType type, String commentCode,
@@ -127,6 +123,19 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
         data.setApproveDatetime(new Date());
         data.setRemark(remark);
         commentDAO.approveComment(data);
+    }
+
+    @Override
+    public void searchCycleComment(String parentCode, List<Comment> list) {
+        Comment condition = new Comment();
+        condition.setParentCode(parentCode);
+        List<Comment> nextList = queryCommentList(condition);
+        if (CollectionUtils.isNotEmpty(nextList)) {
+            list.addAll(nextList);
+            for (int i = 0; i < nextList.size(); i++) {
+                searchCycleComment(nextList.get(i).getCode(), list);
+            }
+        }
     }
 
     @Override
@@ -181,6 +190,17 @@ public class CommentBOImpl extends PaginableBOImpl<Comment> implements
             }
         }
         return data;
+    }
+
+    @Override
+    public List<Comment> queryChildComment(String parentCode) {
+        List<Comment> list = null;
+        if (StringUtils.isNotBlank(parentCode)) {
+            Comment condition = new Comment();
+            condition.setParentCode(parentCode);
+            list = commentDAO.selectList(condition);
+        }
+        return list;
     }
 
     @Override
