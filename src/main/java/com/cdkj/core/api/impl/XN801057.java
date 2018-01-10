@@ -32,7 +32,7 @@ public class XN801057 extends AProcessor {
         condition.setSystemCode(req.getSystemCode());
         String orderColumn = req.getOrderColumn();
         if (StringUtils.isBlank(orderColumn)) {
-            orderColumn = ITravelsAO.DEFAULT_ORDER_COLUMN;
+            orderColumn = "publish_datetime";
         }
         condition.setOrder(orderColumn, req.getOrderDir());
         int start = StringValidater.toInteger(req.getStart());
