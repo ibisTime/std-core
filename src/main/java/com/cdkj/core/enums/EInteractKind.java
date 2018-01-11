@@ -18,6 +18,7 @@ import java.util.Map;
  */
 public enum EInteractKind {
     Collect("cl", "收藏"), Ds("ds", "打赏"), Dz("dz", "点赞");
+
     public static Map<String, EInteractKind> getMap() {
         Map<String, EInteractKind> map = new HashMap<String, EInteractKind>();
         for (EInteractKind direction : EInteractKind.values()) {

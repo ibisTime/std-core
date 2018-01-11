@@ -7,6 +7,9 @@ package com.cdkj.core.dto.req;
  * @history:
  */
 public class XN801031Req {
+    // 种类（必填）
+    private String kind;
+
     // 类型(1 点赞 2 收藏 3 浏览)（必填）
     private String type;
 
@@ -21,6 +24,14 @@ public class XN801031Req {
 
     // 系统编号（必填）
     private String systemCode;
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
 
     public String getType() {
         return type;

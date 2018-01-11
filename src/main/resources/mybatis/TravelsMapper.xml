@@ -27,7 +27,10 @@
 				AND t.code = #{code}
 			</if>
 			<if test="title != null and title != '' ">
-				AND t.title like '%'#{title}'%'
+				AND t.title like "%"#{title}"%"
+			</if>
+			<if test="description != null and description != '' ">
+				AND t.description like "%"#{description}"%"
 			</if>
 			<if test="location != null and location != '' ">
 				AND t.location = #{location}

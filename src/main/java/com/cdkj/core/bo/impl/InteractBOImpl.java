@@ -26,18 +26,6 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     private IInteractDAO interactDAO;
 
     @Override
-    public void doCheckExist(String userId, String type, String entityCode) {
-        Interact condition = new Interact();
-        condition.setInteracter(userId);
-        condition.setType(type);
-        condition.setEntityCode(entityCode);
-        if (getTotalCount(condition) > 0) {
-            throw new BizException("xn000000", "您已"
-                    + EInteractType.getMap().get(type).getValue() + ",无需再次操作");
-        }
-    }
-
-    @Override
     public void saveInteract(Interact data) {
         interactDAO.insert(data);
     }
@@ -175,9 +163,11 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     }
 
     @Override
-    public List<Interact> queryInteractList(String type, String entityCode,
-            String interacter, String companyCode, String systemCode) {
+    public List<Interact> queryInteractList(String kind, String type,
+            String entityCode, String interacter, String companyCode,
+            String systemCode) {
         Interact condition = new Interact();
+        condition.setKind(kind);
         condition.setType(type);
         condition.setEntityCode(entityCode);
         condition.setInteracter(interacter);

@@ -22,3 +22,7 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 
 update tsys_dict set dvalue ='免费活动成团奖励' where dkey='HD_MFFB';
 update tsys_dict set dvalue ='收费活动成团奖励' where dkey='HD_SFFB';
+
+update tstd_travels set status ='0' where status ='1';
+
+update tstd_interact set kind='cl' where type ='P' or type='RP' or type='N';

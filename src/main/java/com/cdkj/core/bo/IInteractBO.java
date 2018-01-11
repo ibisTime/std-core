@@ -9,8 +9,6 @@ import com.cdkj.core.enums.EInteractType;
 
 public interface IInteractBO extends IPaginableBO<Interact> {
 
-    public void doCheckExist(String userId, String type, String entityCode);
-
     public void saveInteract(Interact data);
 
     public void saveInteract(String userId, EInteractType type,
@@ -43,8 +41,9 @@ public interface IInteractBO extends IPaginableBO<Interact> {
             EInteractKind kind, String entityCode, String companyCode,
             String systemCode);
 
-    public List<Interact> queryInteractList(String type, String entityCode,
-            String interacter, String companyCode, String systemCode);
+    public List<Interact> queryInteractList(String kind, String type,
+            String entityCode, String interacter, String companyCode,
+            String systemCode);
 
     public List<Interact> queryInteractList(EInteractType type,
             EInteractKind kind, String entityCode, String companyCode,

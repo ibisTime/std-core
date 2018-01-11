@@ -8,7 +8,6 @@ import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Travels;
 import com.cdkj.core.dto.req.XN801057Req;
-import com.cdkj.core.enums.ETravelsStatus;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
@@ -28,7 +27,6 @@ public class XN801057 extends AProcessor {
     @Override
     public Object doBusiness() throws BizException {
         Travels condition = new Travels();
-        condition.setStatus(ETravelsStatus.PUBLISH_YES.getCode());
         condition.setUserId(req.getUserId());
         condition.setCompanyCode(req.getCompanyCode());
         condition.setSystemCode(req.getSystemCode());

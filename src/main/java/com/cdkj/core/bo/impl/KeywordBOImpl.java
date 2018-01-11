@@ -152,9 +152,6 @@ public class KeywordBOImpl extends PaginableBOImpl<Keyword> implements
         }
         if (CollectionUtils.isNotEmpty(resultList)) {
             String firstKeyword = resultList.get(0).getWord();
-            if (resultList.size() > 1) {
-                firstKeyword = firstKeyword + "等";
-            }
             throw new BizException("xn0000", "当前评论存在敏感词汇[" + firstKeyword + "]");
         }
     }

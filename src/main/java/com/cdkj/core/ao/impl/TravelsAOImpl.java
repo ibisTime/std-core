@@ -77,6 +77,7 @@ public class TravelsAOImpl implements ITravelsAO {
     }
 
     @Override
+    @Transactional
     public void dropTravels(String code) {
         travelsBO.removeTravels(code);
         List<Comment> commentList = new ArrayList<Comment>();

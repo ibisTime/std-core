@@ -25,7 +25,6 @@ import com.cdkj.core.enums.EBoolean;
 import com.cdkj.core.enums.ECommentStatus;
 import com.cdkj.core.enums.ECommentType;
 import com.cdkj.core.enums.EPrefixCode;
-import com.cdkj.core.enums.EReaction;
 import com.cdkj.core.exception.BizException;
 
 @Service
@@ -57,7 +56,7 @@ public class CommentAOImpl implements ICommentAO {
             String commenter, String commenterName, String companyCode,
             String systemCode) {
         // 判断是否含有关键字
-        EReaction result = keywordBO.checkContent(comment.getContent());
+        keywordBO.checkKeywordContent(comment.getContent());
         String code = OrderNoGenerater
             .generateME(EPrefixCode.COMMENT.getCode());
         Comment data = new Comment();
@@ -68,10 +67,6 @@ public class CommentAOImpl implements ICommentAO {
         data.setContent(comment.getContent());
 
         String status = ECommentStatus.PUBLISHED.getCode();
-        if (EReaction.REFUSE.getCode().equals(result.getCode())) {
-            status = ECommentStatus.FILTERED.getCode();
-            code = code + "||" + comment.getEntityCode() + "||" + "||filter";
-        }
         data.setStatus(status);
 
         data.setCommenter(commenter);
