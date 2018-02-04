@@ -5,7 +5,7 @@ package com.cdkj.core.dto.req;
  * @since: 2016年9月17日 下午4:09:09 
  * @history:
  */
-public class XN801905Req extends APageReq {
+public class XN660905Req extends APageReq {
     /** 
      * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 
      */
