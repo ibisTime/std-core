@@ -37,6 +37,7 @@ INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`r
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('coin_price_x','eth_coin_price_x','10','admin',now(),'eth价格计算x','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('coin_price_x','sc_coin_price_x','0','admin',now(),'sc价格计算x','CD-COIN000017','CD-COIN000017');
 
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('buy_ads_hint','tradeCoin','请选择您要交易的币种。','admin',now(),'币种','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('buy_ads_hint','premiumRate','基于市场价的溢出比例，市场价是根据部分大型交易所实时价格得出的，确保您的报价趋于一个相对合理的范围，比如当前价格为8000，溢价比例为10%，那么价格为8800。','admin',now(),'买币溢价率说明','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('buy_ads_hint','price','基于比例得出的报价，每10分钟更新一次。','admin',now(),'买币价格说明','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('buy_ads_hint','minTrade','一次交易最低的交易限制','admin',now(),'买币最小交易额说明','CD-COIN000017','CD-COIN000017');
@@ -48,6 +49,7 @@ INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`r
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('buy_ads_hint','displayTime','您希望广告自动显示和隐藏的天数和小时数。','admin',now(),'广告展示时间','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('buy_ads_hint','trust','开启后，仅限与自己信任的用户与本广告交易','admin',now(),'仅限受信任的交易者','CD-COIN000017','CD-COIN000017');
 
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('sell_ads_hint','tradeCoin','请选择您要交易的币种。','admin',now(),'币种','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('sell_ads_hint','premiumRate','基于市场价的溢出比例，市场价是根据部分大型交易所实时价格得出的，确保您的报价趋于一个相对合理的范围，比如当前价格为8000，溢价比例为10%，那么价格为8800。','admin',now(),'卖币溢价率说明','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('sell_ads_hint','price','基于比例得出的报价，每10分钟更新一次。','admin',now(),'卖币价格说明','CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('sell_ads_hint','minTrade','一次交易最低的交易限制','admin',now(),'卖币最小交易说明','CD-COIN000017','CD-COIN000017');
@@ -216,7 +218,7 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0','','banner_location','banner位置','admin',now(),NULL,'CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_location','trade','APP交易首页','admin',now(),NULL,'CD-COIN000017','CD-COIN000017');
-INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_location','market','APP行情首页','admin',now(),NULL,'CD-COIN000017','CD-COIN000017');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_location','web_trade','WEB交易活动图','admin',now(),NULL,'CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_location','activity','APP邀请好友','admin',now(),NULL,'CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_location','web_banner','WEB首页广告','admin',now(),NULL,'CD-COIN000017','CD-COIN000017');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_location','web_download','WEB下载二维码','admin',now(),NULL,'CD-COIN000017','CD-COIN000017');
