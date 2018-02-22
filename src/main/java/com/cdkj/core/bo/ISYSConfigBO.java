@@ -8,7 +8,6 @@
  */
 package com.cdkj.core.bo;
 
-import java.util.List;
 import java.util.Map;
 
 import com.cdkj.core.bo.base.IPaginableBO;
@@ -36,7 +35,6 @@ public interface ISYSConfigBO extends IPaginableBO<SYSConfig> {
     public SYSConfig getConfigValue(String ckey, String companyCode,
             String systemCode);
 
-    public List<SYSConfig> querySYSConfigList(String type);
-
-    public Map<String, String> getConfigsMap(String type, String systemCode);
+    public Map<String, String> getConfigsMap(String type, String companyCode,
+            String systemCode);
 }
