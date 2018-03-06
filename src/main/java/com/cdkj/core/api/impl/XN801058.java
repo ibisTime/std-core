@@ -27,7 +27,7 @@ public class XN801058 extends AProcessor {
     @Override
     public Object doBusiness() throws BizException {
         Travels condition = new Travels();
-        condition.setUserId(req.getUserId());
+        condition.setPublisher(req.getUserId());
         String orderColumn = req.getOrderColumn();
         if (StringUtils.isBlank(orderColumn)) {
             orderColumn = ITravelsAO.DEFAULT_ORDER_COLUMN;
