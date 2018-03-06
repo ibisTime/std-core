@@ -158,9 +158,7 @@ public class TravelsAOImpl implements ITravelsAO {
     }
 
     public Paginable<Travels> queryMyTravelsPage(int start, int limit,
-            String userId) {
-        Travels condition = new Travels();
-        condition.setPublisher(userId);
+            Travels condition) {
         Paginable<Travels> page = travelsBO.getPaginable(start, limit,
             condition);
         if (!CollectionUtils.isEmpty(page.getList())) {

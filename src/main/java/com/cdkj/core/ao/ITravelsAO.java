@@ -40,7 +40,7 @@ public interface ITravelsAO {
             Travels condition);
 
     public Paginable<Travels> queryMyTravelsPage(int start, int limit,
-            String userId);
+            Travels condition);
 
     public List<Travels> queryTravelsList(Travels condition);
 
