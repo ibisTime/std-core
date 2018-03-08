@@ -29,6 +29,7 @@ INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`r
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('ios-c','note','TOKEN钱包上线','admin',now(),'更新说明','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('ios-c','downloadUrl','','admin',now(),'iOS下载地址','CD-TOKEN00018','CD-TOKEN00018');
 
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('withdraw_rule_ogc','withdraw_fee_ogc','0','admin',now(),'ogc取现手续费','CD-COIN000017','CD-COIN000017');
 /*
  * 云钱包数据字典
 -- Query: select `type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code` from tsys_config
