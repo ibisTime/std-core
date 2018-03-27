@@ -1,7 +1,7 @@
 
 #!/usr/bin/expect
 
-set tomcat_path "/mnt/www/coin/tomcat_std_core"
+set tomcat_path "/mnt/www/token/tomcat_std_core"
 set war_name "std-core"
 set host_ip "121.43.101.148"
 set host_pwd "cdkj123456Q"
