@@ -43,8 +43,8 @@ public class APIServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
-        writer.append("Version:1.0.0_token \n");
-        writer.append("Description:2nd \n");
+        writer.append("Version:1.2.0 \n");
+        writer.append("Description:std-core token \n");
         writer.flush();
     }
 
