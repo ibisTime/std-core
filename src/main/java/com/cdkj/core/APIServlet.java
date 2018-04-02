@@ -44,7 +44,7 @@ public class APIServlet extends HttpServlet {
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
         writer.append("Version:1.2.0 \n");
-        writer.append("Description:std-core token \n");
+        writer.append("Description:std-core token 1st \n");
         writer.flush();
     }
 
