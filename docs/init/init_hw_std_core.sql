@@ -227,7 +227,7 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','back_kd_company','QTKD','其他','admin',now(),'','CD-CHW000015','CD-CHW000015');
 
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'act_type','活动类型','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
-INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','1','极限','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','1','跑步','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','2','滑雪','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','3','登山徒步','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','4','漂流溯溪','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
@@ -238,6 +238,7 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','9','攀岩探洞','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','10','海岛露营','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','11','攀岩探洞','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','12','极限','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','act_type','99','其他','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
 
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'act_status','活动状态','admin',now(),NULL,'CD-CHW000015','CD-CHW000015');
