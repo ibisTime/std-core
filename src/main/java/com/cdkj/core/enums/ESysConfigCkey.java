@@ -13,7 +13,7 @@ public enum ESysConfigCkey {
     LXJL("LXJL", "零星教练"), YXJL("YXJL", "一星教练"), EXJL("EXJL", "二星教练"), SAXJL(
             "SAXJL", "三星教练"), SXJL("SXJL", "四星教练"), WXJL("WXJL", "五星教练"), HKFC(
             "HKFC", "推荐分成"), SJFC("SJFC", "私教分成"), WY("WY", "违约扣除比例"), TTJFC(
-            "TTJFC", "团课教练分成"), ;
+            "TTJFC", "团课教练分成"), DS_TRAVLES_JF("DS_TRAVLES_JF", "每天首次发布游记平台打赏积分");
 
     public static Map<String, ESysConfigCkey> getDictTypeMap() {
         Map<String, ESysConfigCkey> map = new HashMap<String, ESysConfigCkey>();

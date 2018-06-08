@@ -41,6 +41,12 @@
 			<if test="publisher != null and publisher != '' ">
 				AND t.publisher = #{publisher}
 			</if>
+			<if test="publishDatetimeStart != null and publishDatetimeStart != '' ">
+				<![CDATA[AND t.publish_datetime >= #{publishDatetimeStart}]]>
+			</if>
+			<if test="publishDatetimeEnd != null and publishDatetimeEnd != '' ">
+				<![CDATA[AND t.publish_datetime <= #{publishDatetimeEnd}]]>
+			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}
 			</if>
@@ -121,7 +127,9 @@
 	</insert>
 	
 	<update id="delete_travels" parameterType="travels">
-		DELETE FROM tstd_travels
+		UPDATE tstd_travels
+		SET
+		status = '3'
 		WHERE code = #{code}
 	</update>
 

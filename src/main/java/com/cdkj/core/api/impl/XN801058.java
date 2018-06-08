@@ -1,13 +1,12 @@
 package com.cdkj.core.api.impl;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.cdkj.core.ao.ITravelsAO;
 import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Travels;
 import com.cdkj.core.dto.req.XN801058Req;
+import com.cdkj.core.enums.ETravelsStatus;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
@@ -28,11 +27,12 @@ public class XN801058 extends AProcessor {
     public Object doBusiness() throws BizException {
         Travels condition = new Travels();
         condition.setPublisher(req.getUserId());
-        String orderColumn = req.getOrderColumn();
-        if (StringUtils.isBlank(orderColumn)) {
-            orderColumn = ITravelsAO.DEFAULT_ORDER_COLUMN;
-        }
-        condition.setOrder(orderColumn, req.getOrderDir());
+        condition.setStatus(ETravelsStatus.TO_PUBLISH.getCode());
+        // String orderColumn = req.getOrderColumn();
+        // if (StringUtils.isBlank(orderColumn)) {
+        // orderColumn = ITravelsAO.DEFAULT_ORDER_COLUMN;
+        // }
+        condition.setOrder("publish_datetime", "desc");
         int start = StringValidater.toInteger(req.getStart());
         int limit = StringValidater.toInteger(req.getLimit());
         return travelsAO.queryMyTravelsPage(start, limit, condition);

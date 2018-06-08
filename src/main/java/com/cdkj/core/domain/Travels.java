@@ -72,6 +72,26 @@ public class Travels extends ABaseDO {
 
     private Integer commentTimes;// 评论次数
 
+    private Date publishDatetimeStart;// 发布时间起
+
+    private Date publishDatetimeEnd;// 发布时间止
+
+    public Date getPublishDatetimeStart() {
+        return publishDatetimeStart;
+    }
+
+    public void setPublishDatetimeStart(Date publishDatetimeStart) {
+        this.publishDatetimeStart = publishDatetimeStart;
+    }
+
+    public Date getPublishDatetimeEnd() {
+        return publishDatetimeEnd;
+    }
+
+    public void setPublishDatetimeEnd(Date publishDatetimeEnd) {
+        this.publishDatetimeEnd = publishDatetimeEnd;
+    }
+
     // 当前用户是否点赞
     private String isLike;
 

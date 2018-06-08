@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.cdkj.core.bo.ITravelsBO;
 import com.cdkj.core.bo.base.PaginableBOImpl;
+import com.cdkj.core.common.DateUtil;
 import com.cdkj.core.dao.ITravelsDAO;
 import com.cdkj.core.domain.Travels;
 import com.cdkj.core.enums.ETravelsStatus;
@@ -82,4 +83,16 @@ public class TravelsBOImpl extends PaginableBOImpl<Travels> implements
         }
         return data;
     }
+
+    @Override
+    public int getTotalCount(String publisher) {
+        Travels condition = new Travels();
+        condition.setPublisher(publisher);
+        condition.setPublishDatetimeStart(DateUtil.getTodayStart());
+        condition.setPublishDatetimeEnd(DateUtil.getTodayEnd());
+        int count = travelsDAO.selectTotalCount(condition).intValue();
+        System.out.println(count);
+        return count;
+    }
+
 }

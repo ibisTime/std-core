@@ -21,4 +21,6 @@ public interface ITravelsBO extends IPaginableBO<Travels> {
 
     public Travels getTravels(String code);
 
+    public int getTotalCount(String publisher);
+
 }

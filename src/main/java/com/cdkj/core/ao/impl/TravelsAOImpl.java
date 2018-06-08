@@ -14,13 +14,16 @@ import com.cdkj.core.ao.ITravelsAO;
 import com.cdkj.core.bo.IAccountBO;
 import com.cdkj.core.bo.ICommentBO;
 import com.cdkj.core.bo.IInteractBO;
+import com.cdkj.core.bo.ISYSConfigBO;
 import com.cdkj.core.bo.ITravelsBO;
 import com.cdkj.core.bo.IUserBO;
 import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.common.AmountUtil;
 import com.cdkj.core.core.OrderNoGenerater;
+import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Comment;
 import com.cdkj.core.domain.Interact;
+import com.cdkj.core.domain.SYSConfig;
 import com.cdkj.core.domain.Travels;
 import com.cdkj.core.domain.User;
 import com.cdkj.core.dto.req.XN801050Req;
@@ -33,6 +36,9 @@ import com.cdkj.core.enums.ECurrency;
 import com.cdkj.core.enums.EGeneratePrefix;
 import com.cdkj.core.enums.EInteractKind;
 import com.cdkj.core.enums.EInteractType;
+import com.cdkj.core.enums.ESysConfigCkey;
+import com.cdkj.core.enums.ESysUser;
+import com.cdkj.core.enums.ESystemCode;
 import com.cdkj.core.enums.ETravelsStatus;
 import com.cdkj.core.exception.BizException;
 
@@ -54,8 +60,13 @@ public class TravelsAOImpl implements ITravelsAO {
     @Autowired
     private IUserBO userBO;
 
+    @Autowired
+    private ISYSConfigBO sysConfigBO;
+
     @Override
+    @Transactional
     public String addTravels(XN801050Req req) {
+        int count = travelsBO.getTotalCount(req.getPublisher());
         Travels data = new Travels();
         String code = OrderNoGenerater.generateME(EGeneratePrefix.Travels
             .getCode());
@@ -73,6 +84,19 @@ public class TravelsAOImpl implements ITravelsAO {
         data.setCompanyCode(req.getCompanyCode());
         data.setSystemCode(req.getSystemCode());
         travelsBO.saveTravels(data);
+
+        if (count <= 0) {
+            SYSConfig sysConfig = sysConfigBO.getConfigValue(
+                ESysConfigCkey.DS_TRAVLES_JF.getCode(),
+                ESystemCode.SYSTEM_CODE.getCode(),
+                ESystemCode.SYSTEM_CODE.getCode());
+            Long quantity = AmountUtil.mul(1000L,
+                StringValidater.toDouble(sysConfig.getCvalue()));
+            accountBO.doTransferAmountRemote(ESysUser.SYS_USER_HW.getCode(),
+                data.getPublisher(), ECurrency.JF, quantity,
+                EBizType.TRAVELS_DS, ESysConfigCkey.DS_TRAVLES_JF.getValue(),
+                ESysConfigCkey.DS_TRAVLES_JF.getValue(), code);
+        }
         return code;
     }
 
