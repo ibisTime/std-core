@@ -56,4 +56,10 @@ public class InteractDAOImpl extends AMybatisTemplate implements IInteractDAO {
         return 0;
     }
 
+    @Override
+    public long selectTotalQuantity(Interact condition) {
+        return super.selectTotalCount(NAMESPACE.concat("select_totalQuantity"),
+            condition);
+    }
+
 }

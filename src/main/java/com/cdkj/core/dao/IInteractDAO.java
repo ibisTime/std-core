@@ -10,4 +10,6 @@ public interface IInteractDAO extends IBaseDAO<Interact> {
     int update(Interact data);
 
     int deleteByEntityCode(Interact data);
+
+    long selectTotalQuantity(Interact condition);
 }

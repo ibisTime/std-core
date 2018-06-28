@@ -228,35 +228,6 @@ public class TravelsAOImpl implements ITravelsAO {
             ECommentStatus.PUBLISHALL, data.getCompanyCode(),
             data.getSystemCode());
         data.setCommentTimes(commentCount);
-
-        // data.setLikeInteractList(likeInteractList);
-        // if (!CollectionUtils.isEmpty(likeInteractList)) {
-        // for (Interact interact : likeInteractList) {
-        // User interactUser = userBO.getRemoteUser(interact
-        // .getInteracter());
-        // interact.setInteracterName(interactUser.getMobile());
-        // interact.setNickname(interactUser.getNickname());
-        // interact.setPhoto(interactUser.getPhoto());
-        // }
-        // }
-        // data.setDsInteractList(dsInteractList);
-        // if (!CollectionUtils.isEmpty(dsInteractList)) {
-        // for (Interact interact : dsInteractList) {
-        // User interactUser = userBO.getRemoteUser(interact
-        // .getInteracter());
-        // interact.setInteracterName(interactUser.getMobile());
-        // interact.setNickname(interactUser.getNickname());
-        // interact.setPhoto(interactUser.getPhoto());
-        // }
-        // }
-        // if (!CollectionUtils.isEmpty(commentList)) {
-        // for (Comment comment : commentList) {
-        // commentBO.getRichComment(comment);
-        // }
-        // }
-        // // 排序
-        // commentBO.orderCommentList(commentList);
-        // data.setCommentList(commentList);
     }
 
     @Override
@@ -281,9 +252,27 @@ public class TravelsAOImpl implements ITravelsAO {
         if (userId.equals(data.getPublisher())) {
             throw new BizException("xn0000", "自己的游记就不用打赏了吧");
         }
+        long nowTotalAmount = interactBO
+            .getTotalAmountToday(EInteractType.TRAVEL, EInteractKind.Ds,
+                userId, data.getPublisher());
+        long totalAmount = nowTotalAmount + quantity;
+
+        SYSConfig sysConfig = sysConfigBO.getConfigValue(
+            ESysConfigCkey.TODAY_DS_MAX_QUANTITY.getCode(),
+            ESystemCode.SYSTEM_CODE.getCode(),
+            ESystemCode.SYSTEM_CODE.getCode());
+        String dsMaxQuantity = sysConfig.getCvalue();
+        Long maxTodayQuantity = AmountUtil.mul(1000L,
+            StringValidater.toDouble(dsMaxQuantity));
+        if (maxTodayQuantity < totalAmount) {
+            throw new BizException("xn0000", "每天针对一个人游记打赏累计限额" + dsMaxQuantity
+                    + "积分");
+        }
+
         String remark = "赏金" + String.valueOf(AmountUtil.div(quantity, 1000L));
-        interactBO.saveInteract(userId, EInteractType.TRAVEL, EInteractKind.Ds,
-            travelCode, remark, data.getCompanyCode(), data.getSystemCode());
+        interactBO.saveInteractDs(userId, data.getPublisher(), quantity,
+            EInteractType.TRAVEL, EInteractKind.Ds, travelCode, remark,
+            data.getCompanyCode(), data.getSystemCode());
         accountBO.doTransferAmountRemote(userId, data.getPublisher(),
             ECurrency.JF, quantity, EBizType.TRAVELS_DS,
             EBizType.TRAVELS_DS.getValue(), EBizType.TRAVELS_DS.getValue(),

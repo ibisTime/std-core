@@ -15,9 +15,9 @@ public interface IInteractBO extends IPaginableBO<Interact> {
             EInteractKind kind, String entityCode, String companyCode,
             String systemCode);
 
-    public void saveInteract(String userId, EInteractType type,
-            EInteractKind kind, String entityCode, String remark,
-            String companyCode, String systemCode);
+    public void saveInteractDs(String userId, String toUser, Long quantity,
+            EInteractType type, EInteractKind kind, String entityCode,
+            String remark, String companyCode, String systemCode);
 
     public void removeInteract(Interact interact);
 
@@ -51,4 +51,7 @@ public interface IInteractBO extends IPaginableBO<Interact> {
 
     public int getTotalCountInteract(EInteractType type, EInteractKind kind,
             String entityCode, String companyCode, String systemCode);
+
+    public long getTotalAmountToday(EInteractType type, EInteractKind kind,
+            String interacter, String toUser);
 }

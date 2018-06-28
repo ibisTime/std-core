@@ -20,17 +20,23 @@ public class Interact extends ABaseDO {
     // 类型
     private String type;
 
-    // 种类()
+    // 种类
     private String kind;
 
     // 实体编号
     private String entityCode;
+
+    // 对应用户(打赏用的)
+    private String toUser;
 
     // 交互人
     private String interacter;
 
     // 交互时间
     private Date interactDatetime;
+
+    // 打赏金额
+    private Long quantity;
 
     // 备注
     private String remark;
@@ -56,6 +62,44 @@ public class Interact extends ABaseDO {
 
     // 头像
     private String photo;
+
+    // 交互时间起
+    private Date interactDatetimeStart;
+
+    // 交互时间止
+    private Date interactDatetimeEnd;
+
+    public String getToUser() {
+        return toUser;
+    }
+
+    public void setToUser(String toUser) {
+        this.toUser = toUser;
+    }
+
+    public Date getInteractDatetimeStart() {
+        return interactDatetimeStart;
+    }
+
+    public void setInteractDatetimeStart(Date interactDatetimeStart) {
+        this.interactDatetimeStart = interactDatetimeStart;
+    }
+
+    public Date getInteractDatetimeEnd() {
+        return interactDatetimeEnd;
+    }
+
+    public void setInteractDatetimeEnd(Date interactDatetimeEnd) {
+        this.interactDatetimeEnd = interactDatetimeEnd;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
 
     public String getInteracterName() {
         return interacterName;

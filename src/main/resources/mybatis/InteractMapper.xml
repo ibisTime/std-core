@@ -7,8 +7,11 @@
 		<result column="type" property="type" />
 		<result column="kind" property="kind" />
 		<result column="entity_code" property="entityCode" />
+		<result column="to_user" property="toUser" />
 		<result column="interacter" property="interacter" />
+		
 		<result column="interact_datetime" property="interactDatetime" />
+		<result column="quantity" property="quantity" />
 		<result column="remark" property="remark" />
 		<result column="company_code" property="companyCode" />
 		<result column="system_code" property="systemCode" />
@@ -27,8 +30,18 @@
 			<if test="entityCode != null and entityCode != '' ">
 				AND t.entity_code = #{entityCode}
 			</if>
+			<if test="toUser != null and toUser != '' ">
+				AND t.to_user = #{toUser}
+			</if>
 			<if test="interacter != null and interacter != '' ">
 				AND t.interacter = #{interacter}
+			</if>
+			
+			<if test="interactDatetimeStart != null and interactDatetimeStart != '' ">
+				<![CDATA[AND t.interact_datetime >= #{interactDatetimeStart}]]>
+			</if>
+			<if test="interactDatetimeEnd != null and interactDatetimeEnd != '' ">
+				<![CDATA[AND t.interact_datetime <= #{interactDatetimeEnd}]]>
 			</if>
 			<if test="companyCode != null and companyCode != '' ">
 				AND t.company_code = #{companyCode}
@@ -44,8 +57,10 @@
 		,t.type
 		,t.kind
 		,t.entity_code
+		,t.to_user
 		,t.interacter
 		,t.interact_datetime
+		,t.quantity
 		,t.remark
 		,t.company_code
 		,t.system_code
@@ -72,8 +87,10 @@
 		,type
 		,kind
 		,entity_code
+		,to_user
 		,interacter
 		,interact_datetime
+		,quantity
 		,remark
 		,company_code
 		,system_code
@@ -83,8 +100,10 @@
 		,#{type}
 		,#{kind}
 		,#{entityCode}
+		,#{toUser}
 		,#{interacter}
 		,#{interactDatetime}
+		,#{quantity}
 		,#{remark}
 		,#{companyCode}
 		,#{systemCode}
@@ -100,4 +119,10 @@
 		DELETE FROM tstd_interact
 		WHERE entity_code = #{entityCode}
 	</delete>
+	
+	<select id="select_totalQuantity" parameterType="interact"
+		resultType="java.lang.Long">
+		SELECT ifnull(sum(quantity),0) FROM tstd_interact t 
+		<include refid="where_condition" />
+	</select>
 </mapper>

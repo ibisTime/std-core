@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.cdkj.core.bo.IInteractBO;
 import com.cdkj.core.bo.base.PaginableBOImpl;
+import com.cdkj.core.common.DateUtil;
 import com.cdkj.core.core.OrderNoGenerater;
 import com.cdkj.core.dao.IInteractDAO;
 import com.cdkj.core.domain.Interact;
@@ -51,9 +52,9 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
     }
 
     @Override
-    public void saveInteract(String userId, EInteractType type,
-            EInteractKind kind, String entityCode, String remark,
-            String companyCode, String systemCode) {
+    public void saveInteractDs(String userId, String toUser, Long quantity,
+            EInteractType type, EInteractKind kind, String entityCode,
+            String remark, String companyCode, String systemCode) {
         if (StringUtils.isNotBlank(userId)) {
             Interact data = new Interact();
             String code = OrderNoGenerater.generateME(EGeneratePrefix.Interact
@@ -62,7 +63,9 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
             data.setType(type.getCode());
             data.setKind(kind.getCode());
             data.setInteracter(userId);
+            data.setToUser(toUser);
             data.setEntityCode(entityCode);
+            data.setQuantity(quantity);
             data.setRemark(remark);
             data.setCompanyCode(companyCode);
             data.setSystemCode(systemCode);
@@ -200,4 +203,19 @@ public class InteractBOImpl extends PaginableBOImpl<Interact> implements
         condition.setSystemCode(systemCode);
         return interactDAO.selectTotalCount(condition).intValue();
     }
+
+    @Override
+    public long getTotalAmountToday(EInteractType type, EInteractKind kind,
+            String interacter, String toUser) {
+        Interact condition = new Interact();
+        condition.setType(type.getCode());
+        condition.setKind(kind.getCode());
+        condition.setInteracter(interacter);
+        condition.setToUser(toUser);
+        condition.setInteractDatetimeStart(DateUtil.getTodayStart());
+        condition.setInteractDatetimeEnd(DateUtil.getTodayEnd());
+
+        return interactDAO.selectTotalQuantity(condition);
+    }
+
 }
