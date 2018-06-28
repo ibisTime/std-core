@@ -49,5 +49,9 @@
 	</bean>	
 	<bean id="publicityBO" class="com.cdkj.core.bo.impl.PublicityBOImpl">
 		<property name="paginableDAO" ref="publicityDAOImpl"/>
-    </bean>	
+    </bean>
+    
+    <bean id="countryBO" class="com.cdkj.core.bo.impl.CountryBOImpl">
+		<property name="paginableDAO" ref="countryDAOImpl"/>
+    </bean>
 </beans>

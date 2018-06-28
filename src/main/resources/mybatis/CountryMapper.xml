@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdkj.core.dao.ICountryDAO">
+	<resultMap id="country_DB_Result" type="country">
+		<result column="inter_code" property="interCode" />
+		<result column="inter_name" property="interName" />
+		<result column="chinese_name" property="chineseName" />
+		<result column="inter_simple_code" property="interSimpleCode" />
+		<result column="continent" property="continent" />
+	</resultMap>
+	<sql id="where_condition">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="interCode != null and interCode != '' ">
+				AND t.inter_code = #{interCode}
+			</if>
+			<if test="interCodeForQuery != null and interCodeForQuery != '' ">
+				AND t.inter_code like "%"#{interCodeForQuery}"%"
+			</if>
+			<if test="interName != null and interName != '' ">
+				AND t.inter_name like "%"#{interName}"%"
+			</if>
+			<if test="chineseName != null and chineseName != '' ">
+				AND t.chinese_name like "%"#{chinese_name}"%"
+			</if>
+			<if test="interSimpleCode != null and interSimpleCode != '' ">
+				AND t.inter_simple_code like "%"#{interSimpleCode}"%"
+			</if>
+			<if test="continent != null and continent != '' ">
+				AND t.continent = #{continent}
+			</if>
+		</trim>
+	</sql>
+	<select id="select_country" parameterType="country" resultMap="country_DB_Result">
+		SELECT
+		t.inter_code
+		,t.inter_name
+		,t.chinese_name
+		,t.inter_simple_code
+		,t.continent
+		FROM
+		tstd_country t
+		<include refid="where_condition" />
+		<trim prefix="ORDER BY ">
+			<if test="order != null and order != '' ">
+				t.${order}
+			</if>
+		</trim>
+	</select>
+
+	<select id="select_country_count" parameterType="country"
+		resultType="java.lang.Long">
+		SELECT count(1) FROM tstd_country t
+		<include refid="where_condition" />
+	</select>
+
+	<insert id="insert_country" parameterType="country">
+		INSERT INTO
+		tstd_country(
+		inter_code
+		,inter_name
+		,chinese_name
+		,inter_simple_code
+		,continent
+		)
+		VALUES(
+		#{interCode}
+		,#{interName}
+		,#{chineseName}
+		,#{interSimpleCode}
+		,#{continent}
+		)
+	</insert>
+
+
+</mapper>

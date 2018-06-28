@@ -13,5 +13,6 @@
 		<typeAlias alias="coupon" type="com.cdkj.core.domain.Coupon" />
 		<typeAlias alias="currencyActivity" type="com.cdkj.core.domain.CurrencyActivity" />
 		<typeAlias alias="publicity" type="com.cdkj.core.domain.Publicity" />
+		<typeAlias alias="country" type="com.cdkj.core.domain.Country" />
 	</typeAliases>
 </configuration>	
