@@ -32,6 +32,7 @@ public class XN801120 extends AProcessor {
         condition.setInterName(req.getInterName());
         condition.setInterSimpleCode(req.getInterSimpleCode());
         condition.setContinent(req.getContinent());
+        condition.setStatus(req.getStatus());
 
         String orderColumn = req.getOrderColumn();
         if (StringUtils.isBlank(orderColumn)) {

@@ -25,6 +25,9 @@ public class XN801120Req extends APageReq {
     // 所属洲际
     private String continent;
 
+    // 状态
+    private String status;
+
     public String getInterCode() {
         return interCode;
     }
@@ -63,6 +66,14 @@ public class XN801120Req extends APageReq {
 
     public void setContinent(String continent) {
         this.continent = continent;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

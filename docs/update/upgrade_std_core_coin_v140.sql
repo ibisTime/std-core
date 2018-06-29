@@ -6,8 +6,12 @@ CREATE TABLE `tstd_country` (
   `chinese_name` varchar(32) DEFAULT NULL COMMENT '中文名称',
   `inter_simple_code` varchar(32) DEFAULT NULL COMMENT '国际简码',
   `continent` varchar(32) DEFAULT NULL COMMENT '所属洲际',
+  `order_no` int(11) DEFAULT '0' COMMENT '展示顺序',
+  `status` varchar(32) DEFAULT '0' COMMENT '状态 0=不启用 1=启用',
   PRIMARY KEY (`inter_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'red_packet_status','红包状态','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');

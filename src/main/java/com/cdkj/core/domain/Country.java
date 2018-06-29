@@ -27,6 +27,12 @@ public class Country extends ABaseDO {
     // 所属洲际
     private String continent;
 
+    // 展示顺序
+    private Integer orderNo;
+
+    // 状态
+    private String status;
+
     // 国际代码查询条件
     private String interCodeForQuery;
 
@@ -68,6 +74,22 @@ public class Country extends ABaseDO {
 
     public String getContinent() {
         return continent;
+    }
+
+    public Integer getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(Integer orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getInterCodeForQuery() {

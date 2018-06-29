@@ -6,7 +6,7 @@ import com.cdkj.core.bo.base.Paginable;
 import com.cdkj.core.domain.Country;
 
 public interface ICountryAO {
-    static final String DEFAULT_ORDER_COLUMN = "inter_name";
+    static final String DEFAULT_ORDER_COLUMN = "order_no";
 
     public String addCountry(Country data);
 

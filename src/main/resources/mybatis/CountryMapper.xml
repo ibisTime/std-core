@@ -8,6 +8,8 @@
 		<result column="chinese_name" property="chineseName" />
 		<result column="inter_simple_code" property="interSimpleCode" />
 		<result column="continent" property="continent" />
+		<result column="order_no" property="orderNo" />
+		<result column="status" property="status" />
 	</resultMap>
 	<sql id="where_condition">
 		<trim prefix="WHERE" prefixOverrides="AND | OR">
@@ -29,6 +31,9 @@
 			<if test="continent != null and continent != '' ">
 				AND t.continent = #{continent}
 			</if>
+			<if test="status != null and status != '' ">
+				AND t.status = #{status}
+			</if>
 		</trim>
 	</sql>
 	<select id="select_country" parameterType="country" resultMap="country_DB_Result">
@@ -38,6 +43,8 @@
 		,t.chinese_name
 		,t.inter_simple_code
 		,t.continent
+		,t.order_no
+		,t.status
 		FROM
 		tstd_country t
 		<include refid="where_condition" />
@@ -62,6 +69,8 @@
 		,chinese_name
 		,inter_simple_code
 		,continent
+		,order_no
+		,status
 		)
 		VALUES(
 		#{interCode}
@@ -69,6 +78,8 @@
 		,#{chineseName}
 		,#{interSimpleCode}
 		,#{continent}
+		,#{orderNo}
+		,#{status}
 		)
 	</insert>
 
