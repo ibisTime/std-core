@@ -11,9 +11,6 @@ CREATE TABLE `tstd_country` (
   PRIMARY KEY (`inter_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-
-
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'red_packet_status','红包状态','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','red_packet_status','0','已发布','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','red_packet_status','1','未抢完','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
