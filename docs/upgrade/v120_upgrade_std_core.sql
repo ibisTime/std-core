@@ -13,7 +13,8 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','biz_type','43','领队推客返点','admin',now(),'','CD-CHW000015','CD-CHW000015');
 
 ALTER TABLE `tstd_interact` 
-ADD COLUMN `quantity` BIGINT(20) NULL COMMENT '打赏数量' AFTER `interact_datetime`;
+ADD COLUMN `quantity` BIGINT(20) NULL COMMENT '打赏数量' AFTER `interact_datetime`,
+ADD COLUMN `to_user` varchar(32) NULL COMMENT '打赏人' AFTER `interacter`;
 
 update tstd_interact set quantity = '0';
 

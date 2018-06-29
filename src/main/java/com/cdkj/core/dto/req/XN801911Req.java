@@ -5,14 +5,14 @@ package com.cdkj.core.dto.req;
  * @since: 2016年9月17日 下午4:09:34 
  * @history:
  */
-public class XN660911Req {
+public class XN801911Req {
     // 编号
     private Long id;
 
     // 值（必填）
     private String cvalue;
 
-    // 配置说明（必填）
+    // 配置说明（选填）
     private String note;
 
     // 更新人（必填）
