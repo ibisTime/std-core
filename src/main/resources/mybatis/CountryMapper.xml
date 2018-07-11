@@ -8,6 +8,7 @@
 		<result column="chinese_name" property="chineseName" />
 		<result column="inter_simple_code" property="interSimpleCode" />
 		<result column="continent" property="continent" />
+		<result column="pic" property="pic" />
 		<result column="order_no" property="orderNo" />
 		<result column="status" property="status" />
 	</resultMap>
@@ -43,6 +44,7 @@
 		,t.chinese_name
 		,t.inter_simple_code
 		,t.continent
+		,t.pic
 		,t.order_no
 		,t.status
 		FROM
@@ -69,6 +71,7 @@
 		,chinese_name
 		,inter_simple_code
 		,continent
+		,pic
 		,order_no
 		,status
 		)
@@ -78,6 +81,7 @@
 		,#{chineseName}
 		,#{interSimpleCode}
 		,#{continent}
+		,#{pic}
 		,#{orderNo}
 		,#{status}
 		)

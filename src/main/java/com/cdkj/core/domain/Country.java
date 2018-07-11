@@ -27,6 +27,9 @@ public class Country extends ABaseDO {
     // 所属洲际
     private String continent;
 
+    // 国旗图片
+    private String pic;
+
     // 展示顺序
     private Integer orderNo;
 
@@ -98,6 +101,14 @@ public class Country extends ABaseDO {
 
     public void setInterCodeForQuery(String interCodeForQuery) {
         this.interCodeForQuery = interCodeForQuery;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
 }
