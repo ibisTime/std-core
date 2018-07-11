@@ -1,5 +1,6 @@
 package com.cdkj.core.ao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.cdkj.core.bo.base.Paginable;
@@ -25,5 +26,8 @@ public interface ISYSConfigAO {
             String systemCode);
 
     public Map<String, String> getConfigsMap(String type, String companyCode,
+            String systemCode);
+
+    public List<SYSConfig> queryConfigsList(String type, String companyCode,
             String systemCode);
 }

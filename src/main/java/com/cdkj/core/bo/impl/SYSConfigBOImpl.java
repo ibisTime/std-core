@@ -22,8 +22,8 @@ import com.cdkj.core.exception.BizException;
  * @history:
  */
 @Component
-public class SYSConfigBOImpl extends PaginableBOImpl<SYSConfig> implements
-        ISYSConfigBO {
+public class SYSConfigBOImpl extends PaginableBOImpl<SYSConfig>
+        implements ISYSConfigBO {
     @Autowired
     private ISYSConfigDAO sysConfigDAO;
 
@@ -85,5 +85,15 @@ public class SYSConfigBOImpl extends PaginableBOImpl<SYSConfig> implements
             }
         }
         return map;
+    }
+
+    @Override
+    public List<SYSConfig> queryConfigsList(String type, String companyCode,
+            String systemCode) {
+        SYSConfig condition = new SYSConfig();
+        condition.setType(type);
+        condition.setCompanyCode(companyCode);
+        condition.setSystemCode(systemCode);
+        return sysConfigDAO.selectList(condition);
     }
 }

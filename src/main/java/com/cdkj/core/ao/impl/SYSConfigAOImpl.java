@@ -1,5 +1,6 @@
 package com.cdkj.core.ao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,12 @@ public class SYSConfigAOImpl implements ISYSConfigAO {
     public SYSConfig getSYSConfig(String key, String companyCode,
             String systemCode) {
         return sysConfigBO.getConfigValue(key, companyCode, systemCode);
+    }
+
+    @Override
+    public List<SYSConfig> queryConfigsList(String type, String companyCode,
+            String systemCode) {
+        return sysConfigBO.queryConfigsList(type, companyCode, systemCode);
     }
 
 }
