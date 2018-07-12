@@ -13,4 +13,4 @@ INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`r
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('followUs','Telegram','https://t.me/THAWallet_cn','admin',now(),'Telegram账号','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('followUs','WeChat','THA-Wallet','admin',now(),'微信账号','CD-TOKEN00018','CD-TOKEN00018');
 
-INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','redPacketShareUrl','http://m.thachain.com','admin',now(),'红包分享链接','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','redPacketShareUrl','http://m.thachain.org','admin',now(),'红包分享链接','CD-TOKEN00018','CD-TOKEN00018');
