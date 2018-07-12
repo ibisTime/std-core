@@ -1,10 +1,10 @@
 
 #!/usr/bin/expect
 
-set tomcat_path "/mnt/www/token/tomcat_std_core"
+set tomcat_path "/mnt/www/theia/tomcat_std_core"
 set war_name "std-core"
-set host_ip "120.26.6.213"
-set host_pwd "cdkj123456Q"
+set host_ip "47.75.165.70"
+set host_pwd "THA2018Online"
 
 ######## 1.传输文件至服务器根目录 ########
 spawn scp ./${war_name}.war root@${host_ip}:~/
