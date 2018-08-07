@@ -1,7 +1,5 @@
 package com.cdkj.core.api.impl;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.cdkj.core.ao.ICountryAO;
 import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
@@ -34,11 +32,7 @@ public class XN801120 extends AProcessor {
         condition.setContinent(req.getContinent());
         condition.setStatus(req.getStatus());
 
-        String orderColumn = req.getOrderColumn();
-        if (StringUtils.isBlank(orderColumn)) {
-            orderColumn = ICountryAO.DEFAULT_ORDER_COLUMN;
-        }
-        condition.setOrder(orderColumn, true);
+        condition.setOrder("order_no asc, inter_name asc");
 
         return countryAO.queryCountryList(condition);
     }
