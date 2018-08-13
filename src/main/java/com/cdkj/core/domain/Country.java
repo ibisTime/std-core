@@ -12,6 +12,9 @@ public class Country extends ABaseDO {
 
     private static final long serialVersionUID = 1L;
 
+    // 国家编号
+    private String code;
+
     // 国际代码
     private String interCode;
 
@@ -20,6 +23,9 @@ public class Country extends ABaseDO {
 
     // 中文名称
     private String chineseName;
+
+    // 本国语言名称
+    private String localName;
 
     // 国际简码
     private String interSimpleCode;
@@ -39,44 +45,68 @@ public class Country extends ABaseDO {
     // 国际代码查询条件
     private String interCodeForQuery;
 
-    public void setInterCode(String interCode) {
-        this.interCode = interCode;
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getInterCode() {
         return interCode;
     }
 
-    public void setInterName(String interName) {
-        this.interName = interName;
+    public void setInterCode(String interCode) {
+        this.interCode = interCode;
     }
 
     public String getInterName() {
         return interName;
     }
 
-    public void setChineseName(String chineseName) {
-        this.chineseName = chineseName;
+    public void setInterName(String interName) {
+        this.interName = interName;
     }
 
     public String getChineseName() {
         return chineseName;
     }
 
-    public void setInterSimpleCode(String interSimpleCode) {
-        this.interSimpleCode = interSimpleCode;
+    public void setChineseName(String chineseName) {
+        this.chineseName = chineseName;
+    }
+
+    public String getLocalName() {
+        return localName;
+    }
+
+    public void setLocalName(String localName) {
+        this.localName = localName;
     }
 
     public String getInterSimpleCode() {
         return interSimpleCode;
     }
 
-    public void setContinent(String continent) {
-        this.continent = continent;
+    public void setInterSimpleCode(String interSimpleCode) {
+        this.interSimpleCode = interSimpleCode;
     }
 
     public String getContinent() {
         return continent;
+    }
+
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
     public Integer getOrderNo() {
@@ -101,14 +131,6 @@ public class Country extends ABaseDO {
 
     public void setInterCodeForQuery(String interCodeForQuery) {
         this.interCodeForQuery = interCodeForQuery;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
     }
 
 }

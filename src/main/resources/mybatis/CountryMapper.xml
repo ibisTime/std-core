@@ -3,9 +3,11 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cdkj.core.dao.ICountryDAO">
 	<resultMap id="country_DB_Result" type="country">
+	    <result column="code" property="code" />
 		<result column="inter_code" property="interCode" />
 		<result column="inter_name" property="interName" />
 		<result column="chinese_name" property="chineseName" />
+		<result column="local_name" property="localName" />
 		<result column="inter_simple_code" property="interSimpleCode" />
 		<result column="continent" property="continent" />
 		<result column="pic" property="pic" />
@@ -14,6 +16,9 @@
 	</resultMap>
 	<sql id="where_condition">
 		<trim prefix="WHERE" prefixOverrides="AND | OR">
+		    <if test="code != null and code != '' ">
+				AND t.code = #{code}
+			</if>
 			<if test="interCode != null and interCode != '' ">
 				AND t.inter_code = #{interCode}
 			</if>
@@ -39,9 +44,11 @@
 	</sql>
 	<select id="select_country" parameterType="country" resultMap="country_DB_Result">
 		SELECT
-		t.inter_code
+		t.code
+		,t.inter_code
 		,t.inter_name
 		,t.chinese_name
+		,t.local_name
 		,t.inter_simple_code
 		,t.continent
 		,t.pic
@@ -66,9 +73,11 @@
 	<insert id="insert_country" parameterType="country">
 		INSERT INTO
 		tstd_country(
-		inter_code
+		code
+		,inter_code
 		,inter_name
 		,chinese_name
+		,local_name
 		,inter_simple_code
 		,continent
 		,pic
@@ -76,9 +85,11 @@
 		,status
 		)
 		VALUES(
-		#{interCode}
+		#{code}
+		,#{interCode}
 		,#{interName}
 		,#{chineseName}
+		,#{localName}
 		,#{interSimpleCode}
 		,#{continent}
 		,#{pic}

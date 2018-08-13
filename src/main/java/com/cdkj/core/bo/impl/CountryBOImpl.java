@@ -34,14 +34,14 @@ public class CountryBOImpl extends PaginableBOImpl<Country>
     }
 
     @Override
-    public Country getCountry(String interCode) {
+    public Country getCountry(String code) {
         Country data = null;
-        if (StringUtils.isNotBlank(interCode)) {
+        if (StringUtils.isNotBlank(code)) {
             Country condition = new Country();
-            condition.setInterCode(interCode);
+            condition.setCode(code);
             data = countryDAO.select(condition);
             if (data == null) {
-                throw new BizException("xn0000", "国家编码不存在");
+                throw new BizException("xn0000", "国家不存在");
             }
         }
         return data;
