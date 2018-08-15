@@ -24,9 +24,6 @@ public class Country extends ABaseDO {
     // 中文名称
     private String chineseName;
 
-    // 本国语言名称
-    private String localName;
-
     // 国际简码
     private String interSimpleCode;
 
@@ -75,14 +72,6 @@ public class Country extends ABaseDO {
 
     public void setChineseName(String chineseName) {
         this.chineseName = chineseName;
-    }
-
-    public String getLocalName() {
-        return localName;
-    }
-
-    public void setLocalName(String localName) {
-        this.localName = localName;
     }
 
     public String getInterSimpleCode() {

@@ -7,7 +7,6 @@
 		<result column="inter_code" property="interCode" />
 		<result column="inter_name" property="interName" />
 		<result column="chinese_name" property="chineseName" />
-		<result column="local_name" property="localName" />
 		<result column="inter_simple_code" property="interSimpleCode" />
 		<result column="continent" property="continent" />
 		<result column="pic" property="pic" />
@@ -48,7 +47,6 @@
 		,t.inter_code
 		,t.inter_name
 		,t.chinese_name
-		,t.local_name
 		,t.inter_simple_code
 		,t.continent
 		,t.pic
@@ -77,7 +75,6 @@
 		,inter_code
 		,inter_name
 		,chinese_name
-		,local_name
 		,inter_simple_code
 		,continent
 		,pic
@@ -89,7 +86,6 @@
 		,#{interCode}
 		,#{interName}
 		,#{chineseName}
-		,#{localName}
 		,#{interSimpleCode}
 		,#{continent}
 		,#{pic}
