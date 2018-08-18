@@ -216,7 +216,8 @@ CREATE TABLE `tsys_dict` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `tstd_country` (
-  `inter_code` varchar(32) NOT NULL COMMENT '国际代码',
+  `code` varchar(32) NOT NULL COMMENT '国家编号',
+  `inter_code` varchar(32) DEFAULT NULL COMMENT '国际代码',
   `inter_name` varchar(32) DEFAULT NULL COMMENT '国际名称',
   `chinese_name` varchar(32) DEFAULT NULL COMMENT '中文名称',
   `inter_simple_code` varchar(32) DEFAULT NULL COMMENT '国际简码',
@@ -224,6 +225,6 @@ CREATE TABLE `tstd_country` (
   `pic` varchar(255) DEFAULT NULL COMMENT '国旗图片',
   `order_no` int(11) DEFAULT '0' COMMENT '展示顺序',
   `status` varchar(32) DEFAULT '0' COMMENT '状态 0=不启用 1=启用',
-  PRIMARY KEY (`inter_code`)
+  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
