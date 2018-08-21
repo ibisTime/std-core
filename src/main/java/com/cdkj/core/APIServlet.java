@@ -45,7 +45,7 @@ public class APIServlet extends HttpServlet {
         logger.info("Successful Deployment");
         PrintWriter writer = response.getWriter();
         writer.append("Version:1.7.0 \n");
-        writer.append("Description:std-core THA 2nd \n");
+        writer.append("Description:std-core THA 3rd \n");
         writer.flush();
     }
 
