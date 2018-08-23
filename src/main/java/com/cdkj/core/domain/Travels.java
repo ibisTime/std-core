@@ -26,6 +26,9 @@ public class Travels extends ABaseDO {
     // 图片
     private String pic;
 
+    // 所属跑团
+    private String runTeamList;
+
     // 位置
     private String location;
 
@@ -261,5 +264,13 @@ public class Travels extends ABaseDO {
 
     public void setSystemCode(String systemCode) {
         this.systemCode = systemCode;
+    }
+
+    public String getRunTeamList() {
+        return runTeamList;
+    }
+
+    public void setRunTeamList(String runTeamList) {
+        this.runTeamList = runTeamList;
     }
 }

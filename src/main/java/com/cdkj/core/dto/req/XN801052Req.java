@@ -19,8 +19,19 @@ public class XN801052Req {
     // 图片多张(必填)
     private String pic;
 
+    // 跑团
+    private String runTeamList;
+
     // 发布人(必填)
     private String publisher;
+
+    public String getRunTeamList() {
+        return runTeamList;
+    }
+
+    public void setRunTeamList(String runTeamList) {
+        this.runTeamList = runTeamList;
+    }
 
     public String getCode() {
         return code;

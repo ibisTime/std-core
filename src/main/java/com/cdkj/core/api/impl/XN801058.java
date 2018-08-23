@@ -28,10 +28,6 @@ public class XN801058 extends AProcessor {
         Travels condition = new Travels();
         condition.setPublisher(req.getUserId());
         condition.setStatus(ETravelsStatus.TO_PUBLISH.getCode());
-        // String orderColumn = req.getOrderColumn();
-        // if (StringUtils.isBlank(orderColumn)) {
-        // orderColumn = ITravelsAO.DEFAULT_ORDER_COLUMN;
-        // }
         condition.setOrder("publish_datetime", "desc");
         int start = StringValidater.toInteger(req.getStart());
         int limit = StringValidater.toInteger(req.getLimit());

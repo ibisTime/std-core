@@ -7,6 +7,7 @@
 		<result column="title" property="title" />
 		<result column="description" property="description" />
 		<result column="pic" property="pic" />
+		<result column="run_team_list" property="runTeamList" />
 		<result column="location" property="location" />
 		<result column="order_no" property="orderNo" />
 		<result column="collection_times" property="collectionTimes" />
@@ -31,6 +32,9 @@
 			</if>
 			<if test="description != null and description != '' ">
 				AND t.description like "%"#{description}"%"
+			</if>
+			<if test="runTeamList != null and runTeamList != '' ">
+				AND t.run_team_list = #{runTeamList}
 			</if>
 			<if test="location != null and location != '' ">
 				AND t.location = #{location}
@@ -61,6 +65,7 @@
 		,t.title
 		,t.description
 		,t.pic
+		,t.run_team_list
 		,t.location
 		,t.order_no
 		,t.collection_times
@@ -97,6 +102,7 @@
 		,title
 		,description
 		,pic
+		,run_team_list
 		,location
 		,order_no
 		,collection_times
@@ -113,6 +119,7 @@
 		,#{title}
 		,#{description}
 		,#{pic}
+		,#{runTeamList}
 		,#{location}
 		,#{orderNo}
 		,#{collectionTimes}
@@ -138,6 +145,7 @@
 		SET
 		title = #{title}
 		,description = #{description}
+		,run_team_list = #{runTeamList}
 		,pic = #{pic}
 		,status = #{status}
 		,publisher = #{publisher}

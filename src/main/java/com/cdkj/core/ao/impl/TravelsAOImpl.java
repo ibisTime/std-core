@@ -74,6 +74,7 @@ public class TravelsAOImpl implements ITravelsAO {
         data.setTitle(req.getTitle());
         data.setDescription(req.getDescription());
         data.setPic(req.getPic());
+        data.setRunTeamList(req.getRunTeamList());
         data.setLocation(EBoolean.NO.getCode());
         data.setCollectionTimes(0);
         data.setLikeTimes(0);
@@ -123,6 +124,7 @@ public class TravelsAOImpl implements ITravelsAO {
         data.setTitle(req.getTitle());
         data.setDescription(req.getDescription());
         data.setPic(req.getPic());
+        data.setRunTeamList(req.getRunTeamList());
         data.setStatus(ETravelsStatus.TO_PUBLISH.getCode());
         data.setPublisher(req.getPublisher());
         data.setPublishDatetime(new Date());

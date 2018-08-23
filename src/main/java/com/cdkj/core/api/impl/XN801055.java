@@ -2,6 +2,7 @@ package com.cdkj.core.api.impl;
 
 import com.cdkj.core.ao.ITravelsAO;
 import com.cdkj.core.api.AProcessor;
+import com.cdkj.core.common.DateUtil;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.Travels;
@@ -27,13 +28,14 @@ public class XN801055 extends AProcessor {
     public Object doBusiness() throws BizException {
         Travels condition = new Travels();
         condition.setDescription(req.getDescription());
+        condition.setRunTeamList(req.getRunTeamList());
         condition.setStatus(ETravelsStatus.TO_PUBLISH.getCode());
+        condition.setPublishDatetimeStart(DateUtil.getFrontDate(
+            req.getDateStart(), false));
+        condition.setPublishDatetimeEnd(DateUtil.getFrontDate(req.getDateEnd(),
+            true));
         condition.setCompanyCode(req.getCompanyCode());
         condition.setSystemCode(req.getSystemCode());
-        // String orderColumn = req.getOrderColumn();
-        // if (StringUtils.isBlank(orderColumn)) {
-        // orderColumn = ITravelsAO.DEFAULT_ORDER_COLUMN;
-        // }
         condition.setOrder("publish_datetime", "desc");
         int start = StringValidater.toInteger(req.getStart());
         int limit = StringValidater.toInteger(req.getLimit());

@@ -9,11 +9,22 @@ public class XN801057Req extends APageReq {
     // 用户编号(选填)
     private String userId;
 
+    // 跑团(选填)
+    private String runTeamList;
+
     // 公司编号(选填)
     private String companyCode;
 
     // 系统编号(选填)
     private String systemCode;
+
+    public String getRunTeamList() {
+        return runTeamList;
+    }
+
+    public void setRunTeamList(String runTeamList) {
+        this.runTeamList = runTeamList;
+    }
 
     public String getCompanyCode() {
         return companyCode;

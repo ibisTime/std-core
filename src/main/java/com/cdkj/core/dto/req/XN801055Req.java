@@ -15,6 +15,9 @@ public class XN801055Req extends APageReq {
     // 文字描述(选填)
     private String description;
 
+    // 跑团(选填)
+    private String runTeamList;
+
     // 状态(选填)
     private String status;
 
@@ -23,6 +26,14 @@ public class XN801055Req extends APageReq {
 
     // 系统编号(必填)
     private String systemCode;
+
+    public String getRunTeamList() {
+        return runTeamList;
+    }
+
+    public void setRunTeamList(String runTeamList) {
+        this.runTeamList = runTeamList;
+    }
 
     public String getDescription() {
         return description;

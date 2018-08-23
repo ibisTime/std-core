@@ -9,13 +9,7 @@ import java.util.Map;
  * @history:
  */
 public enum EBizType {
-    AJ_REG("01", "注册送积分"), AJ_SIGN("02", "每日签到"), AJ_SCTX_FIRST("03", "首次上传头像"), AJ_ZLWS_FIRST(
-            "04", "首次完善资料"), AJ_HDGM("HDGM", "活动购买"), AJ_HDGMTK("HDGMTK",
-            "活动购买退款"), AJ_TKGM("TKGM", "团课购买"), AJ_TKGMTK("TKGMTK", "团课购买退款"), AJ_SKGM(
-            "SKGM", "私课购买"), AJ_SKGMTK("SKGMTK", "私课购买退款"), HDGMSJF("HDGMSJF",
-            "活动购买送积分"), SKGMSJF("SKGMSJF", "私课购买加积分"), KCGMSJF("KCGMSJF",
-            "团课购买加积分"), TJ("TJ", "推荐得分成"), TTJFC("TTJFC", "团课教练分成"), TRAVELS_DS(
-            "TRDS", "游记打赏"), HD_FK("HD_FK", "活动反馈奖励");
+    TRAVELS_DS("TRDS", "游记打赏"), HD_FK("HD_FK", "活动反馈奖励");
 
     public static Map<String, EBizType> getBizTypeMap() {
         Map<String, EBizType> map = new HashMap<String, EBizType>();

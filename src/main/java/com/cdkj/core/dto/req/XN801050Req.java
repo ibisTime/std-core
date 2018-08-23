@@ -10,6 +10,9 @@ public class XN801050Req {
     // 图片多张(必填)
     private String pic;
 
+    // 跑团
+    private String runTeamList;
+
     // 发布人(必填)
     private String publisher;
 
@@ -18,6 +21,14 @@ public class XN801050Req {
 
     // 系统编号(必填)
     private String systemCode;
+
+    public String getRunTeamList() {
+        return runTeamList;
+    }
+
+    public void setRunTeamList(String runTeamList) {
+        this.runTeamList = runTeamList;
+    }
 
     public String getCompanyCode() {
         return companyCode;
