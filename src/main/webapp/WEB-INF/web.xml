@@ -28,7 +28,7 @@ version="2.5">
   </context-param>
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>xn-activity.root</param-value>
+    <param-value>std.core.root</param-value>
   </context-param>
   <context-param>
     <param-name>configOuterFlag</param-name>
