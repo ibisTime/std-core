@@ -284,6 +284,6 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'payment_type','回款方式','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','payment_type','0','期满自动转入个人账户','admin', now(),'','CD-TOKEN00018','CD-TOKEN00018');
 
-INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','h5_download_android','http://app.thachain.org/appDownload/release/THA_1.6.1_{channel_name}.apk','admin',now(),'红包领取下载地址','CD-TOKEN00018','CD-TOKEN00018');
-INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','h5_download_ios','itms-services://?action=download-manifest&url=https://test.thachain.org/appDownload/test/tha_{channel_name}.plist','admin',now(),'红包领取下载地址','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','h5_download_android','http://app.thachain.org/appDownload/release/THA_1.6.1_{channel_name}.apk','admin',now(),'H5页面Android下载地址','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','h5_download_ios','itms-services://?action=download-manifest&url=https://test.thachain.org/appDownload/test/tha_{channel_name}.plist','admin',now(),'H5页面iOS下载地址','CD-TOKEN00018','CD-TOKEN00018');
 
