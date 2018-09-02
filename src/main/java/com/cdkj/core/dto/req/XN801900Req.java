@@ -5,7 +5,7 @@ package com.cdkj.core.dto.req;
  * @since: 2016年9月17日 下午1:39:41 
  * @history:
  */
-public class XN660900Req {
+public class XN801900Req {
 
     // 类型（第一层/第二层）（必填）
     private String type;

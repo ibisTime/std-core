@@ -98,6 +98,7 @@ public class SYSDictAOImpl implements ISYSDictAO {
     public int editSYSDict(Long id, String value, String updater, String remark) {
         SYSDict data = new SYSDict();
         data.setId(id);
+        data.setDkey(value);
         data.setDvalue(value);
         data.setUpdater(updater);
         data.setRemark(remark);

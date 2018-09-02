@@ -93,7 +93,8 @@
 	
 	<update id="update_sysDict" parameterType="sysDict">
 		UPDATE tsys_dict SET
-		dvalue = #{dvalue}
+		dkey = #{dkey}
+		,dvalue = #{dvalue}
 		,updater = #{updater}
 		,update_datetime = #{updateDatetime}
 		,remark=#{remark}

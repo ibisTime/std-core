@@ -2,10 +2,10 @@ package com.cdkj.core.dto.req;
 
 /**
  * @author: xieyj 
- * @since: 2016年9月17日 下午4:09:23 
+ * @since: 2016年9月17日 下午4:08:57 
  * @history:
  */
-public class XN660907Req {
+public class XN801901Req {
     // 编号（必填）
     private String id;
 

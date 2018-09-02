@@ -4,32 +4,31 @@ import com.cdkj.core.ao.ISYSDictAO;
 import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
 import com.cdkj.core.core.StringValidater;
-import com.cdkj.core.dto.req.XN660900Req;
-import com.cdkj.core.dto.res.PKIdRes;
+import com.cdkj.core.dto.req.XN801901Req;
+import com.cdkj.core.dto.res.BooleanRes;
 import com.cdkj.core.exception.BizException;
 import com.cdkj.core.exception.ParaException;
 import com.cdkj.core.spring.SpringContextHolder;
 
 /**
- * 新增数据字典
+ * 删除数据字典
  * @author: xieyj 
- * @since: 2016年9月17日 下午1:45:23 
+ * @since: 2016年9月17日 下午1:47:19 
  * @history:
  */
-public class XN660900 extends AProcessor {
+public class XN801901 extends AProcessor {
     private ISYSDictAO sysDictAO = SpringContextHolder
         .getBean(ISYSDictAO.class);
 
-    private XN660900Req req = null;
+    private XN801901Req req = null;
 
     /** 
      * @see com.xnjr.base.api.IProcessor#doBusiness()
      */
     @Override
     public Object doBusiness() throws BizException {
-        return new PKIdRes(sysDictAO.addSYSDict(req.getType(),
-            req.getParentKey(), req.getDkey(), req.getDvalue(),
-            req.getUpdater(), req.getRemark(), req.getSystemCode()));
+        sysDictAO.dropSYSDict(StringValidater.toLong(req.getId()));
+        return new BooleanRes(true);
     }
 
     /** 
@@ -37,8 +36,7 @@ public class XN660900 extends AProcessor {
      */
     @Override
     public void doCheck(String inputparams) throws ParaException {
-        req = JsonUtil.json2Bean(inputparams, XN660900Req.class);
-        StringValidater.validateBlank(req.getType(), req.getDkey(),
-            req.getDvalue(), req.getUpdater(), req.getSystemCode());
+        req = JsonUtil.json2Bean(inputparams, XN801901Req.class);
+        StringValidater.validateBlank(req.getId());
     }
 }

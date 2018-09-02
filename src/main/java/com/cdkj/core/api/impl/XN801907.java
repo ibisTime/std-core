@@ -5,7 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.cdkj.core.ao.ISYSDictAO;
 import com.cdkj.core.api.AProcessor;
 import com.cdkj.core.common.JsonUtil;
-import com.cdkj.core.core.StringValidater;
 import com.cdkj.core.domain.SYSDict;
 import com.cdkj.core.dto.req.XN801907Req;
 import com.cdkj.core.exception.BizException;
@@ -33,8 +32,6 @@ public class XN801907 extends AProcessor {
         condition.setType(req.getType());
         condition.setParentKey(req.getParentKey());
         condition.setDkey(req.getDkey());
-        condition.setCompanyCode(req.getCompanyCode());
-        condition.setSystemCode(req.getSystemCode());
         String orderColumn = req.getOrderColumn();
         if (StringUtils.isBlank(orderColumn)) {
             orderColumn = ISYSDictAO.DEFAULT_ORDER_COLUMN;
@@ -49,7 +46,5 @@ public class XN801907 extends AProcessor {
     @Override
     public void doCheck(String inputparams) throws ParaException {
         req = JsonUtil.json2Bean(inputparams, XN801907Req.class);
-        StringValidater
-            .validateBlank(req.getCompanyCode(), req.getSystemCode());
     }
 }
