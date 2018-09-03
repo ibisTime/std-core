@@ -1,7 +1,7 @@
 
 #!/usr/bin/expect
 
-set tomcat_path "/mnt/www/theia_dev/tomcat_std_core"
+set tomcat_path "/mnt/www/sjzc/tomcat_std_core"
 set war_name "std-core"
 set host_ip "47.254.69.142"
 set host_pwd "cdkjqwertyQ01"
