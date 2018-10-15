@@ -2,6 +2,10 @@
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('invite_pop','invite_pop_rate','0.1','admin',now(),'默认分成比例','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('invite_pop','invite_pop_days','90','admin',now(),'量化分成有效期（天）','CD-TOKEN00018','CD-TOKEN00018');
 
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('quantitative_finance','pop_protocol_ZH_CN','购买协议中文版','admin',now(),'购买协议（中文）','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('quantitative_finance','pop_protocol_EN','购买协议英文版','admin',now(),'购买协议（英文）','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('quantitative_finance','pop_protocol_KO','购买协议韩文版','admin',now(),'购买协议（韩文）','CD-TOKEN00018','CD-TOKEN00018');
+
 DELETE FROM `tsys_dict` WHERE `parent_key` = 'jour_biz_type_user' AND `dkey` = 'lhlc_invest';
 DELETE FROM `tsys_dict` WHERE `parent_key` = 'jour_biz_type_user' AND `dkey` = 'lhlc_repay';
 DELETE FROM `tsys_dict` WHERE `parent_key` = 'jour_biz_type_plat_lhlc' AND `dkey` = 'lhlc_invest';

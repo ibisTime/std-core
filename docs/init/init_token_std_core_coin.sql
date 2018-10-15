@@ -72,6 +72,13 @@ INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`r
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('aliyun_fas','ios_app_key','FFFFI0000000017EB5AE','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('aliyun_fas','ios_scene_original','register','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('invite_pop','invite_pop_rate','0.1','admin',now(),'默认分成比例','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('invite_pop','invite_pop_days','90','admin',now(),'量化分成有效期（天）','CD-TOKEN00018','CD-TOKEN00018');
+
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('quantitative_finance','pop_protocol_ZH_CN','购买协议中文版','admin',now(),'购买协议（中文）','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('quantitative_finance','pop_protocol_EN','购买协议英文版','admin',now(),'购买协议（英文）','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('quantitative_finance','pop_protocol_KO','购买协议韩文版','admin',now(),'购买协议（韩文）','CD-TOKEN00018','CD-TOKEN00018');
+
 /*
  * 云钱包数据字典
 -- Query: select `type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code` from tsys_config
@@ -316,6 +323,10 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'payment_type','回款方式','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','payment_type','0','期满自动转入个人账户','admin', now(),'','CD-TOKEN00018','CD-TOKEN00018');
+
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'product_type','理财产品类型','admin',now() ,'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','product_type','0','普通产品','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','product_type','1','单次限购产品','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 
 INSERT INTO `tstd_country` (`code`,`inter_code`,`inter_name`,`chinese_name`,`inter_simple_code`,`continent`,`pic`,`order_no`,`status`) VALUES ('GJ201808130001','001','Canada','加拿大','CA','美洲','%E5%8A%A0%E6%8B%BF%E5%A4%A7.png',9999,'1');
 INSERT INTO `tstd_country` (`code`,`inter_code`,`inter_name`,`chinese_name`,`inter_simple_code`,`continent`,`pic`,`order_no`,`status`) VALUES ('GJ201808130002','001242','Bahamas','巴哈马','BS','美洲','%E5%B7%B4%E5%93%88%E9%A9%AC%E7%BE%A4%E5%B2%9B.png',9999,'1');
