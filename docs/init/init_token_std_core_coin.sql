@@ -328,6 +328,11 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','product_type','0','普通产品','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','product_type','1','单次限购产品','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'client_type','客户端类型','admin',now() ,'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','client_type','WEB_H5','手机H5端','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','client_type','ios','苹果端','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','client_type','android','安卓端','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+
 INSERT INTO `tstd_country` (`code`,`inter_code`,`inter_name`,`chinese_name`,`inter_simple_code`,`continent`,`pic`,`order_no`,`status`) VALUES ('GJ201808130001','001','Canada','加拿大','CA','美洲','%E5%8A%A0%E6%8B%BF%E5%A4%A7.png',9999,'1');
 INSERT INTO `tstd_country` (`code`,`inter_code`,`inter_name`,`chinese_name`,`inter_simple_code`,`continent`,`pic`,`order_no`,`status`) VALUES ('GJ201808130002','001242','Bahamas','巴哈马','BS','美洲','%E5%B7%B4%E5%93%88%E9%A9%AC%E7%BE%A4%E5%B2%9B.png',9999,'1');
 INSERT INTO `tstd_country` (`code`,`inter_code`,`inter_name`,`chinese_name`,`inter_simple_code`,`continent`,`pic`,`order_no`,`status`) VALUES ('GJ201808130003','001246','Barbados','巴巴多斯','BB','美洲','%E5%B7%B4%E5%B7%B4%E5%A4%9A%E6%96%AF.png',9999,'1');
