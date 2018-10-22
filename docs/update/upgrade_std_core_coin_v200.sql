@@ -1,0 +1,1 @@
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type_plat','sfee','补给矿工费','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
