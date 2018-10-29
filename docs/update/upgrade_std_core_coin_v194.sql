@@ -1,0 +1,9 @@
+
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hd','x_memory_word','achieve tissue goat rare happy crash oxygen mammal account lottery plate renew tape stool negative service certain dream logic clown chicken planet middle various','admin',now(),'分发地址的助记词','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hd','plat_memory_word','sadness fiscal soup include shift rural robust negative travel pigeon loyal viable mom inflict achieve quality oak timber episode combine ring enrich gesture reward','admin',now(),'平台助记词','CD-TOKEN00018','CD-TOKEN00018');
+
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type_plat','sfee','补给矿工费','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type_plat','collect_first_mining_fee','一级矿工费','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type_plat','AJ_DEPOSIT_MINING_FEE','定存矿工费','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type_cold','deposit','每日定存','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type_cold','collect','归集','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
