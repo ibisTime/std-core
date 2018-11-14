@@ -304,7 +304,7 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'coin_type','币种类型','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_type','0','原生币','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_type','1','基于ETH的token币','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
-INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_type','1','基于WAN的token币','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_type','2','基于WAN的token币','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'coin_status','币种状态','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_status','0','已发布','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
