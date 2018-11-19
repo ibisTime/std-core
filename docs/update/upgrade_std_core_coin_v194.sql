@@ -1,9 +1,9 @@
 
-ALTER TABLE `dev_tha_std_core`.`tsys_dict` 
+ALTER TABLE `tsys_dict` 
 CHANGE COLUMN `parent_key` `parent_key` VARCHAR(64) NULL DEFAULT NULL COMMENT '父key' ,
 CHANGE COLUMN `dkey` `dkey` VARCHAR(64) NULL DEFAULT NULL COMMENT 'key' ;
 
-UPDATE `tsys_config` SET `cvalue` = 'qn.tha.hichengdai.com1' WHERE (`dkey` = 'qiniu_domain');
+UPDATE `tsys_config` SET `cvalue` = 'qn.tha.hichengdai.com' WHERE (`ckey` = 'qiniu_domain');
 
 DELETE FROM `tsys_dict` WHERE (`dkey` = 'jour_biz_type_user' OR `parent_key` = 'jour_biz_type_user');
 DELETE FROM `tsys_dict` WHERE (`dkey` = 'jour_biz_type_cold' OR `parent_key` = 'jour_biz_type_cold');
