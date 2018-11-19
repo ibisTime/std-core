@@ -6,7 +6,7 @@
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('qiniu','qiniu_access_key','AP_wGt7mjUTWexJow6xE1Uky2CN5G94-c6wGvB7X','admin',now(),'七牛云key1','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('qiniu','qiniu_secret_key','hL1KojSzQuPk_z66_DVhheZeKC6sxXPkuVN7yV-Z','admin',now(),'七牛云key1','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('qiniu','qiniu_bucket','tha-wallet','admin',now(),'存储空间','CD-TOKEN00018','CD-TOKEN00018');
-INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('qiniu','qiniu_domain','pajvine9a.bkt.clouddn.com','admin',now(),'访问域名','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('qiniu','qiniu_domain','qn.tha.hichengdai.com','admin',now(),'访问域名','CD-TOKEN00018','CD-TOKEN00018');
 
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('sys_txt','questions_ZH_CN','常见问题中文版','admin',now(),'常见问题（中文）','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('sys_txt','reg_protocol_ZH_CN','注册协议中文版','admin',now(),'注册协议（中文）','CD-TOKEN00018','CD-TOKEN00018');
@@ -55,7 +55,7 @@ INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`r
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','red_packet_num_max','10000','admin',now(),'最大红包个数','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','red_packet_amount_max','1000000','admin',now(),'最大红包总金额','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','downloadAppUrl','https://www.pgyer.com/ZxWz','admin',now(),'红包领取下载地址','CD-TOKEN00018','CD-TOKEN00018');
-INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','redPacketShareUrl','http://m.thadev.hichengdai.com','admin',now(),'红包分享链接','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','redPacketShareUrl','http://m.thatest.hichengdai.com','admin',now(),'红包分享链接','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','h5_download_android','http://app.thachain.org/appDownload/release/THA_1.6.1_{channel_name}.apk','admin',now(),'红包领取下载地址','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_config` (`type`,`ckey`,`cvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('hb','h5_download_ios','itms-services://?action=download-manifest&url=https://test.thachain.org/appDownload/test/tha_{channel_name}.plist','admin',now(),'红包领取下载地址','CD-TOKEN00018','CD-TOKEN00018');
 
