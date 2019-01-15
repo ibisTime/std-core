@@ -22,3 +22,7 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_action','0','不能点击','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_action','1','跳转链接','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','banner_action','2','打开发现应用','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'coin_default_select','是否默认自选','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_default_select','0','否','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_default_select','1','是','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');

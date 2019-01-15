@@ -544,6 +544,9 @@ INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_d
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type','redpacket_send_out','发红包','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type','sfee','补给矿工费','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','jour_biz_type','supply','平台补给收入','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('0',NULL,'coin_default_select','是否默认自选','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_default_select','0','否','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
+INSERT INTO `tsys_dict` (`type`,`parent_key`,`dkey`,`dvalue`,`updater`,`update_datetime`,`remark`,`company_code`,`system_code`) VALUES ('1','coin_default_select','1','是','admin',now(),'','CD-TOKEN00018','CD-TOKEN00018');
 
 INSERT INTO `tstd_country` (`code`,`inter_code`,`inter_name`,`chinese_name`,`inter_simple_code`,`continent`,`pic`,`order_no`,`status`) VALUES ('GJ201808130001','001','Canada','加拿大','CA','美洲','%E5%8A%A0%E6%8B%BF%E5%A4%A7.png',9999,'1');
 INSERT INTO `tstd_country` (`code`,`inter_code`,`inter_name`,`chinese_name`,`inter_simple_code`,`continent`,`pic`,`order_no`,`status`) VALUES ('GJ201808130002','001242','Bahamas','巴哈马','BS','美洲','%E5%B7%B4%E5%93%88%E9%A9%AC%E7%BE%A4%E5%B2%9B.png',9999,'1');
