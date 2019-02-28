@@ -1,0 +1,1 @@
+INSERT INTO `tsys_dict` (`type`, `parent_key`, `dkey`, `dvalue`, `updater`, `update_datetime`, `remark`, `company_code`, `system_code`) VALUES ('1', 'banner_action', '3', '打开量化理财列表', 'admin', '2018-12-21 16:11:03', '', 'CD-TOKEN00018', 'CD-TOKEN00018');
